@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="О студии KADR. — дизайн сайтов, подход, философия. Работаем быстро и честно.">
+  <title>О студии — KADR.</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='28' font-family='serif' font-weight='900'>K.</text></svg>">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+
+  <style>
+    /* ── About page specific styles ── */
+
+    .about-page-hero {
+      min-height: 75vh;
+      display: flex;
+      align-items: flex-end;
+      padding-top: 140px;
+      padding-bottom: clamp(4rem, 8vw, 7rem);
+      background-color: var(--bg-dark);
+      border-bottom: 1px solid var(--border-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero-noise.png');
+      background-repeat: repeat;
+      background-size: 300px 300px;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .about-page-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-page-hero h1 {
+      color: var(--text-white);
+      max-width: 900px;
+      text-transform: uppercase;
+    }
+
+    .about-page-hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .about-page-hero .hero-sub {
+      color: rgba(255,255,255,0.4);
+      max-width: 480px;
+      margin-top: 1.5rem;
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Photo fullwidth ── */
+    .about-full-photo {
+      width: 100%;
+      aspect-ratio: 21/9;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-full-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      transition: transform 1.2s var(--ease-out);
+    }
+
+    /* ── Philosophy blocks ── */
+    .about-blocks {
+      background-color: var(--bg-light);
+      padding: clamp(4rem, 8vw, 8rem) 0;
+    }
+
+    .blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 3rem);
+      margin-top: clamp(3rem, 5vw, 5rem);
+    }
+
+    .block-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      background-color: #fff;
+      transition: border-color 0.3s ease, transform 0.4s var(--ease-out);
+    }
+
+    .block-item:hover {
+      border-color: rgba(17,17,16,0.2);
+      transform: translateY(-4px);
+    }
+
+    .block-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(200,255,71,0.12);
+      padding: 4px 10px;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .block-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+      line-height: 1.15;
+    }
+
+    .block-desc {
+      color: var(--text-muted-light);
+      font-size: clamp(0.88rem, 1vw, 0.98rem);
+      line-height: 1.75;
+    }
+
+    /* ── Numbers section ── */
+    .about-numbers {
+      background-color: var(--bg-dark);
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: clamp(2rem, 4vw, 4rem);
+    }
+
+    .number-item {
+      background: var(--bg-dark);
+      padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .number-val {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    .number-label {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── About CTA ── */
+    .about-cta-section {
+      background-color: var(--bg-dark);
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .about-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .about-cta-inner h2 {
+      color: var(--text-white);
+      max-width: 500px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .blocks-grid { grid-template-columns: 1fr; }
+      .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .about-full-photo { aspect-ratio: 4/3; }
+      .numbers-grid { grid-template-columns: 1fr 1fr; }
+      .about-cta-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 400px) {
+      .numbers-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="overflow-hidden">
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-logo">KADR<span>.</span></div>
+    <div class="loader-track"><div class="loader-bar"></div></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div id="header-strip">
+      <a href="index.html" class="header-logo">KADR<span>.</span></a>
+      <nav id="desktop-nav">
+        <a href="index.html#about"     class="nav-link" data-i18n="nav-about">О студии</a>
+        <a href="index.html#process"   class="nav-link" data-i18n="nav-process">Процесс</a>
+        <a href="index.html#portfolio" class="nav-link" data-i18n="nav-work">Работы</a>
+        <a href="index.html#faq"       class="nav-link" data-i18n="nav-faq">FAQ</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="contact.html" class="header-cta" data-i18n="nav-contact">Связаться</a>
+        <button id="menu-btn" aria-label="Открыть меню" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div id="nav-overlay" aria-hidden="true">
+      <ul>
+        <li><a href="index.html" data-i18n="nav-home">Главная</a></li>
+        <li><a href="index.html#process" data-i18n="nav-process">Процесс</a></li>
+        <li><a href="index.html#portfolio" data-i18n="nav-work">Работы</a></li>
+        <li><a href="contact.html" data-i18n="nav-contact">Связаться</a></li>
+      </ul>
+      <div class="overlay-contacts">
+        <a href="mailto:zharovpeak@gmail.com">zharovpeak@gmail.com</a>
+        <a href="tel:+79255059772">+7 925 505-97-72</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="about-page-hero section-dark">
+      <div class="container">
+        <span class="section-tag" data-i18n="about-page-tag">О студии</span>
+        <h1 id="about-hero-title">
+          <span data-i18n="about-hero-line1">Делаем так,</span><br>
+          <span data-i18n="about-hero-line2">чтобы вам не пришлось</span><br>
+          <em data-i18n="about-hero-line3">объяснять дважды.</em>
+        </h1>
+        <p class="hero-sub" data-i18n="about-hero-sub">
+          Небольшая команда дизайнеров. Работаем честно, быстро и без лишних слов.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Full-width photo ── -->
+    <div class="about-full-photo">
+      <img
+        src="images/about-photo.png"
+        alt="Рабочее место студии KADR."
+        loading="lazy"
+      >
+    </div>
+
+    <!-- ── Philosophy blocks ── -->
+    <section class="about-blocks section-light">
+      <div class="container">
+        <span class="section-tag" data-i18n="about-phil-tag">Наш подход</span>
+        <h2 data-i18n="about-phil-title">Три принципа, которые не меняются</h2>
+
+        <div class="blocks-grid">
+
+          <div class="block-item">
+            <span class="block-num">01</span>
+            <h3 class="block-title" data-i18n="block1-title">Дизайн без воды</h3>
+            <p class="block-desc" data-i18n="block1-desc">
+              Не делаем "красивенько". Делаем так, чтобы сайт решал задачу:
+              приводил заявки, объяснял продукт, вызывал доверие.
+              Каждый экран — под конкретную цель.
+            </p>
+          </div>
+
+          <div class="block-item">
+            <span class="block-num">02</span>
+            <h3 class="block-title" data-i18n="block2-title">24 часа — это не маркетинг</h3>
+            <p class="block-desc" data-i18n="block2-desc">
+              Реальный срок первого макета. Мы не берём проекты в очередь
+              на месяц. Если взяли — делаем сразу, пока задача ещё свежая.
+            </p>
+          </div>
+
+          <div class="block-item">
+            <span class="block-num">03</span>
+            <h3 class="block-title" data-i18n="block3-title">Сначала смотрите, потом платите</h3>
+            <p class="block-desc" data-i18n="block3-desc">
+              Первый экран — бесплатно. Потому что мы уверены в результате
+              и хотим, чтобы вы убедились сами. Без кота в мешке.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Numbers ── -->
+    <section class="about-numbers section-dark">
+      <div class="container">
+        <span class="section-tag" data-i18n="about-num-tag">В цифрах</span>
+        <div class="numbers-grid">
+          <div class="number-item">
+            <span class="number-val">4+</span>
+            <span class="number-label" data-i18n="num1">Проектов сдано</span>
+          </div>
+          <div class="number-item">
+            <span class="number-val">3+</span>
+            <span class="number-label" data-i18n="num2">Года в дизайне</span>
+          </div>
+          <div class="number-item">
+            <span class="number-val">24ч</span>
+            <span class="number-label" data-i18n="num3">Первый результат</span>
+          </div>
+          <div class="number-item">
+            <span class="number-val">50%</span>
+            <span class="number-label" data-i18n="num4">Предоплата, не 100%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── About CTA ── -->
+    <section class="about-cta-section section-dark">
+      <div class="container about-cta-inner">
+        <h2 data-i18n="about-cta-title">Хотите увидеть результат?</h2>
+        <a href="contact.html" class="btn btn-primary" data-i18n="about-cta-btn">Обсудить проект</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="section-dark">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo">KADR<span>.</span></a>
+        <p class="footer-tagline" data-i18n="footer-tagline">
+          Дизайн сайтов, которые<br>продают с первого экрана.
+        </p>
+      </div>
+      <div class="footer-mid">
+        <nav class="footer-nav">
+          <a href="index.html"   data-i18n="nav-home">Главная</a>
+          <a href="about.html"   data-i18n="nav-about">О студии</a>
+          <a href="contact.html" data-i18n="nav-contact">Контакт</a>
+        </nav>
+        <div class="footer-socials">
+          <a href="https://t.me/zharovpeak" target="_blank" rel="noopener" class="social-link" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.88 13.47l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.952z"/></svg>
+          </a>
+          <a href="https://instagram.com/zharovpeak" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy" data-i18n="footer-copy">© 2026 KADR. Все права защищены.</span>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/lenis.min.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/SplitText.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/lang.js"></script>
+  <script>
+    // Упрощённый скрипт для about.html
+    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    // Loader
+    window.addEventListener('load', () => {
+      gsap.to('#loader', {
+        yPercent: -100, duration: 0.8, ease: 'power3.inOut', delay: 0.4,
+        onComplete: () => {
+          document.getElementById('loader').style.display = 'none';
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
+    });
+
+    // Header scroll
+    ScrollTrigger.create({
+      start: 'top -80px',
+      onEnter: () => document.getElementById('header-strip').classList.add('scrolled'),
+      onLeaveBack: () => document.getElementById('header-strip').classList.remove('scrolled'),
+    });
+
+    // Mobile nav
+    const btn = document.getElementById('menu-btn');
+    const overlay = document.getElementById('nav-overlay');
+    btn.addEventListener('click', () => {
+      const isOpen = btn.classList.toggle('open');
+      overlay.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen);
+      overlay.setAttribute('aria-hidden', !isOpen);
+      isOpen ? lenis.stop() : lenis.start();
+    });
+
+    // Scroll animations
+    gsap.from('.about-page-hero h1', {
+      y: 60, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.9
+    });
+    gsap.from('.about-full-photo img', {
+      scrollTrigger: { trigger: '.about-full-photo', start: 'top 85%' },
+      scale: 1.08, opacity: 0, duration: 1.2, ease: 'power3.out'
+    });
+    gsap.from('.block-item', {
+      scrollTrigger: { trigger: '.blocks-grid', start: 'top 80%' },
+      y: 50, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out'
+    });
+    gsap.from('.number-item', {
+      scrollTrigger: { trigger: '.numbers-grid', start: 'top 80%' },
+      y: 40, opacity: 0, stagger: 0.08, duration: 0.6, ease: 'power2.out'
+    });
+  </script>
+</body>
+</html>

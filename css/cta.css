@@ -1,0 +1,106 @@
+/* ============================================================
+   KADR. — CTA Section
+   ============================================================ */
+
+#cta {
+  padding: clamp(5rem, 10vw, 10rem) 0;
+  border-top: 1px solid var(--border-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ── Большой фоновый текст ── */
+.cta-bg-text {
+  position: absolute;
+  right: clamp(-1rem, -2vw, -3rem);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(8rem, 20vw, 22rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+/* ── Content ── */
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.cta-title {
+  color: var(--text-white);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.cta-sub {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  max-width: 440px;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* ── Buttons ── */
+.cta-btns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* ── Contacts under buttons ── */
+.cta-contacts {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cta-contacts a {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.25s ease;
+}
+
+.cta-contacts a:hover {
+  color: var(--accent);
+}
+
+.cta-sep {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 1rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .cta-btns {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .cta-btns .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cta-bg-text {
+    display: none;
+  }
+}

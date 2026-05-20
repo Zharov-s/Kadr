@@ -1,0 +1,199 @@
+/* ============================================================
+   KADR. — Hero Section
+   ============================================================ */
+
+#hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 80px; /* высота шапки */
+}
+
+/* ── Фоновые слои ── */
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero-noise.png');
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  opacity: 0.25;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Inner ── */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(4rem, 8vh, 8rem);
+  padding-bottom: clamp(4rem, 8vh, 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* ── Status pill ── */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 16px 8px 12px;
+  border-radius: 100px;
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+  backdrop-filter: blur(8px);
+}
+
+/* ── Main heading ── */
+#hero-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 8.5vw, 10rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--text-white);
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+#hero-title .line {
+  display: block;
+}
+
+#hero-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* SplitText: overflow-hidden на строке, GSAP управляет сдвигом */
+#hero-title .line {
+  overflow: hidden;
+  display: block;
+}
+
+#hero-title .charChild {
+  display: inline-block;
+  /* начальное положение задаёт GSAP через from(), НЕ CSS */
+}
+
+/* ── Sub text ── */
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: clamp(2rem, 4vh, 3rem);
+  opacity: 0; /* JS покажет */
+  transform: translateY(16px);
+}
+
+/* ── CTA buttons row ── */
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  opacity: 0; /* JS покажет */
+  transform: translateY(16px);
+}
+
+#btn-works {
+  background-color: var(--accent);
+  color: var(--text-dark);
+}
+
+#btn-discuss {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--text-white);
+}
+
+/* ── Scroll hint ── */
+.hero-scroll {
+  position: absolute;
+  bottom: clamp(1.5rem, 3vh, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fade-in-scroll 0.8s ease 2.5s forwards;
+}
+
+@keyframes fade-in-scroll {
+  to { opacity: 1; }
+}
+
+.scroll-line {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  animation: scroll-line 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-line {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.scroll-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  #hero-title {
+    font-size: clamp(2.5rem, 12vw, 5rem);
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero-title {
+    font-size: clamp(2.2rem, 13vw, 4rem);
+    letter-spacing: -0.03em;
+  }
+
+  .hero-status {
+    font-size: 0.7rem;
+  }
+}

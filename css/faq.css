@@ -1,0 +1,157 @@
+/* ============================================================
+   KADR. — FAQ Section
+   Источник: Web-Design-Agency/script.js accordion — адаптация
+   ============================================================ */
+
+#faq {
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  border-top: 1px solid var(--border-dark);
+}
+
+.faq-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: clamp(3rem, 6vw, 8rem);
+  align-items: start;
+}
+
+/* ── Head ── */
+.faq-head {
+  position: sticky;
+  top: 100px;
+}
+
+.faq-head h2 {
+  color: var(--text-white);
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+/* ── List ── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Question item ── */
+.quest {
+  border-bottom: 1px solid var(--border-dark);
+  position: relative;
+}
+
+.quest:first-child {
+  border-top: 1px solid var(--border-dark);
+}
+
+/* Hover line лайм */
+.quest::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease);
+  z-index: 1;
+}
+
+.quest:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Question button ── */
+.quest-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem) 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  letter-spacing: -0.02em;
+  color: var(--text-white);
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.3s ease;
+}
+
+.quest-btn:hover,
+.quest.open .quest-btn {
+  color: var(--accent);
+}
+
+/* ── Icon (+/−) ── */
+.quest-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.quest-icon::before,
+.quest-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: transform 0.35s var(--ease), opacity 0.25s ease;
+}
+
+/* Горизонтальная линия */
+.quest-icon::before {
+  width: 16px;
+  height: 1.5px;
+  transform: translate(-50%, -50%);
+}
+
+/* Вертикальная линия */
+.quest-icon::after {
+  width: 1.5px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+}
+
+/* Открыто — вертикальная исчезает (= остаётся только —) */
+.quest.open .quest-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* ── Answer ── */
+.ans {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.45s var(--ease-out), padding 0.35s ease;
+}
+
+.ans.open {
+  max-height: 300px;
+  padding-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.ans p {
+  color: var(--text-muted-dark);
+  font-size: clamp(0.88rem, 1vw, 1rem);
+  line-height: 1.75;
+  max-width: 560px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .faq-inner {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .faq-head {
+    position: static;
+  }
+}

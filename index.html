@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KADR. — дизайн сайтов в Москве. Один экран — 30 000 ₽. Первый макет через 24 часа.">
+  <title>KADR. — Дизайн сайтов</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='28' font-family='serif' font-weight='900'>K.</text></svg>">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/marquee.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/process.css">
+  <link rel="stylesheet" href="css/portfolio.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/cta.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body class="overflow-hidden">
+
+  <!-- ══════════════════════════════════════
+       LOADER
+  ══════════════════════════════════════ -->
+  <div id="loader">
+    <div class="loader-logo">KADR<span>.</span></div>
+    <div class="loader-track">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════ -->
+  <header>
+    <div id="header-strip">
+      <!-- Logo -->
+      <a href="index.html" class="header-logo" aria-label="KADR. — на главную">
+        KADR<span>.</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav id="desktop-nav" aria-label="Основная навигация">
+        <a href="#about"     class="nav-link" data-i18n="nav-about">О студии</a>
+        <a href="#process"   class="nav-link" data-i18n="nav-process">Процесс</a>
+        <a href="#portfolio" class="nav-link" data-i18n="nav-work">Работы</a>
+        <a href="#faq"       class="nav-link" data-i18n="nav-faq">FAQ</a>
+      </nav>
+
+      <!-- Right group -->
+      <div class="header-right">
+        <!-- Language switch -->
+        <div class="lang-switch" aria-label="Смена языка">
+          <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+
+        <!-- CTA -->
+        <a href="contact.html" class="header-cta" data-i18n="nav-contact">Связаться</a>
+
+        <!-- Hamburger -->
+        <button id="menu-btn" aria-label="Открыть меню" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile overlay -->
+    <div id="nav-overlay" aria-hidden="true">
+      <ul>
+        <li><a href="#about"     data-i18n="nav-about">О студии</a></li>
+        <li><a href="#process"   data-i18n="nav-process">Процесс</a></li>
+        <li><a href="#portfolio" data-i18n="nav-work">Работы</a></li>
+        <li><a href="#faq"       data-i18n="nav-faq">FAQ</a></li>
+        <li><a href="contact.html" data-i18n="nav-contact">Связаться</a></li>
+      </ul>
+      <div class="overlay-contacts">
+        <a href="mailto:zharovpeak@gmail.com">zharovpeak@gmail.com</a>
+        <a href="tel:+79255059772">+7 925 505-97-72</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════
+       MAIN
+  ══════════════════════════════════════ -->
+  <main>
+
+    <!-- ── HERO ── -->
+    <section id="hero" class="section-dark">
+      <div class="hero-bg-img" aria-hidden="true"></div>
+      <div class="hero-noise"  aria-hidden="true"></div>
+      <div class="container hero-inner">
+
+        <!-- Status -->
+        <div class="hero-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-i18n="hero-status">Доступны для новых проектов</span>
+        </div>
+
+        <!-- Heading -->
+        <h1 id="hero-title">
+          <span class="line" data-i18n="hero-line1">Дизайн сайта,</span>
+          <span class="line"><span data-i18n="hero-line2a">который</span> <em data-i18n="hero-line2b">продаёт</em></span>
+          <span class="line" data-i18n="hero-line3">с первого экрана</span>
+        </h1>
+
+        <!-- Sub -->
+        <p class="hero-sub" data-i18n="hero-sub">
+          Один экран — 30 000 ₽. Первый покажем через 24 часа.
+        </p>
+
+        <!-- CTA -->
+        <div class="hero-cta">
+          <a href="#portfolio" id="btn-works" class="btn btn-primary">
+            <span data-i18n="hero-btn1">Смотреть работы</span>
+          </a>
+          <a href="contact.html" id="btn-discuss" class="btn btn-secondary">
+            <span data-i18n="hero-btn2">Обсудить проект</span>
+          </a>
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="hero-scroll" aria-hidden="true">
+          <span class="scroll-line"></span>
+          <span class="scroll-label" data-i18n="hero-scroll">Скролл</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MARQUEE ── -->
+    <div id="marquee" class="section-dark" aria-hidden="true">
+      <div class="marquee-row marquee-left">
+        <div class="marquee-track">
+          <span>Дизайн сайта</span>
+          <span class="accent-tag">✦</span>
+          <span>30 000 ₽/экран</span>
+          <span class="accent-tag">✦</span>
+          <span>24 часа</span>
+          <span class="accent-tag">✦</span>
+          <span>Редизайн</span>
+          <span class="accent-tag">✦</span>
+          <span>UI/UX</span>
+          <span class="accent-tag">✦</span>
+          <span>Москва</span>
+          <span class="accent-tag">✦</span>
+          <!-- дублируем для бесконечной прокрутки -->
+          <span>Дизайн сайта</span>
+          <span class="accent-tag">✦</span>
+          <span>30 000 ₽/экран</span>
+          <span class="accent-tag">✦</span>
+          <span>24 часа</span>
+          <span class="accent-tag">✦</span>
+          <span>Редизайн</span>
+          <span class="accent-tag">✦</span>
+          <span>UI/UX</span>
+          <span class="accent-tag">✦</span>
+          <span>Москва</span>
+          <span class="accent-tag">✦</span>
+        </div>
+      </div>
+      <div class="marquee-row marquee-right">
+        <div class="marquee-track">
+          <span>Website Design</span>
+          <span class="accent-tag">✦</span>
+          <span>Premium UI</span>
+          <span class="accent-tag">✦</span>
+          <span>Fast Delivery</span>
+          <span class="accent-tag">✦</span>
+          <span>Redesign</span>
+          <span class="accent-tag">✦</span>
+          <span>From Moscow</span>
+          <span class="accent-tag">✦</span>
+          <span>Landing Pages</span>
+          <span class="accent-tag">✦</span>
+          <!-- дублируем -->
+          <span>Website Design</span>
+          <span class="accent-tag">✦</span>
+          <span>Premium UI</span>
+          <span class="accent-tag">✦</span>
+          <span>Fast Delivery</span>
+          <span class="accent-tag">✦</span>
+          <span>Redesign</span>
+          <span class="accent-tag">✦</span>
+          <span>From Moscow</span>
+          <span class="accent-tag">✦</span>
+          <span>Landing Pages</span>
+          <span class="accent-tag">✦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="section-light">
+      <div class="container about-inner">
+        <div class="about-text">
+          <span class="section-tag" data-i18n="about-tag">О студии</span>
+          <h2 data-i18n="about-title">Делаем сайты, которые не стыдно показать.</h2>
+          <p class="about-desc" data-i18n="about-desc">
+            Небольшая команда из Москвы. Работаем только с визуальной частью:
+            структура, экраны, логика. Без воды, без ожидания неделями,
+            без правок по три круга. Просто хороший дизайн — быстро.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num">4+</span>
+              <span class="stat-label" data-i18n="stat1">проекта</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">3+</span>
+              <span class="stat-label" data-i18n="stat2">года в дизайне</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">24ч</span>
+              <span class="stat-label" data-i18n="stat3">первый результат</span>
+            </div>
+          </div>
+          <a href="about.html" class="btn btn-secondary" data-i18n="about-link">О нас подробнее</a>
+        </div>
+        <div class="about-photo">
+          <img
+            src="images/about-photo.png"
+            alt="Рабочее место дизайнера KADR."
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROCESS ── -->
+    <section id="process" class="section-dark">
+      <div class="container">
+        <span class="section-tag" data-i18n="process-tag">Как это работает</span>
+        <h2 class="process-title" data-i18n="process-title">Четыре шага — от идеи до готового сайта</h2>
+        <div class="process-list">
+
+          <div class="step hover-line">
+            <span class="step-num">01</span>
+            <div class="step-content">
+              <h4 class="step-title" data-i18n="step1-title">Рассказываете задачу</h4>
+              <p class="step-desc" data-i18n="step1-desc">
+                Звонок или сообщение. 15 минут — и мы понимаем, что нужно сделать.
+              </p>
+            </div>
+            <span class="step-arrow" aria-hidden="true">↗</span>
+          </div>
+
+          <div class="step hover-line">
+            <span class="step-num">02</span>
+            <div class="step-content">
+              <h4 class="step-title" data-i18n="step2-title">Через 24 часа — первый экран</h4>
+              <p class="step-desc" data-i18n="step2-desc">
+                Смотрите готовый макет. Пока бесплатно — без обязательств.
+              </p>
+            </div>
+            <span class="step-arrow" aria-hidden="true">↗</span>
+          </div>
+
+          <div class="step hover-line">
+            <span class="step-num">03</span>
+            <div class="step-content">
+              <h4 class="step-title" data-i18n="step3-title">Нравится — продолжаем</h4>
+              <p class="step-desc" data-i18n="step3-desc">
+                Оплачиваете 50% и мы делаем весь сайт. Без предоплаты за кота в мешке.
+              </p>
+            </div>
+            <span class="step-arrow" aria-hidden="true">↗</span>
+          </div>
+
+          <div class="step hover-line">
+            <span class="step-num">04</span>
+            <div class="step-content">
+              <h4 class="step-title" data-i18n="step4-title">Принимаете работу</h4>
+              <p class="step-desc" data-i18n="step4-desc">
+                Остаток — после сдачи. Без сюрпризов и лишних правок.
+              </p>
+            </div>
+            <span class="step-arrow" aria-hidden="true">↗</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PORTFOLIO ── -->
+    <section id="portfolio" class="section-light">
+      <div class="container">
+        <div class="portfolio-head">
+          <div>
+            <span class="section-tag" data-i18n="portfolio-tag">Работы</span>
+            <h2 data-i18n="portfolio-title">Выбранные проекты</h2>
+          </div>
+          <p class="portfolio-count" data-i18n="portfolio-count">4 проекта</p>
+        </div>
+
+        <div class="portfolio-grid">
+
+          <div class="work-card">
+            <a href="https://promtechnopark-mitino.ru/" target="_blank" rel="noopener">
+              <div class="work-banner" style="--card-bg: #111B14;">
+                <img src="images/portfolio/case-1.png" alt="Промтехнопарк Митино" class="work-img" loading="lazy">
+              </div>
+              <div class="work-meta">
+                <div class="work-info">
+                  <span class="work-tag" data-i18n="case1-tag">Промтехнопарк</span>
+                  <p class="work-title">Митино ПАК</p>
+                </div>
+                <span class="work-arrow">↗</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="work-card">
+            <a href="http://195.24.71.195/" target="_blank" rel="noopener">
+              <div class="work-banner" style="--card-bg: #0F1A2B;">
+                <img src="images/portfolio/case-2.png" alt="ВерниВещь — QR-метки для потерянных вещей" class="work-img" loading="lazy">
+              </div>
+              <div class="work-meta">
+                <div class="work-info">
+                  <span class="work-tag" data-i18n="case2-tag">Продуктовый сайт</span>
+                  <p class="work-title">ВерниВещь</p>
+                </div>
+                <span class="work-arrow">↗</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="work-card">
+            <a href="https://abcport.ru/" target="_blank" rel="noopener">
+              <div class="work-banner" style="--card-bg: #111820;">
+                <img src="images/portfolio/case-3.png" alt="ABCENTRUM — коммерческая недвижимость" class="work-img" loading="lazy">
+              </div>
+              <div class="work-meta">
+                <div class="work-info">
+                  <span class="work-tag" data-i18n="case3-tag">Коммерческая недвижимость</span>
+                  <p class="work-title">ABCENTRUM</p>
+                </div>
+                <span class="work-arrow">↗</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="work-card">
+            <a href="https://zharov-s.github.io/Nekrasovka/" target="_blank" rel="noopener">
+              <div class="work-banner" style="--card-bg: #141018;">
+                <img src="images/portfolio/case-4.png" alt="Промышленный парк в Некрасовке" class="work-img" loading="lazy">
+              </div>
+              <div class="work-meta">
+                <div class="work-info">
+                  <span class="work-tag" data-i18n="case4-tag">Промышленный парк</span>
+                  <p class="work-title">Некрасовка</p>
+                </div>
+                <span class="work-arrow">↗</span>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section id="faq" class="section-dark">
+      <div class="container faq-inner">
+        <div class="faq-head">
+          <span class="section-tag" data-i18n="faq-tag">Частые вопросы</span>
+          <h2 data-i18n="faq-title">Отвечаем честно</h2>
+        </div>
+        <div class="faq-list">
+
+          <div class="quest">
+            <button class="quest-btn" aria-expanded="false">
+              <span data-i18n="q1">Что такое "один экран"?</span>
+              <span class="quest-icon" aria-hidden="true"></span>
+            </button>
+            <div class="ans" aria-hidden="true">
+              <p data-i18n="a1">Один полноценный блок страницы — hero, секция с услугами, контакт. У каждого экрана своя уникальная верстка и дизайн. Цена — 30 000 ₽ за экран.</p>
+            </div>
+          </div>
+
+          <div class="quest">
+            <button class="quest-btn" aria-expanded="false">
+              <span data-i18n="q2">Вы делаете только дизайн или и вёрстку тоже?</span>
+              <span class="quest-icon" aria-hidden="true"></span>
+            </button>
+            <div class="ans" aria-hidden="true">
+              <p data-i18n="a2">Включена полная вёрстка — HTML, CSS, JS анимации. Backend, CMS и SEO — по отдельной договорённости.</p>
+            </div>
+          </div>
+
+          <div class="quest">
+            <button class="quest-btn" aria-expanded="false">
+              <span data-i18n="q3">Сколько займёт весь сайт?</span>
+              <span class="quest-icon" aria-hidden="true"></span>
+            </button>
+            <div class="ans" aria-hidden="true">
+              <p data-i18n="a3">Лендинг на 6 экранов — 7-10 рабочих дней. Многостраничник — от 2 недель. Зависит от количества экранов и сложности анимаций.</p>
+            </div>
+          </div>
+
+          <div class="quest">
+            <button class="quest-btn" aria-expanded="false">
+              <span data-i18n="q4">Что если мне не понравится первый экран?</span>
+              <span class="quest-icon" aria-hidden="true"></span>
+            </button>
+            <div class="ans" aria-hidden="true">
+              <p data-i18n="a4">Расходимся без оплаты. Первый экран — наша ставка на то, что мы попадём в задачу. Обычно попадаем.</p>
+            </div>
+          </div>
+
+          <div class="quest">
+            <button class="quest-btn" aria-expanded="false">
+              <span data-i18n="q5">Можно ли самому редактировать сайт?</span>
+              <span class="quest-icon" aria-hidden="true"></span>
+            </button>
+            <div class="ans" aria-hidden="true">
+              <p data-i18n="a5">Если нужна CMS — обсуждаем заранее и закладываем в бюджет. Без CMS сайт получается легче и быстрее.</p>
+            </div>
+          </div>
+
+          <div class="quest">
+            <button class="quest-btn" aria-expanded="false">
+              <span data-i18n="q6">Работаете с компаниями не из Москвы?</span>
+              <span class="quest-icon" aria-hidden="true"></span>
+            </button>
+            <div class="ans" aria-hidden="true">
+              <p data-i18n="a6">Да. Всё онлайн. Неважно, где вы находитесь.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section id="cta" class="section-dark">
+      <div class="container cta-inner">
+        <div class="cta-content">
+          <h2 class="cta-title" data-i18n="cta-title">Готовы начать?</h2>
+          <p class="cta-sub" data-i18n="cta-sub">
+            Расскажите задачу — через 24 часа пришлём первый экран.
+          </p>
+          <div class="cta-btns">
+            <a href="contact.html" class="btn btn-primary" data-i18n="cta-btn1">Написать нам</a>
+            <a href="tel:+79255059772" class="btn btn-secondary" data-i18n="cta-btn2">Заказать обратный звонок</a>
+          </div>
+          <div class="cta-contacts">
+            <a href="mailto:zharovpeak@gmail.com">zharovpeak@gmail.com</a>
+            <span class="cta-sep" aria-hidden="true">·</span>
+            <a href="tel:+79255059772">+7 925 505-97-72</a>
+          </div>
+        </div>
+        <div class="cta-bg-text" aria-hidden="true">24ч</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer id="footer" class="section-dark">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo">KADR<span>.</span></a>
+        <p class="footer-tagline" data-i18n="footer-tagline">
+          Дизайн сайтов, которые<br>продают с первого экрана.
+        </p>
+      </div>
+
+      <div class="footer-mid">
+        <nav class="footer-nav" aria-label="Навигация в подвале">
+          <a href="index.html"   data-i18n="nav-home">Главная</a>
+          <a href="about.html"   data-i18n="nav-about">О студии</a>
+          <a href="contact.html" data-i18n="nav-contact">Контакт</a>
+        </nav>
+        <div class="footer-socials">
+          <!-- Telegram -->
+          <a href="https://t.me/zharovpeak" target="_blank" rel="noopener" class="social-link" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.88 13.47l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.952-.001.001-.001.001 0 0h-.001l.436.136z"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://instagram.com/zharovpeak" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy" data-i18n="footer-copy">© 2026 KADR. Все права защищены.</span>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════ -->
+  <script src="js/lenis.min.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/SplitText.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>

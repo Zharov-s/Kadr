@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Связаться со студией KADR. — напишите задачу, ответим в течение часа.">
+  <title>Контакт — KADR.</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='28' font-family='serif' font-weight='900'>K.</text></svg>">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+
+  <style>
+    /* ── Contact page styles ── */
+
+    .contact-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: flex-end;
+      padding-top: 140px;
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      background-color: var(--bg-dark);
+      border-bottom: 1px solid var(--border-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero-noise.png');
+      background-repeat: repeat;
+      background-size: 300px 300px;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .contact-hero .container { position: relative; z-index: 2; }
+
+    .contact-hero h1 {
+      color: var(--text-white);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .contact-hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-hero .contact-sub {
+      color: rgba(255,255,255,0.4);
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      max-width: 440px;
+    }
+
+    /* ── Contact details row ── */
+    .contact-details {
+      display: flex;
+      align-items: center;
+      gap: clamp(2rem, 5vw, 5rem);
+      flex-wrap: wrap;
+      margin-top: clamp(2rem, 4vw, 3rem);
+    }
+
+    .contact-detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-detail-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .contact-detail-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1rem, 1.5vw, 1.3rem);
+      letter-spacing: -0.02em;
+      color: var(--text-white);
+      transition: color 0.25s ease;
+    }
+
+    .contact-detail-value:hover {
+      color: var(--accent);
+    }
+
+    /* ── Form section ── */
+    .contact-form-section {
+      background-color: var(--bg-light);
+      padding: clamp(4rem, 8vw, 8rem) 0;
+    }
+
+    .contact-form-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 8rem);
+      align-items: start;
+    }
+
+    /* ── Form description ── */
+    .form-description {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: sticky;
+      top: 100px;
+    }
+
+    .form-description h2 {
+      color: var(--text-dark);
+    }
+
+    .form-description p {
+      color: var(--text-muted-light);
+      max-width: 380px;
+    }
+
+    .form-promise {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .promise-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--text-muted-light);
+    }
+
+    .promise-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Form ── */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted-light);
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      background-color: #fff;
+      border: 1.5px solid rgba(17,17,16,0.12);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      -webkit-appearance: none;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(200,255,71,0.15);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(17,17,16,0.3);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+
+    .form-submit {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Callback button */
+    .btn-callback {
+      background-color: transparent;
+      color: var(--text-dark);
+      border: 1.5px solid rgba(17,17,16,0.15);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 16px 28px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: border-color 0.3s ease, color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-callback:hover {
+      border-color: rgba(17,17,16,0.4);
+      color: var(--text-dark);
+    }
+
+    /* Form success message (скрыто до отправки) */
+    .form-success {
+      display: none;
+      padding: 20px 24px;
+      background: rgba(200,255,71,0.1);
+      border: 1px solid rgba(200,255,71,0.3);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    .form-success.visible { display: block; }
+
+    /* ── Socials section ── */
+    .contact-socials-section {
+      background-color: var(--bg-dark);
+      padding: clamp(3rem, 6vw, 6rem) 0;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .socials-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .socials-inner h3 {
+      color: var(--text-white);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .socials-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border: 1px solid var(--border-dark);
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .social-pill:hover {
+      color: var(--accent);
+      border-color: rgba(200,255,71,0.35);
+    }
+
+    .social-pill svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .contact-form-inner { grid-template-columns: 1fr; }
+      .form-description { position: static; }
+    }
+
+    @media (max-width: 600px) {
+      .form-submit { flex-direction: column; }
+      .form-submit .btn, .btn-callback { width: 100%; text-align: center; justify-content: center; }
+      .socials-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body class="overflow-hidden">
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-logo">KADR<span>.</span></div>
+    <div class="loader-track"><div class="loader-bar"></div></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div id="header-strip">
+      <a href="index.html" class="header-logo">KADR<span>.</span></a>
+      <nav id="desktop-nav">
+        <a href="index.html#about"     class="nav-link" data-i18n="nav-about">О студии</a>
+        <a href="index.html#process"   class="nav-link" data-i18n="nav-process">Процесс</a>
+        <a href="index.html#portfolio" class="nav-link" data-i18n="nav-work">Работы</a>
+        <a href="index.html#faq"       class="nav-link" data-i18n="nav-faq">FAQ</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+        <a href="contact.html" class="header-cta" data-i18n="nav-contact">Связаться</a>
+        <button id="menu-btn" aria-label="Открыть меню" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div id="nav-overlay" aria-hidden="true">
+      <ul>
+        <li><a href="index.html" data-i18n="nav-home">Главная</a></li>
+        <li><a href="about.html" data-i18n="nav-about">О студии</a></li>
+        <li><a href="index.html#portfolio" data-i18n="nav-work">Работы</a></li>
+        <li><a href="contact.html" data-i18n="nav-contact">Связаться</a></li>
+      </ul>
+      <div class="overlay-contacts">
+        <a href="mailto:zharovpeak@gmail.com">zharovpeak@gmail.com</a>
+        <a href="tel:+79255059772">+7 925 505-97-72</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="contact-hero section-dark">
+      <div class="container">
+        <span class="section-tag" data-i18n="contact-tag">Контакт</span>
+        <h1><em data-i18n="contact-hero-title">Обсудим?</em></h1>
+        <p class="contact-sub" data-i18n="contact-hero-sub">
+          Напишите задачу — ответим в течение часа.
+        </p>
+        <div class="contact-details">
+          <div class="contact-detail-item">
+            <span class="contact-detail-label" data-i18n="contact-email-label">Почта</span>
+            <a href="mailto:zharovpeak@gmail.com" class="contact-detail-value">zharovpeak@gmail.com</a>
+          </div>
+          <div class="contact-detail-item">
+            <span class="contact-detail-label" data-i18n="contact-phone-label">Телефон</span>
+            <a href="tel:+79255059772" class="contact-detail-value">+7 925 505-97-72</a>
+          </div>
+          <div class="contact-detail-item">
+            <span class="contact-detail-label" data-i18n="contact-city-label">Город</span>
+            <span class="contact-detail-value" style="pointer-events:none;" data-i18n="contact-city-value">Москва</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Form ── -->
+    <section class="contact-form-section section-light">
+      <div class="container contact-form-inner">
+
+        <!-- Description -->
+        <div class="form-description">
+          <span class="section-tag" data-i18n="form-tag">Написать нам</span>
+          <h2 data-i18n="form-title">Расскажите о задаче</h2>
+          <p data-i18n="form-desc">
+            Коротко — что нужно сделать, какой бизнес, есть ли дедлайн.
+            Остальное обсудим в переписке или на коротком звонке.
+          </p>
+          <div class="form-promise">
+            <div class="promise-item">
+              <span class="promise-dot"></span>
+              <span data-i18n="promise1">Ответим в течение часа в рабочее время</span>
+            </div>
+            <div class="promise-item">
+              <span class="promise-dot"></span>
+              <span data-i18n="promise2">Первый экран — через 24 часа после брифа</span>
+            </div>
+            <div class="promise-item">
+              <span class="promise-dot"></span>
+              <span data-i18n="promise3">Оплата только после одобрения первого макета</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="name" data-i18n="field-name">Имя</label>
+            <input
+              class="form-input"
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Как вас зовут?"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact" data-i18n="field-contact">Телефон или email</label>
+            <input
+              class="form-input"
+              type="text"
+              id="contact"
+              name="contact"
+              placeholder="+7 ___ ___ __ __ или name@mail.ru"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="task" data-i18n="field-task">Коротко о задаче</label>
+            <textarea
+              class="form-textarea"
+              id="task"
+              name="task"
+              placeholder="Нужен лендинг для кофейни, редизайн сайта, новый проект…"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary" data-i18n="form-submit">Отправить</button>
+            <a href="tel:+79255059772" class="btn-callback" data-i18n="form-callback">
+              Заказать обратный звонок
+            </a>
+          </div>
+
+          <div class="form-success" id="form-success">
+            <span data-i18n="form-ok">Спасибо! Ответим в течение часа.</span>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ── Socials ── -->
+    <section class="contact-socials-section section-dark">
+      <div class="container socials-inner">
+        <h3 data-i18n="socials-title">Мы в соцсетях</h3>
+        <div class="socials-links">
+          <a href="https://t.me/zharovpeak" target="_blank" rel="noopener" class="social-pill">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.88 13.47l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.952z"/></svg>
+            Telegram
+          </a>
+          <a href="https://instagram.com/zharovpeak" target="_blank" rel="noopener" class="social-pill">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="section-dark">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo">KADR<span>.</span></a>
+        <p class="footer-tagline" data-i18n="footer-tagline">Дизайн сайтов, которые<br>продают с первого экрана.</p>
+      </div>
+      <div class="footer-mid">
+        <nav class="footer-nav">
+          <a href="index.html"   data-i18n="nav-home">Главная</a>
+          <a href="about.html"   data-i18n="nav-about">О студии</a>
+          <a href="contact.html" data-i18n="nav-contact">Контакт</a>
+        </nav>
+        <div class="footer-socials">
+          <a href="https://t.me/zharovpeak" target="_blank" rel="noopener" class="social-link" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.88 13.47l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.952z"/></svg>
+          </a>
+          <a href="https://instagram.com/zharovpeak" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy" data-i18n="footer-copy">© 2026 KADR. Все права защищены.</span>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/lenis.min.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/lang.js"></script>
+  <script>
+    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    window.addEventListener('load', () => {
+      gsap.to('#loader', {
+        yPercent: -100, duration: 0.8, ease: 'power3.inOut', delay: 0.4,
+        onComplete: () => {
+          document.getElementById('loader').style.display = 'none';
+          document.body.classList.remove('overflow-hidden');
+        }
+      });
+      gsap.from('.contact-hero h1', { y: 60, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.8 });
+      gsap.from(['.contact-sub', '.contact-details'], { y: 30, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power2.out', delay: 1 });
+    });
+
+    ScrollTrigger.create({
+      start: 'top -80px',
+      onEnter: () => document.getElementById('header-strip').classList.add('scrolled'),
+      onLeaveBack: () => document.getElementById('header-strip').classList.remove('scrolled'),
+    });
+
+    const btn = document.getElementById('menu-btn');
+    const overlay = document.getElementById('nav-overlay');
+    btn.addEventListener('click', () => {
+      const isOpen = btn.classList.toggle('open');
+      overlay.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen);
+      overlay.setAttribute('aria-hidden', !isOpen);
+      isOpen ? lenis.stop() : lenis.start();
+    });
+    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      btn.classList.remove('open'); overlay.classList.remove('open');
+      btn.setAttribute('aria-expanded', false); lenis.start();
+    }));
+
+    gsap.from('.form-description', {
+      scrollTrigger: { trigger: '.contact-form-inner', start: 'top 80%' },
+      x: -40, opacity: 0, duration: 0.8, ease: 'power3.out'
+    });
+    gsap.from('.contact-form', {
+      scrollTrigger: { trigger: '.contact-form-inner', start: 'top 80%' },
+      x: 40, opacity: 0, duration: 0.8, ease: 'power3.out'
+    });
+
+    // Form submit
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const success = document.getElementById('form-success');
+      // Простая валидация
+      const name    = form.name.value.trim();
+      const contact = form.contact.value.trim();
+      if (!name || !contact) return;
+      // Показываем сообщение об успехе
+      form.style.pointerEvents = 'none';
+      form.style.opacity = '0.5';
+      success.classList.add('visible');
+      // Реальная отправка: заменить на fetch('https://formspree.io/f/YOUR_ID', ...)
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+/* ============================================================
+   KADR. — Portfolio Section
+   Источник: Web-Design-Agency/styles/portfolio.css — адаптация
+   ============================================================ */
+
+#portfolio {
+  padding: clamp(4rem, 8vw, 8rem) 0;
+}
+
+/* ── Head row ── */
+.portfolio-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  gap: 1rem;
+}
+
+.portfolio-head h2 {
+  color: var(--text-dark);
+  margin-top: 0;
+}
+
+.portfolio-count {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted-light);
+  padding-bottom: 8px;
+  white-space: nowrap;
+}
+
+/* ── Grid ── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* ── Work card ── */
+.work-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-card a {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+}
+
+/* ── Banner (изображение) ── */
+.work-banner {
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background-color: var(--card-bg, #1a1a1a);
+  height: 260px;
+}
+
+.work-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+  will-change: transform;
+}
+
+/* При hover — плавный скролл вниз по скриншоту */
+.work-card:hover .work-img {
+  transform: translateY(-16px);
+}
+
+/* ── Meta (под баннером) ── */
+.work-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  border: 1px solid var(--border-light);
+  border-top: none;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.work-card:hover .work-meta {
+  background-color: var(--bg-light);
+}
+
+.work-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.work-tag {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted-light);
+}
+
+.work-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.work-arrow {
+  font-size: 1.4rem;
+  color: var(--text-muted-light);
+  flex-shrink: 0;
+  transition: color 0.3s ease, transform 0.35s var(--ease-out);
+}
+
+.work-card:hover .work-arrow {
+  color: var(--text-dark);
+  transform: translate(3px, -3px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
