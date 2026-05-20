@@ -1,5 +1,5 @@
 /* ============================================================
-   KADR. — Main Script
+   freymi — Main Script
    Источники:
    - Lenis init        → lazarev/js/script.js строки 1-14
    - Loader + First    → lazarev/js/script.js строки 52-151 (адаптация)

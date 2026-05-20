@@ -1,5 +1,5 @@
 /* ============================================================
-   KADR. — Language Switcher (RU / EN)
+   freymi — Language Switcher (RU / EN)
    ============================================================ */
 
 const translations = {
@@ -77,7 +77,7 @@ const translations = {
 
     /* Footer */
     'footer-tagline': 'Дизайн сайтов, которые\nпродают с первого экрана.',
-    'footer-copy':    '© 2026 KADR. Все права защищены.',
+    'footer-copy':    '© 2026 freymi. Все права защищены.',
 
     /* About page */
     'about-page-tag':    'О студии',
@@ -198,7 +198,7 @@ const translations = {
 
     /* Footer */
     'footer-tagline': 'Website design that converts\nfrom the first screen.',
-    'footer-copy':    '© 2026 KADR. All rights reserved.',
+    'footer-copy':    '© 2026 freymi. All rights reserved.',
 
     /* About page */
     'about-page-tag':    'About',
@@ -250,7 +250,7 @@ function setLang(lang) {
   if (!translations[lang]) return;
 
   // Сохраняем выбор
-  try { localStorage.setItem('kadr-lang', lang); } catch(e) {}
+  try { localStorage.setItem('freymi-lang', lang); } catch(e) {}
 
   // Обновляем атрибут html
   document.documentElement.lang = lang === 'ru' ? 'ru' : 'en';
@@ -274,7 +274,7 @@ function setLang(lang) {
 // Инициализация при загрузке страницы
 (function initLang() {
   let saved = 'ru';
-  try { saved = localStorage.getItem('kadr-lang') || 'ru'; } catch(e) {}
+  try { saved = localStorage.getItem('freymi-lang') || 'ru'; } catch(e) {}
   // Применяем без мигания — до рендера
   setLang(saved);
 })();

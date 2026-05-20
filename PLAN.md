@@ -1,4 +1,4 @@
-# KADR. — План реализации сайта
+# freymi — План реализации сайта
 
 > Рабочая директория: `/Users/sergeyzharov/Desktop/Веб ДИЗАЙН/kadr/`
 > После каждого этапа Claude Code пишет: **"Этап X завершён. Осталось: Y этапов."**
@@ -9,7 +9,7 @@
 
 | Параметр | Значение |
 |---|---|
-| Название | KADR. |
+| Название | freymi |
 | Слоган | Дизайн, который неловко не купить |
 | Оффер | Один экран — 30 000 ₽. Первый — через 24 часа. |
 | Email | zharovpeak@gmail.com |
@@ -231,7 +231,7 @@ Sub EN: Tell us the task — we'll send the first screen in 24 hours.
 
 ### Footer
 ```
-© 2026 KADR. Дизайн сайтов.
+© 2026 freymi. Дизайн сайтов.
 Email: zharovpeak@gmail.com
 Phone: +7 925 505-97-72
 Nav: Главная / О студии / Контакт
@@ -341,13 +341,13 @@ Sub EN: Send us the brief — we'll reply within an hour.
 Источник: lazarev/index.html строки 17-27 + адаптация
 - Белый/тёмный полноэкранный оверлей
 - Зелёная полоска (цвет #C8FF47) с анимацией animate-loading
-- Логотип или текст "KADR." по центру
+- Логотип или текст "freymi" по центру
 - CSS: position fixed, z-index 9999, bg #0F0F0E
 
 ### Header
 Источник: digital-agency/style.css (navbar) + lazarev header
 - `#header-strip`: fixed top-0, full width, padding 20px 5%, z-index 1000
-- Левая часть: `.logo` — текст "KADR." Gilroy Heavy, white, mix-blend-mode: difference
+- Левая часть: `.logo` — текст "freymi" Gilroy Heavy, white, mix-blend-mode: difference
 - Правая часть: nav links (скрыты на мобиле) + lang switch RU/EN + `.btn-cta` ("Связаться")
 - Hamburger: два span, трансформируются в X при клике
 - `#nav-overlay`: full-screen dark overlay, clip-path: inset(0 0 100% 0), большие ссылки
@@ -491,7 +491,7 @@ Sub EN: Send us the brief — we'll reply within an hour.
 ### Footer
 Источник: digital-agency style.css footer
 - Фон: #0F0F0E, border-top 1px solid rgba(255,255,255,0.08)
-- Верх: logo KADR. слева + tagline справа
+- Верх: logo freymi слева + tagline справа
 - Центр: nav links (Главная / О студии / Контакт) + lang switch
 - Низ: copyright + social icons (Telegram SVG + Instagram SVG)
 - Social icons: 24x24, белые, hover: color #C8FF47
