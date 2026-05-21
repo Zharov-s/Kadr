@@ -256,6 +256,16 @@ const translations = {
   }
 };
 
+const BRAND_NAME = 'freymi';
+
+function preserveBrandName() {
+  document.querySelectorAll('[data-brand-name], .loader-logo, .header-logo, .footer-logo').forEach((el) => {
+    el.textContent = BRAND_NAME;
+    el.classList.add('notranslate');
+    el.setAttribute('translate', 'no');
+  });
+}
+
 function setLang(lang) {
   if (!translations[lang]) return;
 
@@ -272,6 +282,8 @@ function setLang(lang) {
     if (text !== undefined) el.textContent = text;
   });
 
+  preserveBrandName();
+
   // Обновляем все кнопки переключателя на всех страницах
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
@@ -287,4 +299,5 @@ function setLang(lang) {
   try { saved = localStorage.getItem('freymi-lang') || 'ru'; } catch(e) {}
   // Применяем без мигания — до рендера
   setLang(saved);
+  preserveBrandName();
 })();
