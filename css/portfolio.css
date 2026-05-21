@@ -1,6 +1,6 @@
 /* ============================================================
    freymi — Portfolio Section
-   Источник: Web-Design-Agency/styles/portfolio.css — адаптация
+   Стиль капсул: вдохновлён Web-Design-Agency
    ============================================================ */
 
 #portfolio {
@@ -36,7 +36,7 @@
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(1rem, 2.5vw, 2rem);
 }
 
 /* ── Work card ── */
@@ -52,48 +52,48 @@
   cursor: pointer;
 }
 
-/* ── Banner (изображение) ── */
+/* ── Capsule banner ── */
 .work-banner {
   overflow: hidden;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  border-radius: 24px;
   background-color: var(--card-bg, #1a1a1a);
-  height: 260px;
+  padding: 50px 50px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.work-card:hover .work-banner {
+  transform: translateY(-4px);
 }
 
 .work-img {
   width: 100%;
-  height: auto;
+  /* Точное соотношение сторон как у изображений Web-Design-Agency (666×905) */
+  aspect-ratio: 666 / 905;
+  object-fit: cover;
+  object-position: top;
   display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   transition: transform 0.6s var(--ease-out);
   will-change: transform;
 }
 
-/* При hover — плавный скролл вниз по скриншоту */
-.work-card:hover .work-img {
-  transform: translateY(-16px);
-}
-
-/* ── Meta (под баннером) ── */
+/* ── Meta row ── */
 .work-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  border: 1px solid var(--border-light);
-  border-top: none;
-  background-color: #fff;
-  transition: background-color 0.3s ease;
-}
-
-.work-card:hover .work-meta {
-  background-color: var(--bg-light);
+  padding: clamp(1rem, 1.5vw, 1.25rem) 4px 0;
 }
 
 .work-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .work-tag {
@@ -108,22 +108,35 @@
 .work-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
   letter-spacing: -0.02em;
   color: var(--text-dark);
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
+/* Круглая кнопка со стрелкой */
 .work-arrow {
-  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(17, 17, 16, 0.18);
+  font-size: 1.1rem;
   color: var(--text-muted-light);
   flex-shrink: 0;
-  transition: color 0.3s ease, transform 0.35s var(--ease-out);
+  transition: background-color 0.3s ease,
+              border-color 0.3s ease,
+              color 0.3s ease,
+              transform 0.35s var(--ease-out);
 }
 
 .work-card:hover .work-arrow {
-  color: var(--text-dark);
-  transform: translate(3px, -3px);
+  background-color: var(--text-dark);
+  border-color: var(--text-dark);
+  color: #fff;
+  transform: rotate(45deg);
 }
 
 /* ── Responsive ── */
@@ -135,5 +148,10 @@
   .portfolio-head {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .work-banner {
+    padding: 28px 28px 0;
+    border-radius: 18px;
   }
 }

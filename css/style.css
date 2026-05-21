@@ -175,6 +175,12 @@ p {
   background: var(--accent);
 }
 
+/* На светлом фоне лаймовый текст почти невидим —
+   текст становится тёмным, акцентная линия остаётся */
+.section-light .section-tag {
+  color: var(--text-dark);
+}
+
 /* ── Buttons ── */
 
 /* Shared button base */

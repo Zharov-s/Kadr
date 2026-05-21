@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="css/about.css">
   <link rel="stylesheet" href="css/process.css">
   <link rel="stylesheet" href="css/portfolio.css">
+  <link rel="stylesheet" href="css/parallax-section.css">
   <link rel="stylesheet" href="css/faq.css">
   <link rel="stylesheet" href="css/cta.css">
   <link rel="stylesheet" href="css/footer.css">
@@ -62,7 +63,19 @@
         </div>
 
         <!-- CTA -->
-        <a href="contact.html" class="header-cta" data-i18n="nav-contact">Связаться</a>
+        <a href="contact.html" class="header-cta">
+            <span class="cta-text" data-i18n="nav-contact">Давайте поговорим</span>
+            <span class="cta-icon">
+              <!-- карандаш — по умолчанию -->
+              <svg class="icon-pencil" viewBox="-2 -2 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 14.8767V18.0017H5.125L14.342 8.7847L11.217 5.6597L2 14.8767ZM16.758 6.3687C16.8353 6.29161 16.8965 6.20003 16.9384 6.09922C16.9802 5.99841 17.0017 5.89034 17.0017 5.7812C17.0017 5.67206 16.9802 5.56399 16.9384 5.46318C16.8965 5.36237 16.8353 5.2708 16.758 5.1937L14.808 3.2437C14.7309 3.16645 14.6393 3.10516 14.5385 3.06334C14.4377 3.02152 14.3296 3 14.2205 3C14.1114 3 14.0033 3.02152 13.9025 3.06334C13.8017 3.10516 13.7101 3.16645 13.633 3.2437L12.108 4.7687L15.233 7.8937L16.758 6.3687Z" fill="currentColor"/>
+              </svg>
+              <!-- стрелка — при hover -->
+              <svg class="icon-arrow" viewBox="-2 -2 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6254 5.56286H2.90643V3H17V17.0946H14.4371V7.37464L3.81179 18L2 16.1893L12.6254 5.56286Z" fill="currentColor"/>
+              </svg>
+            </span>
+          </a>
 
         <!-- Hamburger -->
         <button id="menu-btn" aria-label="Открыть меню" aria-expanded="false">
@@ -82,7 +95,7 @@
         <li><a href="contact.html" data-i18n="nav-contact">Связаться</a></li>
       </ul>
       <div class="overlay-contacts">
-        <a href="mailto:zharovpeak@gmail.com">zharovpeak@gmail.com</a>
+        <a href="mailto:hello@freymi.ru">hello@freymi.ru</a>
         <a href="tel:+79255059772">+7 925 505-97-72</a>
       </div>
     </div>
@@ -123,7 +136,10 @@
             <span data-i18n="hero-btn1">Смотреть работы</span>
           </a>
           <a href="contact.html" id="btn-discuss" class="btn btn-secondary">
-            <span data-i18n="hero-btn2">Обсудить проект</span>
+            <span class="btn-text-flip">
+              <span class="btn-default" data-i18n="hero-btn2">Обсудить проект</span>
+              <span class="btn-hover" aria-hidden="true" data-i18n="hero-btn2">Обсудить проект</span>
+            </span>
           </a>
         </div>
 
@@ -202,24 +218,24 @@
       <div class="container about-inner">
         <div class="about-text">
           <span class="section-tag" data-i18n="about-tag">О студии</span>
-          <h2 data-i18n="about-title">Делаем сайты, которые не стыдно показать.</h2>
+          <h2 data-i18n="about-title">Дизайн начинается там, где заканчивается случайность.</h2>
           <p class="about-desc" data-i18n="about-desc">
-            Небольшая команда из Москвы. Работаем только с визуальной частью:
-            структура, экраны, логика. Без воды, без ожидания неделями,
-            без правок по три круга. Просто хороший дизайн — быстро.
+            Строим визуальную логику сайта: архитектура страниц, структура экранов,
+            сценарии взаимодействия. Каждый элемент — на своём месте.
+            Каждое решение — с причиной.
           </p>
           <div class="about-stats">
             <div class="stat">
-              <span class="stat-num">4+</span>
-              <span class="stat-label" data-i18n="stat1">проекта</span>
+              <span class="stat-num">3</span>
+              <span class="stat-label" data-i18n="stat1">секунды до решения</span>
             </div>
             <div class="stat">
-              <span class="stat-num">3+</span>
-              <span class="stat-label" data-i18n="stat2">года в дизайне</span>
+              <span class="stat-num">1</span>
+              <span class="stat-label" data-i18n="stat2">шанс произвести впечатление</span>
             </div>
             <div class="stat">
-              <span class="stat-num">24ч</span>
-              <span class="stat-label" data-i18n="stat3">первый результат</span>
+              <span class="stat-num" data-i18n="stat3-num">24ч</span>
+              <span class="stat-label" data-i18n="stat3">до первого результата</span>
             </div>
           </div>
           <a href="about.html" class="btn btn-secondary" data-i18n="about-link">О нас подробнее</a>
@@ -304,13 +320,13 @@
 
           <div class="work-card">
             <a href="https://promtechnopark-mitino.ru/" target="_blank" rel="noopener">
-              <div class="work-banner" style="--card-bg: #111B14;">
-                <img src="images/portfolio/case-1.png" alt="Промтехнопарк Митино" class="work-img" loading="lazy">
+              <div class="work-banner" style="--card-bg: #C8FF47;">
+                <img src="images/portfolio/case-1.jpg" alt="Промтехнопарк Митино" class="work-img" loading="lazy">
               </div>
               <div class="work-meta">
                 <div class="work-info">
                   <span class="work-tag" data-i18n="case1-tag">Промтехнопарк</span>
-                  <p class="work-title">Митино ПАК</p>
+                  <p class="work-title">Бутик-промтехнопарк</p>
                 </div>
                 <span class="work-arrow">↗</span>
               </div>
@@ -319,13 +335,13 @@
 
           <div class="work-card">
             <a href="http://195.24.71.195/" target="_blank" rel="noopener">
-              <div class="work-banner" style="--card-bg: #0F1A2B;">
-                <img src="images/portfolio/case-2.png" alt="ВерниВещь — QR-метки для потерянных вещей" class="work-img" loading="lazy">
+              <div class="work-banner" style="--card-bg: #1B2FFF;">
+                <img src="images/portfolio/case-2.jpg" alt="ВерниВещь — QR-метки для потерянных вещей" class="work-img" loading="lazy">
               </div>
               <div class="work-meta">
                 <div class="work-info">
                   <span class="work-tag" data-i18n="case2-tag">Продуктовый сайт</span>
-                  <p class="work-title">ВерниВещь</p>
+                  <p class="work-title">Верни Вещь</p>
                 </div>
                 <span class="work-arrow">↗</span>
               </div>
@@ -334,8 +350,8 @@
 
           <div class="work-card">
             <a href="https://abcport.ru/" target="_blank" rel="noopener">
-              <div class="work-banner" style="--card-bg: #111820;">
-                <img src="images/portfolio/case-3.png" alt="ABCENTRUM — коммерческая недвижимость" class="work-img" loading="lazy">
+              <div class="work-banner" style="--card-bg: #111111;">
+                <img src="images/portfolio/case-3.jpg" alt="ABCENTRUM — коммерческая недвижимость" class="work-img" loading="lazy">
               </div>
               <div class="work-meta">
                 <div class="work-info">
@@ -349,8 +365,8 @@
 
           <div class="work-card">
             <a href="https://zharov-s.github.io/Nekrasovka/" target="_blank" rel="noopener">
-              <div class="work-banner" style="--card-bg: #141018;">
-                <img src="images/portfolio/case-4.png" alt="Промышленный парк в Некрасовке" class="work-img" loading="lazy">
+              <div class="work-banner" style="--card-bg: #9333EA;">
+                <img src="images/portfolio/case-4.jpg" alt="Промышленный парк в Некрасовке" class="work-img" loading="lazy">
               </div>
               <div class="work-meta">
                 <div class="work-info">
@@ -363,6 +379,29 @@
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- ── PARALLAX STATEMENT ── -->
+    <section id="parallax-statement">
+      <div class="parallax-overlay" aria-hidden="true"></div>
+      <div class="container parallax-content">
+        <span class="section-tag" data-i18n="parallax-tag">Freymi Studio</span>
+        <h2 class="parallax-heading" data-i18n="parallax-heading">Дизайн&nbsp;с<br>первого кадра</h2>
+        <p class="parallax-sub" data-i18n="parallax-sub">
+          Один экран — 30&nbsp;000&nbsp;₽.<br>Первый покажем через 24 часа.
+        </p>
+        <a href="contact.html" class="btn-talk-lg">
+          <span class="cta-text" data-i18n="parallax-btn">Обсудить проект</span>
+          <span class="cta-icon">
+            <svg class="icon-pencil" viewBox="-2 -2 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 14.8767V18.0017H5.125L14.342 8.7847L11.217 5.6597L2 14.8767ZM16.758 6.3687C16.8353 6.29161 16.8965 6.20003 16.9384 6.09922C16.9802 5.99841 17.0017 5.89034 17.0017 5.7812C17.0017 5.67206 16.9802 5.56399 16.9384 5.46318C16.8965 5.36237 16.8353 5.2708 16.758 5.1937L14.808 3.2437C14.7309 3.16645 14.6393 3.10516 14.5385 3.06334C14.4377 3.02152 14.3296 3 14.2205 3C14.1114 3 14.0033 3.02152 13.9025 3.06334C13.8017 3.10516 13.7101 3.16645 13.633 3.2437L12.108 4.7687L15.233 7.8937L16.758 6.3687Z" fill="currentColor"/>
+            </svg>
+            <svg class="icon-arrow" viewBox="-2 -2 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6254 5.56286H2.90643V3H17V17.0946H14.4371V7.37464L3.81179 18L2 16.1893L12.6254 5.56286Z" fill="currentColor"/>
+            </svg>
+          </span>
+        </a>
       </div>
     </section>
 
@@ -401,7 +440,7 @@
               <span class="quest-icon" aria-hidden="true"></span>
             </button>
             <div class="ans" aria-hidden="true">
-              <p data-i18n="a3">Одностраничный сайт на 6 экранов — 7-10 рабочих дней. Многостраничный сайт — от 2 недель. Зависит от количества экранов и сложности анимаций.</p>
+              <p data-i18n="a3">Одностраничный сайт — от 1 дня. Многостраничный сайт — от 6 дней. Зависит от количества экранов и сложности анимаций.</p>
             </div>
           </div>
 
@@ -449,10 +488,9 @@
           </p>
           <div class="cta-btns">
             <a href="contact.html" class="btn btn-primary" data-i18n="cta-btn1">Написать нам</a>
-            <a href="tel:+79255059772" class="btn btn-secondary" data-i18n="cta-btn2">Заказать обратный звонок</a>
           </div>
           <div class="cta-contacts">
-            <a href="mailto:zharovpeak@gmail.com">zharovpeak@gmail.com</a>
+            <a href="mailto:hello@freymi.ru">hello@freymi.ru</a>
             <span class="cta-sep" aria-hidden="true">·</span>
             <a href="tel:+79255059772">+7 925 505-97-72</a>
           </div>

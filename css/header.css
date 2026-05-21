@@ -84,24 +84,77 @@
   gap: 20px;
 }
 
-/* ── CTA button в шапке ── */
+/* ── CTA button в шапке (механика lazarev: пилл схлопывается в кружок) ── */
 .header-cta {
-  background-color: var(--accent);
-  color: var(--text-dark);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 9px 9px 20px;
   font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 10px 22px;
-  border-radius: 100px;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dark);
   white-space: nowrap;
+  z-index: 0;
+  text-decoration: none;
 }
 
-.header-cta:hover {
-  box-shadow: 0 0 24px rgba(200, 255, 71, 0.4);
-  transform: translateY(-1px);
+/* Лаймовый пилл-фон */
+.header-cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--accent);
+  border-radius: 100px;
+  transition: width 0.4s var(--ease-out);
+  z-index: -1;
 }
+
+/* Hover: пилл схлопывается до кружка вокруг иконки */
+.header-cta:hover::after {
+  width: 38px;
+}
+
+/* Текст меняет цвет на акцентный */
+.cta-text {
+  transition: color 0.3s ease;
+}
+
+.header-cta:hover .cta-text {
+  color: var(--accent);
+}
+
+/* Контейнер иконки */
+.cta-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.cta-icon svg {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  color: var(--text-dark);
+  transition: opacity 0.2s ease;
+}
+
+/* Смена иконок при hover */
+.icon-pencil { opacity: 1; }
+.icon-arrow  { opacity: 0; }
+
+.header-cta:hover .icon-pencil { opacity: 0; }
+.header-cta:hover .icon-arrow  { opacity: 1; }
 
 /* ── Hamburger ── */
 #menu-btn {

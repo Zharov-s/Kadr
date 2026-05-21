@@ -1,0 +1,119 @@
+/* ============================================================
+   freymi — Parallax Statement Section
+   Механика: GSAP backgroundPosition scrub (lazarev/js/script.js 353-366)
+   ============================================================ */
+
+#parallax-statement {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../images/parallax-bg.png');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  color: var(--text-white);
+}
+
+/* Затемняющий оверлей для читаемости текста */
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  z-index: 1;
+}
+
+/* Контент поверх оверлея */
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding-top: clamp(4rem, 8vw, 8rem);
+  padding-bottom: clamp(4rem, 8vw, 8rem);
+}
+
+/* Большой заголовок */
+.parallax-heading {
+  color: var(--text-white);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3.5rem, 9vw, 10rem);
+  line-height: 0.93;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+/* Подзаголовок */
+.parallax-sub {
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ── Большая версия кнопки-таблетки (та же механика, что у header-cta) ── */
+.btn-talk-lg {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  height: 52px;
+  padding: 0 16px 0 36px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  white-space: nowrap;
+  z-index: 0;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+/* Лаймовый пилл */
+.btn-talk-lg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--accent);
+  border-radius: 100px;
+  transition: width 0.4s var(--ease-out);
+  z-index: -1;
+}
+
+/* Hover: пилл схлопывается до кружка — 52px = высота кнопки */
+.btn-talk-lg:hover::after {
+  width: 52px;
+}
+
+/* Текст меняет цвет */
+.btn-talk-lg:hover .cta-text {
+  color: var(--accent);
+}
+
+/* Иконки: переопределяем размер для крупной кнопки */
+.btn-talk-lg .cta-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.btn-talk-lg .cta-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Смена иконок при hover */
+.btn-talk-lg:hover .icon-pencil { opacity: 0; }
+.btn-talk-lg:hover .icon-arrow  { opacity: 1; }

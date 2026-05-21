@@ -283,6 +283,31 @@ gsap.ticker.lagSmoothing(0);
     yPercent: 25,
     ease: 'none',
   });
+
+  // Parallax на #parallax-statement (lazarev/js/script.js 353-366)
+  const parallaxEl = document.getElementById('parallax-statement');
+  if (parallaxEl) {
+    gsap.to(parallaxEl, {
+      backgroundPosition: `50% ${-(window.innerHeight * 0.28)}px`,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: parallaxEl,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      },
+    });
+
+    // Контент появляется при скролле
+    gsap.from('#parallax-statement .parallax-content > *', {
+      scrollTrigger: { trigger: parallaxEl, start: 'top 70%' },
+      y: 55,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 0.9,
+      ease: 'power3.out',
+    });
+  }
 })();
 
 /* ── 8. FAQ accordion ── */
@@ -311,7 +336,52 @@ gsap.ticker.lagSmoothing(0);
   });
 })();
 
-/* ── 9. Smooth anchor scroll (через Lenis) ── */
+/* ── 9. Анимированная кнопка — 3D разлёт символов ── */
+/* Источник: lazarev/js/script.js строки 222-255 */
+(function animatedButton() {
+  const btn = document.getElementById('btn-discuss');
+  if (!btn) return;
+
+  const defaultEl = btn.querySelector('.btn-default');
+  const hoverEl   = btn.querySelector('.btn-hover');
+  if (!defaultEl || !hoverEl) return;
+
+  // Двойной SplitText: charParent (overflow:hidden) → charChild (анимируется)
+  new SplitText(defaultEl, { type: 'chars', charsClass: 'charParent' });
+  new SplitText(defaultEl, { type: 'chars', charsClass: 'charChild' });
+  new SplitText(hoverEl,   { type: 'chars', charsClass: 'charParent' });
+  new SplitText(hoverEl,   { type: 'chars', charsClass: 'charChild' });
+
+  // Hover-буквы изначально скрыты ниже видимой области
+  gsap.set(hoverEl.querySelectorAll('.charChild'), { yPercent: 105, opacity: 0 });
+
+  const tl = gsap.timeline({ paused: true });
+
+  // Default: улетают вверх с 3D-поворотом по оси X
+  tl.to(defaultEl.querySelectorAll('.charChild'), {
+    yPercent: -105,
+    rotateX: -75,
+    transformPerspective: 500,
+    opacity: 0,
+    stagger: { amount: 0.22 },
+    ease: 'power1.inOut',
+    duration: 0.35,
+  });
+
+  // Hover: вплывают снизу
+  tl.to(hoverEl.querySelectorAll('.charChild'), {
+    yPercent: 0,
+    opacity: 1,
+    stagger: { amount: 0.22 },
+    ease: 'power1.inOut',
+    duration: 0.35,
+  }, '-=0.3');
+
+  btn.addEventListener('mouseenter', () => tl.play());
+  btn.addEventListener('mouseleave', () => tl.reverse());
+})();
+
+/* ── 10. Smooth anchor scroll (через Lenis) ── */
 (function anchorScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {

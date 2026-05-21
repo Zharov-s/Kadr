@@ -10,7 +10,11 @@ const translations = {
     'nav-process': 'Процесс',
     'nav-work':    'Работы',
     'nav-faq':     'FAQ',
-    'nav-contact': 'Связаться',
+    'nav-contact':      'Давайте поговорим',
+    'parallax-tag':     'Freymi Studio',
+    'parallax-heading': 'Дизайн с первого кадра',
+    'parallax-sub':     'Один экран — 30 000 ₽.\nПервый покажем через 24 часа.',
+    'parallax-btn':     'Обсудить проект',
 
     /* Hero */
     'hero-status':  'Доступны для новых проектов',
@@ -25,11 +29,12 @@ const translations = {
 
     /* About */
     'about-tag':   'О студии',
-    'about-title': 'Делаем сайты, которые не стыдно показать.',
-    'about-desc':  'Небольшая команда из Москвы. Работаем только с визуальной частью: структура, экраны, логика. Без воды, без ожидания неделями, без правок по три круга. Просто хороший дизайн — быстро.',
-    'stat1':       'проекта',
-    'stat2':       'года в дизайне',
-    'stat3':       'первый результат',
+    'about-title': 'Дизайн начинается там, где заканчивается случайность.',
+    'about-desc':  'Строим визуальную логику сайта: архитектура страниц, структура экранов, сценарии взаимодействия. Каждый элемент — на своём месте. Каждое решение — с причиной.',
+    'stat1':       'секунды до решения',
+    'stat2':       'шанс произвести впечатление',
+    'stat3-num':   '24ч',
+    'stat3':       'до первого результата',
     'about-link':  'О нас подробнее',
 
     /* Process */
@@ -61,7 +66,7 @@ const translations = {
     'q2': 'Вы делаете только дизайн или и вёрстку тоже?',
     'a2': 'Включена полная вёрстка — HTML, CSS, JS анимации. Backend, CMS и SEO — по отдельной договорённости.',
     'q3': 'Сколько займёт весь сайт?',
-    'a3': 'Одностраничный сайт на 6 экранов — 7-10 рабочих дней. Многостраничный сайт — от 2 недель.',
+    'a3': 'Одностраничный сайт — от 1 дня. Многостраничный сайт — от 6 дней. Зависит от количества экранов и сложности анимаций.',
     'q4': 'Что если мне не понравится первый экран?',
     'a4': 'Расходимся без оплаты. Первый экран — наша ставка на то, что мы попадём в задачу. Обычно попадаем.',
     'q5': 'Можно ли самому редактировать сайт?',
@@ -131,7 +136,11 @@ const translations = {
     'nav-process': 'Process',
     'nav-work':    'Work',
     'nav-faq':     'FAQ',
-    'nav-contact': 'Contact',
+    'nav-contact':      "Let's Talk",
+    'parallax-tag':     'Freymi Studio',
+    'parallax-heading': 'Design from the first frame',
+    'parallax-sub':     'One screen — 30,000 ₽.\nFirst draft in 24 hours.',
+    'parallax-btn':     'Discuss a Project',
 
     /* Hero */
     'hero-status':  'Available for new projects',
@@ -146,10 +155,11 @@ const translations = {
 
     /* About */
     'about-tag':   'About',
-    'about-title': 'We design sites you\'re proud to show.',
-    'about-desc':  'A small team from Moscow. We focus purely on visual design: structure, screens, logic. No fluff, no endless waiting, no revision loops. Just solid design — delivered fast.',
-    'stat1':       'projects',
-    'stat2':       'years in design',
+    'about-title': 'Design begins where randomness ends.',
+    'about-desc':  'We build the visual logic of a website: page architecture, screen structure, interaction flows. Every element in its place. Every decision has a reason.',
+    'stat1':       'seconds to decide',
+    'stat2':       'chance to impress',
+    'stat3-num':   '24h',
     'stat3':       'to first result',
     'about-link':  'More about us',
 
@@ -182,7 +192,7 @@ const translations = {
     'q2': 'Do you do design only, or development too?',
     'a2': 'Full front-end development is included — HTML, CSS, JS animations. Backend, CMS and SEO are negotiated separately.',
     'q3': 'How long does a full site take?',
-    'a3': 'A 6-screen one-page site — 7-10 business days. Multi-page site — from 2 weeks.',
+    'a3': 'One-page site — from 1 day. Multi-page site — from 6 days. Depends on the number of screens and animation complexity.',
     'q4': 'What if I don\'t like the first screen?',
     'a4': 'We part ways with no charge. The first screen is our bet that we\'ll nail the brief. We usually do.',
     'q5': 'Can I edit the site myself?',
