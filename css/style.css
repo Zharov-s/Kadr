@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* ── Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Unbounded:wght@700;800;900&display=swap');
 
 /* ── Gilroy (local) ── */
 @font-face {
@@ -52,6 +52,7 @@
 
   /* Typography */
   --font-display: 'Gilroy', sans-serif;
+  --font-hero:    'Unbounded', 'Arial Black', var(--font-display), sans-serif;
   --font-body:    'Inter', sans-serif;
 
   /* Spacing */
