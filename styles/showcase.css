@@ -1,0 +1,196 @@
+/* ===========================
+   SHOWCASE — заголовок + капсула
+   Один блок в сетке страницы
+   =========================== */
+
+/* Обёртка: высота даёт диапазон скролла для анимации.
+   overflow: clip — обрезает без разрушения position: sticky */
+.showcase-wrap {
+    background: #fbfbfb;
+    min-height: 220vh;
+    position: relative;
+    overflow: clip;
+}
+
+/* Sticky-контейнер: держит весь блок в экране
+   пока пользователь прокручивает через 220vh */
+.showcase-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+}
+
+/* Центрирующий контейнер по сетке страницы */
+.showcase-content {
+    max-width: 1088px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 64px 64px 48px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* ===========================
+   ШАПКА
+   =========================== */
+.showcase-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-shrink: 0;
+}
+
+/* Левая часть: лейбл + заголовок */
+.showcase-header-left .subhead {
+    justify-content: flex-start;
+    margin-bottom: 12px;
+}
+
+.showcase-wrap .subhead p {
+    color: #10d07f;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.showcase-heading {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #1b1b1b;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+}
+
+.showcase-heading em {
+    font-style: italic;
+    color: #10d07f;
+}
+
+/* Правая часть: описание + теги */
+.showcase-header-right {
+    text-align: right;
+    max-width: 300px;
+    padding-bottom: 4px;
+}
+
+.showcase-desc {
+    color: #8b8b8b;
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+}
+
+.showcase-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: flex-end;
+}
+
+.showcase-tags span {
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    color: #a1a1a1;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ===========================
+   КАПСУЛА
+   Занимает оставшуюся высоту viewport
+   =========================== */
+.showcase-capsule {
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.10),
+        0 0 0 1px rgba(0, 0, 0, 0.06);
+    min-height: 0; /* важно для flex: 1 + overflow */
+}
+
+/* Прозрачный кликабельный слой поверх капсулы */
+.showcase-capsule-link {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background 0.25s ease;
+}
+
+.showcase-capsule-link:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Iframe: полная Apple-страница, масштабированная через JS.
+   pointer-events: none — скролл управляет анимацией,
+   а не пользовательское взаимодействие с iframe. */
+.showcase-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1440px;   /* натуральная ширина, масштабируется JS */
+    height: 900px;   /* начальная высота, пересчитывается JS */
+    border: none;
+    transform-origin: top left;
+    pointer-events: none;
+    display: block;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 1100px) {
+    .showcase-heading { font-size: 48px; }
+    .showcase-content { padding: 60px 50px 44px; }
+}
+
+@media (max-width: 900px) {
+    .showcase-wrap    { min-height: auto; }
+    .showcase-sticky  { position: static; height: auto; }
+
+    .showcase-content { padding: 80px 50px 40px; }
+
+    .showcase-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .showcase-header-right {
+        text-align: left;
+        max-width: 100%;
+    }
+
+    .showcase-tags { justify-content: flex-start; }
+
+    .showcase-capsule { height: 55vw; min-height: 260px; flex: none; }
+
+    .showcase-heading { font-size: 40px; }
+}
+
+@media (max-width: 800px) {
+    .showcase-content { padding: 80px 40px 40px; }
+    .showcase-heading { font-size: 36px; }
+}
+
+@media (max-width: 500px) {
+    .showcase-content { padding: 64px 28px 32px; }
+    .showcase-heading { font-size: 30px; }
+}

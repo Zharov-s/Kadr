@@ -1,0 +1,59 @@
+.feed-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 640px);
+    grid-gap: 15px;
+    margin-top: 50px;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #f4f4f4;
+    padding: 50px;
+    border-radius: 30px;
+}
+
+.user {
+    color: #a1a1a1;
+    font-size: 14px;
+    font-weight: 500;
+    
+    margin: 0px 15px 15px 15px;
+}
+
+.reply {
+    background-color: #1b1b1b;
+    color: white;
+    width: fit-content;
+    border-radius: 20px;
+    font-weight: 500;
+    padding: 20px;
+}
+
+.reply.me {
+    background-color: #eee;
+    color: #1b1b1b;
+}
+
+.reply.next {
+    max-width: 340px;
+}
+
+.author {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+}
+
+.author img {
+    border-radius: 50%;
+    width: 40px;
+}
+
+.author p span {
+    color: #8b8b8b;
+}

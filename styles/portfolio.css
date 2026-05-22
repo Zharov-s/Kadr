@@ -1,0 +1,89 @@
+.port-desc {
+    color: #1b1b1b;
+    font-weight: 500;
+    line-height: 1.4em;
+    max-width: 280px;
+}
+
+.portfolio {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15px;
+    row-gap: 45px;
+    max-width: 1088px;
+    margin-top: 50px;
+}
+
+.work-banner {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 50px 50px 0px 50px;
+    max-width: 1000px;
+}
+
+.work:hover .img-hover {
+    opacity: 1;
+}
+
+.img-hover {
+    position: absolute;
+    object-fit: cover;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+}
+
+.portfolio .work:nth-child(1) a .work-banner {
+    background-color: #a0ff27;
+}
+
+.portfolio .work:nth-child(2) a .work-banner {
+    background-color: #f1c63c;
+}
+.portfolio .work:nth-child(3) a .work-banner {
+    background-color: #bc77e4;
+}
+
+.portfolio .work:nth-child(4) a .work-banner {
+    background-color: #1b1b1b;
+}
+.portfolio .work:nth-child(5) a .work-banner {
+    background-color: #0047ff;
+}
+
+.main-img {
+    width: 100%;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0, 0.5);
+    border-top-left-radius: 15px;
+    border-top-right-radius:15px;
+}
+
+.work-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0px 30px;
+    font-weight: 500;
+}
+
+.work-flex a {
+    display: flex;
+    align-items: center;
+    gap: 12.5px;
+}
+
+.work-flex a i {
+    font-size: 22px;
+}
+
+.work-flex p {
+    font-size: 24px;
+    font-weight: 500;
+}

@@ -1,0 +1,120 @@
+.head-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.s-flex div {
+    width: 50%;
+}
+
+.service-block .s-flex div p {
+    font-size: 16px;
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.other {
+    display: flex;
+    padding-bottom: 40px;
+    font-weight: 600;
+}
+
+.benefit div {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border-top: 1px solid #eee;
+    padding: 20px 0px;
+    font-weight: 500;
+}
+
+.benefit div p {
+    line-height: 1.4em;
+}
+
+.benefit div i {
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.benefit:nth-child(2) p {
+    color: #8b8b8b;
+}
+
+.benefit-anim {
+    background-color: white;
+    border: 1px solid #eee;
+    display: grid;
+    overflow: hidden;
+    max-width: 100%;
+    gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    height: 600px;
+    padding: 0px 40px;
+    border-radius: 30px;
+    margin-top: 50px;
+}
+
+.benefit-anim .anims:nth-child(1), .benefit-anim .anims:nth-child(3) {
+    animation: marquee-bottom 6s linear infinite;
+}
+
+.benefit-anim .anims:nth-child(2), .benefit-anim .anims:nth-child(4) {
+    animation: marquee-top 6s linear infinite;
+}
+
+.anims {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.anims div {
+    background-color: rgb(244, 244, 244);
+    border: 1px solid rgb(238, 238, 238);
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    height: 240px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.anims div:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.anims div:hover img {
+    filter: unset;
+}
+
+.anims div img {
+    transition: 0.3s;
+    filter: invert(58%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(87%) contrast(88%);
+}
+
+@keyframes marquee-bottom {
+    0% {
+        transform: translateY(-30%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes marquee-top {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-30%);
+    }
+}

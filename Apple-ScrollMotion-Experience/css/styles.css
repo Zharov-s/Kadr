@@ -1,0 +1,593 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+}
+
+body {
+  background: #000;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-content {
+  width: 980px;
+}
+
+.nav-content ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 24px;
+}
+
+.apple-navbar a {
+  color: #d5d5d5;
+  font-size: 12px;
+  line-height: 44px;
+}
+
+.apple-navbar ion-icon {
+  font-size: 18px;
+  transform: translateY(3px);
+}
+
+.apple-navbar a:hover {
+  color: #fff;
+}
+
+.airpods-navbar .nav-content {
+  padding: 18px 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.nav-logo a {
+  color: #fefefe;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.nav-items button {
+  color: #fefefe;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.nav-items button:hover {
+  color: #2997ff;
+}
+
+.nav-items button:disabled,
+.nav-items button:disabled:hover {
+  color: #bebebe;
+  cursor: default;
+}
+
+.nav-items .buy-btn {
+  padding: 0 12px;
+  background: #147ce5;
+  border-radius: 12px;
+}
+
+.nav-items .buy-btn:hover {
+  color: #fefefe;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+  -moz-backdrop-filter: saturate(180%) blur(15px);
+  -o-backdrop-filter: saturate(180%) blur(15px);
+  backdrop-filter: saturate(180%) blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  z-index: 10;
+}
+
+.sticky .nav-content {
+  border-bottom: none;
+}
+
+.sticky section {
+  padding-top: 44px;
+}
+
+section {
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+  color: #f5f5f7;
+}
+
+.scroll-section {
+  width: 100%;
+  height: calc(100vh - 44px);
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas-elem {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.main-elem,
+.msg-elem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 5;
+}
+
+.main-elem {
+  width: max-content;
+  max-width: calc(100vw - 44px);
+}
+
+.msg-elem {
+  width: min(980px, calc(100vw - 44px));
+  transform: translate(-50%, 0%);
+  opacity: 0;
+}
+
+.main-elem h1 {
+  font-size: 150px;
+}
+
+.main-elem span {
+  font-style: italic;
+}
+
+.main-elem ion-icon {
+  font-size: 28px;
+  transform: translateY(6px);
+}
+
+.main-elem a {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f5f5f7;
+  cursor: pointer;
+}
+
+.main-elem a:hover {
+  text-decoration: underline;
+}
+
+.msg-elem h2 {
+  font-size: 96px;
+}
+
+.msg-elem small {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.msg-elem p {
+  font-size: clamp(44px, 4.45vw, 64px);
+  font-weight: 700;
+  line-height: 1.08;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+.section-01 .canvas-elem canvas {
+  width: 900px;
+}
+
+.section-02 .canvas-elem canvas {
+  width: 100%;
+}
+
+.static-section {
+  padding: 50px 0;
+  position: relative;
+}
+
+.static-section > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.section-04 .text {
+  width: 340px;
+  position: absolute;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.section-04-1 .text {
+  left: 14%;
+  bottom: 40px;
+}
+
+.section-04-2 .text {
+  left: 23.5%;
+  bottom: 42px;
+}
+
+.section-04-3 .text {
+  left: 25%;
+  top: 25%;
+}
+
+.section-05 .text {
+  position: absolute;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.section-05-1 .text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.section-05-1 .text p {
+  padding-bottom: 20px;
+  font-size: 21px;
+}
+
+.section-05-1 .text h1 {
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 84px;
+}
+
+.section-05-2 .text {
+  width: 365px;
+  right: 18%;
+  bottom: 0;
+  font-size: 24px;
+}
+
+.section-05-3 .text {
+  left: 25%;
+  top: 25%;
+}
+
+.section-06 {
+  padding-bottom: 0;
+}
+
+.section-06 .text {
+  width: 440px;
+  position: absolute;
+  left: 17%;
+  bottom: 120px;
+  display: block;
+  text-align: left;
+}
+
+.section-06 .text p {
+  padding: 22px;
+  color: white;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+footer {
+  width: 100%;
+  background: #f5f5f7;
+  padding: 30px 0 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid #d2d2d7;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #424245;
+  font-size: 12px;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: #1d1d1f;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #86868b;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-copyright {
+  color: #86868b;
+}
+
+.footer-country a {
+  color: #424245;
+  font-size: 11px;
+}
+
+.footer-country a:hover {
+  color: #1d1d1f;
+  text-decoration: underline;
+}
+
+/* ===========================
+   EMBED MODE: скрываем только fraymi-бар,
+   полная Apple-страница остаётся видимой
+   =========================== */
+.embed-mode .fraymi-bar {
+    display: none !important;
+}
+
+/* ===========================
+   PREVIEW MODE (embedded iframe)
+   =========================== */
+
+/* Скрываем всё лишнее — оставляем только canvas-секции */
+.preview-mode .fraymi-bar,
+.preview-mode .apple-navbar,
+.preview-mode .airpods-navbar,
+.preview-mode .static-section,
+.preview-mode footer {
+    display: none !important;
+}
+
+/* Canvas-секции занимают весь iframe */
+.preview-mode .scroll-section {
+    height: 100vh;
+}
+
+/* Скрываем скроллбар — он некрасив в preview */
+.preview-mode ::-webkit-scrollbar { display: none; }
+.preview-mode { scrollbar-width: none; -ms-overflow-style: none; }
+
+@media (max-width: 600px) {
+  .footer-links {
+    gap: 15px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ===========================
+   RESPONSIVE — Mobile / Tablet
+   Matches apple.com mobile layout
+   =========================== */
+
+/* Шаг 1: убираем фиксированную ширину nav-content на узких экранах */
+@media (max-width: 1023px) {
+  .nav-content {
+    width: 100%;
+    padding: 0 22px;
+    box-sizing: border-box;
+  }
+
+  .airpods-navbar .nav-content {
+    padding: 16px 22px 12px;
+  }
+}
+
+/* Шаг 2: Tablet / большой телефон (≤834px) */
+@media (max-width: 834px) {
+
+  /* ---- Apple top navbar ----
+     Оставляем: Apple-лого (1), Search (12), Bag (13)
+     Скрываем: Store Mac iPad iPhone Watch AirPods TV&Home OnlyApple Accessories Support */
+  .apple-navbar .nav-items li:nth-child(n+2):nth-child(-n+11) {
+    display: none;
+  }
+
+  .apple-navbar .nav-content ul {
+    justify-content: space-between;
+  }
+
+  /* ---- AirPods navbar ----
+     Оставляем: AirPods Pro лого + кнопка Buy
+     Скрываем: Overview, Tech Specs, Compare */
+  .airpods-navbar .nav-items li:not(:last-child) {
+    display: none;
+  }
+
+  .airpods-navbar .nav-content {
+    padding: 14px 22px 10px;
+  }
+
+  /* ---- Hero: AirPods Pro ---- */
+  .main-elem h1 {
+    font-size: clamp(48px, 11vw, 100px);
+  }
+
+  /* ---- Message elements ---- */
+  .msg-elem p {
+    font-size: clamp(26px, 6.5vw, 52px);
+    line-height: 1.2;
+    width: 88vw;
+  }
+
+  .msg-elem h2 {
+    font-size: clamp(42px, 9vw, 80px);
+  }
+
+  .msg-elem small {
+    font-size: 15px;
+  }
+
+  /* ---- Canvas ---- */
+  .section-01 .canvas-elem canvas {
+    width: 100%;
+  }
+
+  /* ---- Static section 04 (explode tips) ---- */
+  .section-04 > div {
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 22px;
+    gap: 0;
+  }
+
+  .section-04 > div img {
+    width: 100%;
+    max-width: 520px;
+    display: block;
+  }
+
+  .section-04 .text {
+    position: static;
+    width: 100%;
+    max-width: 520px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.55;
+    padding-top: 20px;
+    color: #f5f5f7;
+  }
+
+  /* ---- Static section 05 (flip-for-nc) ---- */
+  .section-05 > div {
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 22px;
+    gap: 0;
+  }
+
+  .section-05 > div img {
+    width: 100%;
+    max-width: 520px;
+    display: block;
+  }
+
+  .section-05-1 .text {
+    position: static;
+    transform: none;
+    text-align: left;
+    width: 100%;
+    max-width: 520px;
+    padding-top: 24px;
+  }
+
+  .section-05-1 .text p {
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    color: #86868b;
+  }
+
+  .section-05-1 .text h1 {
+    font-size: clamp(40px, 9vw, 76px);
+    line-height: 1.05;
+  }
+
+  .section-05-2 .text {
+    position: static;
+    width: 100%;
+    max-width: 520px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.55;
+    padding-top: 20px;
+    color: #f5f5f7;
+  }
+
+  /* ---- Static section 06 (transparency-head) ---- */
+  .section-06 {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+
+  .section-06 > img {
+    width: 100%;
+    display: block;
+    order: 1;
+  }
+
+  .section-06 .text {
+    position: static;
+    width: 100%;
+    padding: 28px 22px 0;
+    order: 2;
+  }
+
+  .section-06 .text p {
+    color: #f5f5f7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    padding: 0 0 16px;
+  }
+}
+
+/* Шаг 3: Маленький телефон (≤480px) */
+@media (max-width: 480px) {
+  .main-elem h1 {
+    font-size: clamp(36px, 9.5vw, 56px);
+  }
+
+  .msg-elem p {
+    font-size: clamp(22px, 6vw, 34px);
+    width: 92vw;
+  }
+
+  .msg-elem h2 {
+    font-size: clamp(32px, 8.5vw, 52px);
+  }
+
+  .section-05-1 .text h1 {
+    font-size: clamp(32px, 8vw, 52px);
+  }
+
+  .nav-logo a {
+    font-size: 17px;
+  }
+}

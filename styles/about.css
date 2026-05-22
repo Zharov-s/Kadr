@@ -1,0 +1,51 @@
+.about {
+    display: flex;
+    justify-content: center;
+    padding: 100px 64px;
+}
+
+.about img {
+    background-color: #1b1b1b;
+    box-shadow: 0 6px 12px rgba(27, 27, 27, .25);
+    padding: 20px;
+    width: 68px;
+    height: 68px;
+    border-radius: 20px;
+}
+
+.about-desc {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.45em;
+    max-width: 700px;
+    margin: 40px 0px;
+    letter-spacing: -0.01em;
+}
+
+.about-desc span {
+    color: rgb(129, 129, 129);
+}
+
+.about a {
+    border: 1px solid #eeeeee;
+    background: rgb(244, 244, 244);
+    color: #1b1b1b;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: 12px;
+    border-radius: 100px;
+    padding: 20px 32px;
+    transition: 0.3s
+}
+
+.about a:hover {
+    padding: 20px 42px;
+    background: rgb(234, 234, 234);
+}
+
+.about a i {
+    color: #1b1b1b;
+    font-size: 21px;
+}

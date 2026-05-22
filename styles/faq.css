@@ -1,0 +1,47 @@
+.faq {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 50px;
+    grid-gap: 15px;
+}
+
+.faq .quest:not(:nth-child(1)) {
+    margin-top: 15px;
+}
+
+.quest {
+    cursor: pointer;
+    height: fit-content;
+    background-color: white;
+    border: 1px solid #f4f4f4;
+    padding: 40px;
+    border-radius: 25px;
+}
+
+.quest div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.quest div p {
+    color: #1b1b1b;
+    font-weight: 500;
+    font-size: 15.5px;
+    font-weight: 500;
+}
+
+.quest div i {
+    font-size: 20px;
+}
+
+.ans {
+    display: none;
+    color: #8b8b8b;
+    max-width: 450px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4em;
+    margin-top: 30px;
+}

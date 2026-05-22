@@ -1,0 +1,167 @@
+/* ===========================
+   TECH MARQUEE — бегущая строка логотипов
+   =========================== */
+
+.tech-marquee-section {
+    padding: 80px 0 72px;
+    background: #fbfbfb;
+}
+
+/* Заголовок */
+.tech-marquee-heading {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #a1a1a1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 44px;
+    padding: 0 64px;
+}
+
+/* Обёртка с gradient-масками по краям */
+.tech-marquee-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-marquee-wrap::before,
+.tech-marquee-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 140px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tech-marquee-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, #fbfbfb 0%, transparent 100%);
+}
+
+.tech-marquee-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, #fbfbfb 0%, transparent 100%);
+}
+
+/* Трек: 2 одинаковых набора логотипов для бесшовного цикла.
+   translateX(-50%) = ровно один набор → анимация идеально зацикливается */
+.tech-marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 20px;
+    animation: techScroll 42s linear infinite;
+    will-change: transform;
+}
+
+.tech-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes techScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Карточка логотипа */
+.tech-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 16px;
+    padding: 18px 32px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(27, 27, 27, 0.05);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.tech-card:hover {
+    box-shadow: 0 6px 24px rgba(27, 27, 27, 0.09);
+    border-color: #e0e0e0;
+}
+
+/* Логотип */
+.tech-card img {
+    height: 40px;
+    width: auto;
+    max-width: 120px;
+    object-fit: contain;
+    display: block;
+    opacity: 0.75;
+    filter: grayscale(100%);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.tech-card:hover img {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* ===========================
+   АДАПТИВ
+   =========================== */
+
+@media (max-width: 768px) {
+    .tech-marquee-section {
+        padding: 64px 0 56px;
+    }
+
+    .tech-marquee-heading {
+        font-size: 13px;
+        margin-bottom: 36px;
+        padding: 0 40px;
+    }
+
+    .tech-marquee-track {
+        gap: 14px;
+        animation-duration: 30s;
+    }
+
+    .tech-card {
+        padding: 14px 22px;
+        border-radius: 14px;
+    }
+
+    .tech-card img {
+        height: 30px;
+        max-width: 90px;
+    }
+
+    .tech-marquee-wrap::before,
+    .tech-marquee-wrap::after {
+        width: 64px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-marquee-track {
+        animation-duration: 26s;
+    }
+
+    .tech-card img {
+        height: 26px;
+        max-width: 76px;
+    }
+
+    .tech-card {
+        padding: 12px 18px;
+    }
+}
+
+/* Пользователь отключил анимации — статичная сетка */
+@media (prefers-reduced-motion: reduce) {
+    .tech-marquee-track {
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        padding: 0 64px;
+        gap: 16px;
+    }
+}

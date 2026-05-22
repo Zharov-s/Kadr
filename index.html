@@ -1,566 +1,633 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="freymi — дизайн сайтов в Москве. Один экран — 30 000 ₽. Первый макет через 24 часа.">
-  <title>freymi — Дизайн сайтов</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="ru">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fraymi | Главная</title>
+    <link rel="icon" type="image/svg+xml" href="./images/favicon.svg">
+    <link rel="apple-touch-icon" href="./images/favicon.svg">
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='28' font-family='serif' font-weight='900'>f</text></svg>">
+    <!-- Стили -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/hero.css">
+    <link rel="stylesheet" href="./styles/about.css">
+    <link rel="stylesheet" href="./styles/infinite.css">
+    <link rel="stylesheet" href="./styles/services.css">
+    <link rel="stylesheet" href="./styles/benefits.css">
+    <link rel="stylesheet" href="./styles/portfolio.css">
+    <link rel="stylesheet" href="./styles/showcase.css">
+    <link rel="stylesheet" href="./styles/techmarquee.css">
+    <link rel="stylesheet" href="./styles/pricing.css">
+    <link rel="stylesheet" href="./styles/faq.css">
+    <link rel="stylesheet" href="./styles/feedbacks.css">
+    <link rel="stylesheet" href="./styles/contact.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/style.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/loader.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/marquee.css">
-  <link rel="stylesheet" href="css/about.css">
-  <link rel="stylesheet" href="css/process.css">
-  <link rel="stylesheet" href="css/portfolio.css">
-  <link rel="stylesheet" href="css/parallax-section.css">
-  <link rel="stylesheet" href="css/faq.css">
-  <link rel="stylesheet" href="css/cta.css">
-  <link rel="stylesheet" href="css/footer.css">
+    <!-- Иконки Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body class="overflow-hidden">
+<body>
 
-  <!-- ══════════════════════════════════════
-       LOADER
-  ══════════════════════════════════════ -->
-  <div id="loader">
-    <div class="loader-logo notranslate" translate="no" data-brand-name>freymi</div>
-    <div class="loader-track">
-      <div class="loader-bar"></div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       HEADER
-  ══════════════════════════════════════ -->
-  <header>
-    <div id="header-strip">
-      <!-- Logo -->
-      <a href="index.html" class="header-logo notranslate" translate="no" data-brand-name aria-label="freymi — на главную">
-        freymi
-      </a>
-
-      <!-- Desktop nav -->
-      <nav id="desktop-nav" aria-label="Основная навигация">
-        <a href="#about"     class="nav-link" data-i18n="nav-about">О студии</a>
-        <a href="#process"   class="nav-link" data-i18n="nav-process">Процесс</a>
-        <a href="#portfolio" class="nav-link" data-i18n="nav-work">Работы</a>
-        <a href="#faq"       class="nav-link" data-i18n="nav-faq">FAQ</a>
-      </nav>
-
-      <!-- Right group -->
-      <div class="header-right">
-        <!-- Language switch -->
-        <div class="lang-switch" aria-label="Смена языка">
-          <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
-          <span class="lang-divider">/</span>
-          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-        </div>
-
-        <!-- CTA -->
-        <a href="contact.html" class="header-cta">
-            <span class="cta-text" data-i18n="nav-contact">Давайте поговорим</span>
-            <span class="cta-icon">
-              <!-- карандаш — по умолчанию -->
-              <svg class="icon-pencil" viewBox="-2 -2 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 14.8767V18.0017H5.125L14.342 8.7847L11.217 5.6597L2 14.8767ZM16.758 6.3687C16.8353 6.29161 16.8965 6.20003 16.9384 6.09922C16.9802 5.99841 17.0017 5.89034 17.0017 5.7812C17.0017 5.67206 16.9802 5.56399 16.9384 5.46318C16.8965 5.36237 16.8353 5.2708 16.758 5.1937L14.808 3.2437C14.7309 3.16645 14.6393 3.10516 14.5385 3.06334C14.4377 3.02152 14.3296 3 14.2205 3C14.1114 3 14.0033 3.02152 13.9025 3.06334C13.8017 3.10516 13.7101 3.16645 13.633 3.2437L12.108 4.7687L15.233 7.8937L16.758 6.3687Z" fill="currentColor"/>
-              </svg>
-              <!-- стрелка — при hover -->
-              <svg class="icon-arrow" viewBox="-2 -2 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6254 5.56286H2.90643V3H17V17.0946H14.4371V7.37464L3.81179 18L2 16.1893L12.6254 5.56286Z" fill="currentColor"/>
-              </svg>
-            </span>
-          </a>
-
-        <!-- Hamburger -->
-        <button id="menu-btn" aria-label="Открыть меню" aria-expanded="false">
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile overlay -->
-    <div id="nav-overlay" aria-hidden="true">
-      <ul>
-        <li><a href="#about"     data-i18n="nav-about">О студии</a></li>
-        <li><a href="#process"   data-i18n="nav-process">Процесс</a></li>
-        <li><a href="#portfolio" data-i18n="nav-work">Работы</a></li>
-        <li><a href="#faq"       data-i18n="nav-faq">FAQ</a></li>
-        <li><a href="contact.html" data-i18n="nav-contact">Связаться</a></li>
-      </ul>
-      <div class="overlay-contacts">
-        <a href="mailto:hello@freymi.ru">hello@freymi.ru</a>
-        <a href="tel:+79255059772">+7 925 505-97-72</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- ══════════════════════════════════════
-       MAIN
-  ══════════════════════════════════════ -->
-  <main>
-
-    <!-- ── HERO ── -->
-    <section id="hero" class="section-dark">
-      <div class="hero-bg-img" aria-hidden="true"></div>
-      <div class="hero-noise"  aria-hidden="true"></div>
-      <div class="container hero-inner">
-
-        <!-- Status -->
-        <div class="hero-status">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span data-i18n="hero-status">Доступны для новых проектов</span>
-        </div>
-
-        <!-- Heading -->
-        <h1 id="hero-title">
-          <span class="line hero-title-line hero-title-line--top" data-i18n="hero-line1">Дизайн сайта,</span>
-          <span class="line hero-title-line hero-title-line--accent">
-            <span data-i18n="hero-line2a">который</span>
-            <em data-i18n="hero-line2b">продаёт</em>
-          </span>
-          <span class="line hero-title-line hero-title-line--bottom">
-            <span data-i18n="hero-line3a">с первого</span>
-            <span data-i18n="hero-line3b">экрана</span>
-          </span>
-        </h1>
-
-        <!-- Sub -->
-        <p class="hero-sub" data-i18n="hero-sub">
-          Один экран — 30 000 ₽. Первый покажем через 24 часа.
-        </p>
-
-        <!-- CTA -->
-        <div class="hero-cta">
-          <a href="#portfolio" id="btn-works" class="btn btn-primary">
-            <span data-i18n="hero-btn1">Смотреть работы</span>
-          </a>
-          <a href="contact.html" id="btn-discuss" class="btn btn-secondary">
-            <span class="btn-text-flip">
-              <span class="btn-default" data-i18n="hero-btn2">Обсудить проект</span>
-              <span class="btn-hover" aria-hidden="true" data-i18n="hero-btn2">Обсудить проект</span>
-            </span>
-          </a>
-        </div>
-
-        <!-- Scroll hint -->
-        <div class="hero-scroll" aria-hidden="true">
-          <span class="scroll-line"></span>
-          <span class="scroll-label" data-i18n="hero-scroll">Скролл</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── MARQUEE ── -->
-    <div id="marquee" class="section-dark" aria-hidden="true">
-      <div class="marquee-row marquee-left">
-        <div class="marquee-track">
-          <span>Дизайн сайта</span>
-          <span class="accent-tag">✦</span>
-          <span>30 000 ₽/экран</span>
-          <span class="accent-tag">✦</span>
-          <span>24 часа</span>
-          <span class="accent-tag">✦</span>
-          <span>Редизайн</span>
-          <span class="accent-tag">✦</span>
-          <span>UI/UX</span>
-          <span class="accent-tag">✦</span>
-          <span>Москва</span>
-          <span class="accent-tag">✦</span>
-          <!-- дублируем для бесконечной прокрутки -->
-          <span>Дизайн сайта</span>
-          <span class="accent-tag">✦</span>
-          <span>30 000 ₽/экран</span>
-          <span class="accent-tag">✦</span>
-          <span>24 часа</span>
-          <span class="accent-tag">✦</span>
-          <span>Редизайн</span>
-          <span class="accent-tag">✦</span>
-          <span>UI/UX</span>
-          <span class="accent-tag">✦</span>
-          <span>Москва</span>
-          <span class="accent-tag">✦</span>
-        </div>
-      </div>
-      <div class="marquee-row marquee-right">
-        <div class="marquee-track">
-          <span>Website Design</span>
-          <span class="accent-tag">✦</span>
-          <span>Premium UI</span>
-          <span class="accent-tag">✦</span>
-          <span>Fast Delivery</span>
-          <span class="accent-tag">✦</span>
-          <span>Redesign</span>
-          <span class="accent-tag">✦</span>
-          <span>From Moscow</span>
-          <span class="accent-tag">✦</span>
-          <span>Landing Pages</span>
-          <span class="accent-tag">✦</span>
-          <!-- дублируем -->
-          <span>Website Design</span>
-          <span class="accent-tag">✦</span>
-          <span>Premium UI</span>
-          <span class="accent-tag">✦</span>
-          <span>Fast Delivery</span>
-          <span class="accent-tag">✦</span>
-          <span>Redesign</span>
-          <span class="accent-tag">✦</span>
-          <span>From Moscow</span>
-          <span class="accent-tag">✦</span>
-          <span>Landing Pages</span>
-          <span class="accent-tag">✦</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── ABOUT ── -->
-    <section id="about" class="section-light">
-      <div class="container about-inner">
-        <div class="about-text">
-          <span class="section-tag" data-i18n="about-tag">О студии</span>
-          <h2 data-i18n="about-title">Дизайн начинается там, где заканчивается случайность.</h2>
-          <p class="about-desc" data-i18n="about-desc">
-            Строим визуальную логику сайта: архитектура страниц, структура экранов,
-            сценарии взаимодействия. Каждый элемент — на своём месте.
-            Каждое решение — с причиной.
-          </p>
-          <div class="about-stats">
-            <div class="stat">
-              <span class="stat-num">3</span>
-              <span class="stat-label" data-i18n="stat1">секунды до решения</span>
+    <nav>
+        <div class="nav-middle">
+            <div class="nav-links">
+                <a href="#services" onclick="sidebarFunc()">Услуги</a>
+                <a href="#showcase" onclick="sidebarFunc()">Работы</a>
+                <a href="#pricing" onclick="sidebarFunc()">Тарифы</a>
+                <a href="#contact" onclick="sidebarFunc()">
+                    <div class="green"></div>
+                    <span>Связаться</span>
+                </a>
             </div>
-            <div class="stat">
-              <span class="stat-num">1</span>
-              <span class="stat-label" data-i18n="stat2">шанс произвести впечатление</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num" data-i18n="stat3-num">24ч</span>
-              <span class="stat-label" data-i18n="stat3">до первого результата</span>
-            </div>
-          </div>
-          <a href="about.html" class="btn btn-secondary" data-i18n="about-link">О нас подробнее</a>
+            <i class='bx bx-grid-alt' id="toggle" onclick="sidebarFunc()"></i>
         </div>
-        <div class="about-photo">
-          <img
-            src="images/about-photo.png"
-            alt="Рабочее место дизайнера freymi"
-            loading="lazy"
-          >
-        </div>
-      </div>
-    </section>
+    </nav>
 
-    <!-- ── PROCESS ── -->
-    <section id="process" class="section-dark">
-      <div class="container">
-        <span class="section-tag" data-i18n="process-tag">Как это работает</span>
-        <h2 class="process-title" data-i18n="process-title">Четыре шага — от идеи до готового сайта</h2>
-        <div class="process-list">
-
-          <div class="step hover-line">
-            <span class="step-num">01</span>
-            <div class="step-content">
-              <h4 class="step-title" data-i18n="step1-title">Рассказываете задачу</h4>
-              <p class="step-desc" data-i18n="step1-desc">
-                Звонок или сообщение. 15 минут — и мы понимаем, что нужно сделать.
-              </p>
-            </div>
-            <span class="step-arrow" aria-hidden="true">↗</span>
-          </div>
-
-          <div class="step hover-line">
-            <span class="step-num">02</span>
-            <div class="step-content">
-              <h4 class="step-title" data-i18n="step2-title">Через 24 часа — первый экран</h4>
-              <p class="step-desc" data-i18n="step2-desc">
-                Смотрите готовый макет. Пока бесплатно — без обязательств.
-              </p>
-            </div>
-            <span class="step-arrow" aria-hidden="true">↗</span>
-          </div>
-
-          <div class="step hover-line">
-            <span class="step-num">03</span>
-            <div class="step-content">
-              <h4 class="step-title" data-i18n="step3-title">Нравится — продолжаем</h4>
-              <p class="step-desc" data-i18n="step3-desc">
-                Оплачиваете 50% и мы делаем весь сайт. Без предоплаты за кота в мешке.
-              </p>
-            </div>
-            <span class="step-arrow" aria-hidden="true">↗</span>
-          </div>
-
-          <div class="step hover-line">
-            <span class="step-num">04</span>
-            <div class="step-content">
-              <h4 class="step-title" data-i18n="step4-title">Принимаете работу</h4>
-              <p class="step-desc" data-i18n="step4-desc">
-                Остаток — после сдачи. Без сюрпризов и лишних правок.
-              </p>
-            </div>
-            <span class="step-arrow" aria-hidden="true">↗</span>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── PORTFOLIO ── -->
-    <section id="portfolio" class="section-light">
-      <div class="container">
-        <div class="portfolio-head">
-          <div>
-            <span class="section-tag" data-i18n="portfolio-tag">Работы</span>
-            <h2 data-i18n="portfolio-title">Выбранные проекты</h2>
-          </div>
-          <p class="portfolio-count" data-i18n="portfolio-count">4 проекта</p>
-        </div>
-
-        <div class="portfolio-grid">
-
-          <div class="work-card">
-            <a href="https://promtechnopark-mitino.ru/" target="_blank" rel="noopener">
-              <div class="work-banner" style="--card-bg: #C8FF47;">
-                <img src="images/portfolio/case-1.jpg" alt="Промтехнопарк Митино" class="work-img" loading="lazy">
-              </div>
-              <div class="work-meta">
-                <div class="work-info">
-                  <span class="work-tag" data-i18n="case1-tag">Промтехнопарк</span>
-                  <p class="work-title">Бутик-промтехнопарк</p>
-                </div>
-                <span class="work-arrow">↗</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="work-card">
-            <a href="http://195.24.71.195/" target="_blank" rel="noopener">
-              <div class="work-banner" style="--card-bg: #1B2FFF;">
-                <img src="images/portfolio/case-2.jpg" alt="ВерниВещь — QR-метки для потерянных вещей" class="work-img" loading="lazy">
-              </div>
-              <div class="work-meta">
-                <div class="work-info">
-                  <span class="work-tag" data-i18n="case2-tag">Продуктовый сайт</span>
-                  <p class="work-title">Верни Вещь</p>
-                </div>
-                <span class="work-arrow">↗</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="work-card">
-            <a href="https://abcport.ru/" target="_blank" rel="noopener">
-              <div class="work-banner" style="--card-bg: #111111;">
-                <img src="images/portfolio/case-3.jpg" alt="ABCENTRUM — коммерческая недвижимость" class="work-img" loading="lazy">
-              </div>
-              <div class="work-meta">
-                <div class="work-info">
-                  <span class="work-tag" data-i18n="case3-tag">Коммерческая недвижимость</span>
-                  <p class="work-title">ABCENTRUM</p>
-                </div>
-                <span class="work-arrow">↗</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="work-card">
-            <a href="https://zharov-s.github.io/Nekrasovka/" target="_blank" rel="noopener">
-              <div class="work-banner" style="--card-bg: #9333EA;">
-                <img src="images/portfolio/case-4.jpg" alt="Промышленный парк в Некрасовке" class="work-img" loading="lazy">
-              </div>
-              <div class="work-meta">
-                <div class="work-info">
-                  <span class="work-tag" data-i18n="case4-tag">Промышленный парк</span>
-                  <p class="work-title">Некрасовка</p>
-                </div>
-                <span class="work-arrow">↗</span>
-              </div>
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── PARALLAX STATEMENT ── -->
-    <section id="parallax-statement">
-      <div class="parallax-overlay" aria-hidden="true"></div>
-      <div class="container parallax-content">
-        <span class="section-tag" data-i18n="parallax-tag">Freymi Studio</span>
-        <h2 class="parallax-heading" data-i18n="parallax-heading">Дизайн&nbsp;с<br>первого кадра</h2>
-        <p class="parallax-sub" data-i18n="parallax-sub">
-          Один экран — 30&nbsp;000&nbsp;₽.<br>Первый покажем через 24 часа.
-        </p>
-        <a href="contact.html" class="btn-talk-lg">
-          <span class="cta-text" data-i18n="parallax-btn">Обсудить проект</span>
-          <span class="cta-icon">
-            <svg class="icon-pencil" viewBox="-2 -2 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 14.8767V18.0017H5.125L14.342 8.7847L11.217 5.6597L2 14.8767ZM16.758 6.3687C16.8353 6.29161 16.8965 6.20003 16.9384 6.09922C16.9802 5.99841 17.0017 5.89034 17.0017 5.7812C17.0017 5.67206 16.9802 5.56399 16.9384 5.46318C16.8965 5.36237 16.8353 5.2708 16.758 5.1937L14.808 3.2437C14.7309 3.16645 14.6393 3.10516 14.5385 3.06334C14.4377 3.02152 14.3296 3 14.2205 3C14.1114 3 14.0033 3.02152 13.9025 3.06334C13.8017 3.10516 13.7101 3.16645 13.633 3.2437L12.108 4.7687L15.233 7.8937L16.758 6.3687Z" fill="currentColor"/>
-            </svg>
-            <svg class="icon-arrow" viewBox="-2 -2 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6254 5.56286H2.90643V3H17V17.0946H14.4371V7.37464L3.81179 18L2 16.1893L12.6254 5.56286Z" fill="currentColor"/>
-            </svg>
-          </span>
+    <!-- Верхний блок -->
+    <div class="top">
+        <a href="index.html" class="logo">
+            <img src="./fraymi_logo.png" alt="fraymi" class="logo-img">
         </a>
-      </div>
-    </section>
-
-    <!-- ── FAQ ── -->
-    <section id="faq" class="section-dark">
-      <div class="container faq-inner">
-        <div class="faq-head">
-          <span class="section-tag" data-i18n="faq-tag">Частые вопросы</span>
-          <h2 data-i18n="faq-title">Отвечаем честно</h2>
-        </div>
-        <div class="faq-list">
-
-          <div class="quest">
-            <button class="quest-btn" aria-expanded="false">
-              <span data-i18n="q1">Что такое "один экран"?</span>
-              <span class="quest-icon" aria-hidden="true"></span>
-            </button>
-            <div class="ans" aria-hidden="true">
-              <p data-i18n="a1">Один полноценный блок страницы — hero, секция с услугами, контакт. У каждого экрана своя уникальная верстка и дизайн. Цена — 30 000 ₽ за экран.</p>
-            </div>
-          </div>
-
-          <div class="quest">
-            <button class="quest-btn" aria-expanded="false">
-              <span data-i18n="q2">Вы делаете только дизайн или и вёрстку тоже?</span>
-              <span class="quest-icon" aria-hidden="true"></span>
-            </button>
-            <div class="ans" aria-hidden="true">
-              <p data-i18n="a2">Включена полная вёрстка — HTML, CSS, JS анимации. Backend, CMS и SEO — по отдельной договорённости.</p>
-            </div>
-          </div>
-
-          <div class="quest">
-            <button class="quest-btn" aria-expanded="false">
-              <span data-i18n="q3">Сколько займёт весь сайт?</span>
-              <span class="quest-icon" aria-hidden="true"></span>
-            </button>
-            <div class="ans" aria-hidden="true">
-              <p data-i18n="a3">Одностраничный сайт — от 1 дня. Многостраничный сайт — от 6 дней. Зависит от количества экранов и сложности анимаций.</p>
-            </div>
-          </div>
-
-          <div class="quest">
-            <button class="quest-btn" aria-expanded="false">
-              <span data-i18n="q4">Что если мне не понравится первый экран?</span>
-              <span class="quest-icon" aria-hidden="true"></span>
-            </button>
-            <div class="ans" aria-hidden="true">
-              <p data-i18n="a4">Расходимся без оплаты. Первый экран — наша ставка на то, что мы попадём в задачу. Обычно попадаем.</p>
-            </div>
-          </div>
-
-          <div class="quest">
-            <button class="quest-btn" aria-expanded="false">
-              <span data-i18n="q5">Можно ли самому редактировать сайт?</span>
-              <span class="quest-icon" aria-hidden="true"></span>
-            </button>
-            <div class="ans" aria-hidden="true">
-              <p data-i18n="a5">Если нужна CMS — обсуждаем заранее и закладываем в бюджет. Без CMS сайт получается легче и быстрее.</p>
-            </div>
-          </div>
-
-          <div class="quest">
-            <button class="quest-btn" aria-expanded="false">
-              <span data-i18n="q6">Работаете с компаниями не из Москвы?</span>
-              <span class="quest-icon" aria-hidden="true"></span>
-            </button>
-            <div class="ans" aria-hidden="true">
-              <p data-i18n="a6">Да. Всё онлайн. Неважно, где вы находитесь.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── CTA ── -->
-    <section id="cta" class="section-dark">
-      <div class="container cta-inner">
-        <div class="cta-content">
-          <h2 class="cta-title" data-i18n="cta-title">Готовы начать?</h2>
-          <p class="cta-sub" data-i18n="cta-sub">
-            Расскажите задачу — через 24 часа пришлём первый экран.
-          </p>
-          <div class="cta-btns">
-            <a href="contact.html" class="btn btn-primary" data-i18n="cta-btn1">Написать нам</a>
-          </div>
-          <div class="cta-contacts">
-            <a href="mailto:hello@freymi.ru">hello@freymi.ru</a>
-            <span class="cta-sep" aria-hidden="true">·</span>
-            <a href="tel:+79255059772">+7 925 505-97-72</a>
-          </div>
-        </div>
-        <div class="cta-bg-text" aria-hidden="true">24ч</div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ══════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════ -->
-  <footer id="footer" class="section-dark">
-    <div class="container footer-inner">
-      <div class="footer-top">
-        <a href="index.html" class="footer-logo notranslate" translate="no" data-brand-name>freymi</a>
-        <p class="footer-tagline" data-i18n="footer-tagline">
-          Дизайн сайтов, которые<br>продают с первого экрана.
-        </p>
-      </div>
-
-      <div class="footer-mid">
-        <nav class="footer-nav" aria-label="Навигация в подвале">
-          <a href="index.html"   data-i18n="nav-home">Главная</a>
-          <a href="about.html"   data-i18n="nav-about">О студии</a>
-          <a href="contact.html" data-i18n="nav-contact">Контакт</a>
-        </nav>
-        <div class="footer-socials">
-          <!-- Telegram -->
-          <a href="https://t.me/zharovpeak" target="_blank" rel="noopener" class="social-link" aria-label="Telegram">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.88 13.47l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.952-.001.001-.001.001 0 0h-.001l.436.136z"/>
-            </svg>
-          </a>
-          <!-- Instagram -->
-          <a href="https://instagram.com/zharovpeak" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span class="footer-copy" data-i18n="footer-copy">© 2026 freymi. Все права защищены.</span>
-        <div class="lang-switch">
-          <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
-          <span class="lang-divider">/</span>
-          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-        </div>
-      </div>
     </div>
-  </footer>
 
-  <!-- ══════════════════════════════════════
-       SCRIPTS
-  ══════════════════════════════════════ -->
-  <script src="js/lenis.min.js"></script>
-  <script src="js/gsap.min.js"></script>
-  <script src="js/SplitText.min.js"></script>
-  <script src="js/ScrollTrigger.min.js"></script>
-  <script src="js/lang.js"></script>
-  <script src="js/script.js"></script>
+    <!-- Первый экран -->
+    <div class="hero">
+        <div class="subhead">
+            <div class="green"></div>
+            <p>Дизайн-студия в Москве</p>
+        </div>
+        <center><p class="heading">Создание веб-интерфейсов <span>нового</span> поколения</p></center>
+        <div class="links">
+            <a href="#contact">
+                <i class='bx bx-phone'></i>
+                <span style="color: white;">Назначить звонок</span>
+            </a>
+            <a href="#services">
+                <span>Смотреть услуги</span>
+            </a>
+        </div>
+        <div class="video">
+            <video src="./videos/hero.mp4" muted autoplay loop></video>
+        </div>
+    </div>
 
+    <!-- О студии -->
+    <div class="about" data-aos="fade-up">
+        <div>
+            <img src="./images/about.svg" alt="Изображение">
+            <p class="about-desc"><span>В <span class="notranslate" translate="no" lang="en">fraymi</span> мы специализируемся на</span> создании современных веб-интерфейсов <span>на стыке дизайна, стратегии и технологий.</span> <br><br>Проектируем решения под задачу бизнеса <span>для запуска нового продукта или обновления существующего сайта.</span></p>
+            <a href="#showcase">
+                <i class='bx bxs-briefcase'></i>
+                <span>Наши работы</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Бегущая строка -->
+    <div class="marquee-container" data-aos="fade-up">
+        <div class="infinite infinite-left"> 
+            <div>
+                <p>Экспертно</p>
+                <p>Современно</p>
+                <p>Адаптивно</p>
+                <p>Стратегично</p>
+                <p>В диалоге</p>
+                <p>С развитием</p>
+            </div>
+        </div>
+        <br>
+        <div class="infinite infinite-right"> 
+            <div>
+                <p>Экспертно</p>
+                <p>Современно</p>
+                <p>Адаптивно</p>
+                <p>Стратегично</p>
+                <p>В диалоге</p>
+                <p>С развитием</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Технологии: бегущая строка логотипов -->
+    <section class="tech-marquee-section" aria-label="Технологии">
+        <p class="tech-marquee-heading">Технологии, с которыми мы работаем</p>
+        <div class="tech-marquee-wrap">
+            <div class="tech-marquee-track">
+                <!-- Набор 1 -->
+                <div class="tech-card"><img src="./images/logo/JavaScript-logo.png" alt="JavaScript"></div>
+                <div class="tech-card"><img src="./images/logo/TypeScript_Logo.png" alt="TypeScript"></div>
+                <div class="tech-card"><img src="./images/logo/Nextjs-logo.png" alt="Next.js"></div>
+                <div class="tech-card"><img src="./images/logo/vue.js_logo.png" alt="Vue.js"></div>
+                <div class="tech-card"><img src="./images/logo/HTML5_logo.png" alt="HTML5"></div>
+                <div class="tech-card"><img src="./images/logo/purple-css-logo.webp" alt="CSS"></div>
+                <div class="tech-card"><img src="./images/logo/Tailwind_CSS_logo.png" alt="Tailwind CSS"></div>
+                <div class="tech-card"><img src="./images/logo/Sass_Logo.png" alt="Sass"></div>
+                <div class="tech-card"><img src="./images/logo/GSAP_logo.webp" alt="GSAP"></div>
+                <div class="tech-card"><img src="./images/logo/canvas_logo.png" alt="Canvas API"></div>
+                <div class="tech-card"><img src="./images/logo/figma_logo.png" alt="Figma"></div>
+                <div class="tech-card"><img src="./images/logo/github_logo.png" alt="GitHub"></div>
+                <div class="tech-card"><img src="./images/logo/PHP-logo.png" alt="PHP"></div>
+                <div class="tech-card"><img src="./images/logo/Python_logo.png" alt="Python"></div>
+                <!-- Набор 2 (дубль для бесшовного цикла) -->
+                <div class="tech-card"><img src="./images/logo/JavaScript-logo.png" alt="JavaScript"></div>
+                <div class="tech-card"><img src="./images/logo/TypeScript_Logo.png" alt="TypeScript"></div>
+                <div class="tech-card"><img src="./images/logo/Nextjs-logo.png" alt="Next.js"></div>
+                <div class="tech-card"><img src="./images/logo/vue.js_logo.png" alt="Vue.js"></div>
+                <div class="tech-card"><img src="./images/logo/HTML5_logo.png" alt="HTML5"></div>
+                <div class="tech-card"><img src="./images/logo/purple-css-logo.webp" alt="CSS"></div>
+                <div class="tech-card"><img src="./images/logo/Tailwind_CSS_logo.png" alt="Tailwind CSS"></div>
+                <div class="tech-card"><img src="./images/logo/Sass_Logo.png" alt="Sass"></div>
+                <div class="tech-card"><img src="./images/logo/GSAP_logo.webp" alt="GSAP"></div>
+                <div class="tech-card"><img src="./images/logo/canvas_logo.png" alt="Canvas API"></div>
+                <div class="tech-card"><img src="./images/logo/figma_logo.png" alt="Figma"></div>
+                <div class="tech-card"><img src="./images/logo/github_logo.png" alt="GitHub"></div>
+                <div class="tech-card"><img src="./images/logo/PHP-logo.png" alt="PHP"></div>
+                <div class="tech-card"><img src="./images/logo/Python_logo.png" alt="Python"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <div class="block" id="services">
+        <div class="services">
+            <p class="heading" data-aos="fade-up">Цифровой дизайн, <span>который работает</span></p>
+            <div class="service-block" data-aos="fade-up">
+                <div class="s-flex">
+                    <p>Наши услуги</p>
+                    <p>3 услуги</p>
+                </div>
+                <div class="s-grid">
+                    <div class="serv">
+                        <img src="./images/services/1.webp" alt="Изображение">
+                        <div class="s-text">
+                            <p class="s-title">Дизайн и разработка сайтов</p>
+                            <p class="s-desc">Проектируем веб-сайты, которые помогают пользователям быстрее понимать продукт и оставлять заявки.</p>
+                            <a href="#contact" class="s-link">
+                                <span>Обсудить проект</span>
+                                <i class='bx bxs-right-top-arrow-circle'></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="serv">
+                        <img src="./images/services/2.webp" alt="Изображение">
+                        <div class="s-text">
+                            <p class="s-title">UX/UI-дизайн интерфейсов</p>
+                            <p class="s-desc">Создаём понятные сценарии, прототипы и визуальные системы для сайтов и цифровых сервисов.</p>
+                            <a href="#contact" class="s-link">
+                                <span>Обсудить проект</span>
+                                <i class='bx bxs-right-top-arrow-circle'></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="serv">
+                        <img src="./images/services/3.webp" alt="Изображение">
+                        <div class="s-text">
+                            <p class="s-title">Поддержка и развитие</p>
+                            <p class="s-desc">Обновляем страницы, улучшаем конверсию и поддерживаем сайт после запуска.</p>
+                            <a href="#contact" class="s-link">
+                                <span>Обсудить проект</span>
+                                <i class='bx bxs-right-top-arrow-circle'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="s-flex two" data-aos="fade-up">
+                <p>Нужно решение под вашу задачу?</p>
+                <div class="links">
+                    <a href="#contact">
+                        <i class='bx bx-phone'></i>
+                        <span style="color: white;">Назначить звонок</span>
+                    </a>
+                    <a href="#contact">
+                        <span>Связаться</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Преимущества  -->
+    <div class="block">
+        <div class="services">
+            <div class="head-flex" data-aos="fade-up">
+                <p class="heading"><span>Преимущества,</span> которые двигают бизнес</p>
+                <div class="links">
+                    <a href="#contact">
+                        <i class='bx bx-phone'></i>
+                        <span style="color: white;">Назначить звонок</span>
+                    </a>
+                </div>
+            </div>
+            <div class="service-block" data-aos="fade-up">
+                <div class="benefit-grid">
+                    <div class="benefit">
+                        <span class="other">Студия&nbsp;<span class="notranslate" translate="no" lang="en">fraymi</span></span>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Опытная команда</p>
+                        </div>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Современные дизайн-практики</p>
+                        </div>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Решения под задачу бизнеса</p>
+                        </div>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Фокус на целях клиента</p>
+                        </div>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Тестирование и контроль качества</p>
+                        </div>
+                    </div>
+                    <div class="benefit">
+                        <span class="other">Другие студии</span>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Случайные исполнители</p>
+                        </div>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Устаревшие подходы</p>
+                        </div>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Шаблонные решения</p>
+                        </div>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Процесс вокруг агентства</p>
+                        </div>
+                        <div>
+                            <i class='bx bx-check'></i>
+                            <p>Минимальная проверка результата</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="benefit-anim" data-aos="fade-up">
+                <div class="anims">
+                    <div>
+                        <img src="./images/benefits/1.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/2.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/3.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/4.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/5.svg" alt="Изображение">
+                    </div>
+                </div>
+                <div class="anims">
+                    <div>
+                        <img src="./images/benefits/1.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/2.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/3.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/4.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/5.svg" alt="Изображение">
+                    </div>
+                </div>
+                <div class="anims">
+                    <div>
+                        <img src="./images/benefits/1.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/2.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/3.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/4.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/5.svg" alt="Изображение">
+                    </div>
+                </div>
+                <div class="anims">
+                    <div>
+                        <img src="./images/benefits/1.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/2.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/3.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/4.svg" alt="Изображение">
+                    </div>
+                    <div>
+                        <img src="./images/benefits/5.svg" alt="Изображение">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ScrollMotion Showcase -->
+    <div class="showcase-wrap" id="showcase">
+        <div class="showcase-sticky">
+            <div class="showcase-content">
+
+                <!-- Шапка: слева заголовок, справа описание и теги -->
+                <div class="showcase-header" data-aos="fade-up">
+                    <div class="showcase-header-left">
+                        <div class="subhead">
+                            <div class="green"></div>
+                            <p>Технический кейс</p>
+                        </div>
+                        <h2 class="showcase-heading">ScrollMotion <em>Experience</em></h2>
+                    </div>
+                    <div class="showcase-header-right">
+                        <p class="showcase-desc">Покадровая анимация,<br>управляемая скроллом страницы.</p>
+                    </div>
+                </div>
+
+                <!-- Капсула: полная ширина сетки, анимация внутри -->
+                <div class="showcase-capsule" data-aos="fade-up" data-aos-delay="80">
+                    <iframe
+                        id="showcaseIframe"
+                        class="showcase-iframe"
+                        src="./Apple-ScrollMotion-Experience/index.html?embed=1"
+                        title="ScrollMotion Experience"
+                    ></iframe>
+                    <a href="./Apple-ScrollMotion-Experience/index.html" class="showcase-capsule-link" aria-label="Открыть ScrollMotion Experience"></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Тарифы -->
+    <div class="block" id="pricing">
+        <div class="services">
+            <div class="head-flex" data-aos="fade-up">
+                <p class="heading three">Гибкие <span>тарифы</span></p>
+                <p class="port-desc">Подбираем формат работы под объём задач: от быстрого запуска лендинга до создания многостраничного сайта.</p>
+            </div>
+            <div class="pricing" data-aos="fade-up">
+                <div class="pack">
+                    <div class="pack-1">
+                        <div class="price-head">
+                            <p>Старт</p>
+                            <p>Лендинг</p>
+                        </div>
+                        <p class="pack-title"><span>Идеально для</span> малого бизнеса и стартапов</p>
+                        <p class="price">50 000 ₽<span>/страница</span></p>
+                        <div class="links">
+                            <a href="#contact">
+                                <i class='bx bx-rocket' ></i>
+                                <span style="color: white;">Обсудить</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="pack-2">
+                        <div>
+                            <div class="pack2-f">
+                                <i class='bx bx-check-circle'></i>
+                                <p>Дизайн в Figma</p>
+                            </div>
+                            <div class="pack2-f"> 
+                                <i class='bx bx-check-circle'></i>
+                                <p>HTML/CSS верстка</p>
+                            </div>
+                            <div class="pack2-f"> 
+                                <i class='bx bx-check-circle'></i>
+                                <p>JS анимации</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="pack2-f">
+                                <i class='bx bx-check-circle'></i>
+                                <p>Первый макет бесплатно</p>
+                            </div>
+                            <div class="pack2-f">
+                                <i class='bx bx-check-circle'></i>
+                                <p>Результат через 24 часа</p>
+                            </div>
+                            <div class="pack2-f">
+                                <i class='bx bx-check-circle'></i>
+                                <p>Оплата после одобрения</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pack">
+                    <div class="pack-1">
+                        <div class="price-head">
+                            <p>Профи</p>
+                            <p>Многостраничный</p>
+                        </div>
+                        <p class="pack-title"><span>Отлично для</span> растущего бизнеса</p>
+                        <p class="price">от 150 000 ₽<span>/сайт</span></p>
+                        <div class="links">
+                            <a href="#contact">
+                                <i class='bx bx-rocket' style="color: #1b1b1b;"></i>
+                                <span style="color: #1b1b1b;">Обсудить</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="pack-2">
+                        <div>
+                            <div class="pack2-f">
+                                <i class='bx bx-check-circle'></i>
+                                <p>Дизайн всего сайта</p>
+                            </div>
+                            <div class="pack2-f"> 
+                                <i class='bx bx-check-circle'></i>
+                                <p>Полная вёрстка</p>
+                            </div>
+                            <div class="pack2-f"> 
+                                <i class='bx bx-check-circle'></i>
+                                <p>Адаптив под устройства</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="pack2-f">
+                                <i class='bx bx-check-circle'></i>
+                                <p>Ежедневная связь</p>
+                            </div>
+                            <div class="pack2-f">
+                                <i class='bx bx-check-circle'></i>
+                                <p>Продуманная структура страниц</p>
+                            </div>
+                            <div class="pack2-f">
+                                <i class='bx bx-check-circle'></i>
+                                <p>Базовая SEO-оптимизация</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="s-flex two" data-aos="fade-up">
+                <p>Нужен индивидуальный формат?</p>
+                <div class="links">
+                    <a href="#contact">
+                        <i class='bx bx-phone'></i>
+                        <span style="color: white;">Назначить звонок</span>
+                    </a>
+                    <a href="#contact">
+                        <span>Связаться</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Вопросы -->
+    <div class="block">
+        <div class="services">
+            <p class="heading" data-aos="fade-up">Частые <span>вопросы</span></p>
+            <div class="faq" data-aos="fade-up">
+                <div>
+                    <div class="quest" onclick="faqFunc()">
+                        <div>
+                            <p>Какие услуги вы оказываете?</p>
+                            <i class='bx bx-plus'></i>
+                        </div>
+                        <p class="ans">Мы занимаемся веб-дизайном, UX/UI, разработкой сайтов, дизайн-системами, поддержкой и развитием цифровых продуктов.</p>
+                    </div>
+                    <div class="quest" onclick="faqFunc()">
+                        <div>
+                            <p>Как вы контролируете качество проекта?</p>
+                            <i class='bx bx-plus'></i>
+                        </div>
+                        <p class="ans">Работаем через прототипы, дизайн-ревью, проверку адаптивов и тестирование ключевых сценариев перед запуском.</p>
+                    </div>
+                    <div class="quest" onclick="faqFunc()">
+                        <div>
+                            <p>Как устроен процесс работы?</p>
+                            <i class='bx bx-plus'></i>
+                        </div>
+                        <p class="ans">Начинаем с брифа и исследования, затем собираем структуру, прототип, визуальный дизайн, разработку, тестирование и запуск.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="quest" onclick="faqFunc()">
+                        <div>
+                            <p>Можете доработать существующий сайт?</p>
+                            <i class='bx bx-plus'></i>
+                        </div>
+                        <p class="ans">Да. Можем обновить дизайн, улучшить структуру, добавить новые страницы или перенести сайт на более удобную платформу.</p>
+                    </div>
+                    <div class="quest" onclick="faqFunc()">
+                        <div>
+                            <p>Как вы планируете сроки?</p>
+                            <i class='bx bx-plus'></i>
+                        </div>
+                        <p class="ans">Перед стартом фиксируем этапы, контрольные точки и зоны ответственности, чтобы команда и клиент видели понятный график.</p>
+                    </div>
+                    <div class="quest" onclick="faqFunc()">
+                        <div>
+                            <p>Как часто я буду получать обновления?</p>
+                            <i class='bx bx-plus'></i>
+                        </div>
+                        <p class="ans">Частота зависит от формата работы: обычно мы показываем прогресс еженедельно или чаще на активных этапах проекта.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контакты -->
+    <div class="block" id="contact">
+        <div class="services">
+            <div class="head-flex" data-aos="fade-up">
+                <p class="heading four">Будем <span>на связи</span></p>
+                <div class="links">
+                    <p class="port-desc">Ответим на вопросы и обсудим, как дизайн может помочь вашей задаче.</p>
+                </div>
+            </div>
+            <div class="contact" data-aos="fade-up">
+                <form>
+                    <p class="contact-head">Расскажите о вашем проекте</p>
+                    <input type="text" placeholder="Имя" required>
+                    <input type="email" placeholder="Email" style="margin-top: 12.5px;" required>
+                    <textarea placeholder="Чем можем помочь?" style="margin-top: 12.5px; height: 150px;" required></textarea>
+                    <div class="contact-direct">
+                        <a href="mailto:hello@freymi.ru">
+                            <span>Email</span>
+                            <strong>hello@freymi.ru</strong>
+                        </a>
+                        <a href="tel:+79255059772">
+                            <span>Телефон</span>
+                            <strong>+7 925 505-97-72</strong>
+                        </a>
+                    </div>
+                    <button>
+                        <i class='bx bx-message-square-dots' style="color: white; font-size: 21px;"></i>
+                        <span style="color: white;">Отправить сообщение</span>
+                    </button>
+                </form>
+                <div class="contact-img">
+                    <img src="./images/contact.webp" alt="Изображение">
+                    <div class="contact-img-div">
+                        <p class="contact-head" style="color: white;">Выберите время, чтобы обсудить следующий проект</p>
+                        <div class="links">
+                            <a href="#contact">
+                                <i class='bx bx-phone' style="color: #1b1b1b;"></i>
+                                <span>Назначить звонок</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="subhead">
+                        <div class="green"></div>
+                        <p style="color: white;">Берём новые проекты</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="services">
+            <div class="f-flex" data-aos="fade-up">
+                <a href="#" class="logo">
+                    <img src="./fraymi_logo.png" alt="fraymi" class="logo-img logo-img--footer">
+                </a>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#showcase">Работы</a></li>
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+                <div class="footer-contacts">
+                    <a href="mailto:hello@freymi.ru">hello@freymi.ru</a>
+                    <a href="tel:+79255059772">+7 925 505-97-72</a>
+                </div>
+                <span>© 2024, Все права защищены</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Скрипты -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

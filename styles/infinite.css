@@ -1,0 +1,82 @@
+.marquee-container {
+    position: relative;
+    padding: 100px 0;
+}
+
+.infinite {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.infinite::before, .infinite::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    z-index: 1;
+}
+
+.infinite::before {
+    left: 0;
+    background: linear-gradient(to right, #fbfbfb, rgba(255, 255, 255, 0));
+}
+
+.infinite::after {
+    right: 0;
+    background: linear-gradient(to left, #fbfbfb, rgba(255, 255, 255, 0));
+}
+
+.infinite-left div {
+    display: inline-block;
+    animation: marquee-left 8s linear infinite;
+}
+
+.infinite-right div {
+    display: inline-block;
+    animation: marquee-right 8s linear infinite;
+}
+
+.infinite div p {
+    border-left: 4px solid #10d07f;
+    width: fit-content;
+    background: linear-gradient(90deg, rgba(16, 208, 127, .32), rgba(16, 208, 127, .04));
+    font-weight: 600;
+    font-size: 65px;
+    line-height: 1.2em;
+    letter-spacing: -0.01em;
+    padding: 10px 8px;
+    margin: 0 8px;
+    display: inline-block;
+}
+
+.infinite div p:nth-child(2),
+.infinite div p:nth-child(5) {
+    background: linear-gradient(90deg, rgba(145, 58, 255, .32), rgba(145, 58, 255, .04));
+    border-left: 4px solid #913aff;
+}
+
+.infinite div p:nth-child(3),
+.infinite div p:nth-child(6) {
+    background: linear-gradient(90deg, rgba(15, 157, 237, .32), rgba(15, 157, 237, .04));
+    border-left: 4px solid #0f9ded;
+}
+
+@keyframes marquee-left {
+    0% {
+        transform: translateX(-30%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes marquee-right {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-30%);
+    }
+}

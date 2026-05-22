@@ -1,0 +1,127 @@
+#pricing, #contact {
+    background-color: #f4f4f4;
+}
+
+.pricing {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    margin-top: 50px;
+}
+
+.pack {
+    background-color: #fbfbfb;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+    padding: 12px;
+    border-radius: 30px;
+}
+
+.pricing .pack:nth-child(2) {
+    background-color: #1b1b1b;
+    border: 1px solid #1b1b1b;
+}
+
+.pricing .pack:nth-child(2) .pack-1 {
+    background-color: #323232;
+    border: 1px solid #323232;
+}
+
+.pricing .pack:nth-child(2) .pack-title, 
+.pricing .pack:nth-child(2) .price-head p:nth-child(1),
+.pricing .pack:nth-child(2) .price, 
+.pricing .pack:nth-child(2) .price span  {
+    color: white;
+}
+
+.pack-1 {
+    background-color: white;
+    border: 1px solid #f4f4f4;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.price-head {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.price-head p:nth-child(1) {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.price-head p:nth-child(2) {
+    color: #0a955a;
+    background: rgba(16, 208, 127, .1);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 100px;
+}
+
+.pricing .pack:nth-child(2) .price-head p:nth-child(2) {
+    color: rgba(251, 251, 251, .6);
+    background: rgba(251, 251, 251, .1);
+}
+
+.pack-title {
+    color: #1b1b1b;
+    margin: 40px 0px;
+    font-size: 32px;
+    font-weight: 600;
+    max-width: 380px;
+    line-height: 1.23em;
+}
+
+.pack-title span {
+    color: #8b8b8b;
+}
+
+.price {
+    color: #1b1b1b;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.price span {
+    font-size: 15px;
+}
+
+.pricing .links {
+    justify-content: left;
+}
+
+.pricing .pack:nth-child(2) .links a {
+    background-color: #fbfbfb;
+}
+
+.pack-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 30px;
+}
+
+.pack-2 div .pack2-f:not(:nth-child(1)) {
+    margin-top: 10px;
+}
+
+.pack2-f {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pack2-f i {
+    color: #8b8b8b;
+}
+
+.pack2-f p {
+    color: #8b8b8b;
+    font-size: 14px;
+    font-weight: 600;
+}
