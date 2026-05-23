@@ -3,6 +3,18 @@
    (было 18 вариантов, стало 7 — ~60% быстрее) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap');
 
+:root {
+    --paper: #ffffff;
+    --ink: #050505;
+    --soft: #f6f6f3;
+    --soft-2: #eeeeeb;
+    --line: #e1e1dc;
+    --muted: #777777;
+    --muted-2: #a6a6a1;
+    --agenda-blue: #d8e6e3;
+    --agenda-blue-strong: #c9dbd7;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -523,5 +535,355 @@ select {
     .infinite {
         width: 1400px;
         margin: auto;
+    }
+}
+
+/* Agenda-inspired palette layer */
+body {
+    background: var(--paper);
+}
+
+* {
+    color: var(--ink);
+}
+
+.subhead p,
+.port-desc,
+.about-desc,
+.block .heading span,
+.pack-title span,
+.pack2-f p,
+.pack2-f i,
+.ans,
+.feed p,
+.tech-marquee-heading,
+.footer-note,
+.footer-meta span,
+.footer-column a,
+.nav-links a,
+.nav-links a span,
+.contact-direct span {
+    color: var(--muted);
+}
+
+.green {
+    background-color: var(--ink);
+}
+
+.heading span,
+.block .heading.three span,
+.block .heading.four span,
+.s-flex p:nth-child(2),
+.price-head p:nth-child(2) {
+    background: var(--agenda-blue);
+    border-left-color: var(--ink);
+    color: var(--ink);
+}
+
+.links a,
+form button,
+.footer-form button,
+.footer-meta a,
+.about a {
+    background-color: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+    box-shadow: 0 16px 40px rgba(5, 5, 5, 0.14);
+}
+
+.links a i,
+form button i,
+.s-link i,
+.s-link span,
+.about a i,
+.about a span {
+    color: var(--paper);
+}
+
+.links a:hover,
+form button:hover,
+.footer-form button:hover,
+.footer-meta a:hover,
+.about a:hover {
+    background-color: #202020;
+    border-color: #202020;
+    color: var(--paper);
+}
+
+.links a:nth-child(2),
+.contact-img-div .links a,
+.pricing .pack:nth-child(2) .links a {
+    background-color: var(--soft);
+    border-color: var(--line);
+    color: var(--ink);
+    box-shadow: none;
+}
+
+.links a:nth-child(2):hover,
+.contact-img-div .links a:hover {
+    background-color: var(--soft-2);
+}
+
+.links a:nth-child(2) i,
+.contact-img-div .links a i {
+    color: var(--ink);
+}
+
+.service-block,
+.s-flex.two,
+.pack,
+.pack-1,
+form,
+.feed,
+.quest,
+.benefit-card,
+.tech-card,
+.nav-links,
+#toggle {
+    background-color: var(--paper);
+    border-color: var(--line);
+}
+
+#pricing,
+#contact {
+    background: var(--soft);
+}
+
+form input,
+form textarea {
+    background-color: var(--soft);
+    border-color: var(--line);
+    color: var(--ink);
+}
+
+form input::placeholder,
+form textarea::placeholder,
+.footer-form input::placeholder {
+    color: var(--muted-2);
+}
+
+.contact-direct,
+.benefit-grid,
+.footer-meta,
+.footer-column,
+.nav-links a:not(:nth-child(1)) {
+    border-color: var(--line);
+}
+
+.contact-direct strong,
+.footer-column .footer-accent-link,
+.footer-column a:hover,
+.contact-direct a:hover strong,
+.showcase-title,
+.showcase-heading em,
+.showcase-stat strong {
+    color: var(--ink);
+}
+
+.pricing .pack:nth-child(2),
+.pricing .pack:nth-child(2) .pack-1 {
+    background-color: var(--ink);
+    border-color: var(--ink);
+}
+
+.pricing .pack:nth-child(2) .pack-1 {
+    background-color: #161616;
+}
+
+.pricing .pack:nth-child(2) .pack-title,
+.pricing .pack:nth-child(2) .price-head p:nth-child(1),
+.pricing .pack:nth-child(2) .price,
+.pricing .pack:nth-child(2) .price span {
+    color: var(--paper);
+}
+
+.pricing .pack:nth-child(2) .price-head p:nth-child(2) {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.pricing .pack:nth-child(2) .pack2-f p,
+.pricing .pack:nth-child(2) .pack2-f i {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.s-grid .serv::before,
+.contact-img::before {
+    background-image: linear-gradient(135deg, rgba(5, 5, 5, 0.86) 12%, rgba(5, 5, 5, 0.05) 82%);
+}
+
+.s-title,
+.contact-img .subhead p,
+.contact-img-div .contact-head {
+    color: var(--paper);
+}
+
+.s-desc {
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.infinite::before,
+.tech-marquee-wrap::before {
+    background: linear-gradient(to right, var(--paper), rgba(255, 255, 255, 0));
+}
+
+.infinite::after,
+.tech-marquee-wrap::after {
+    background: linear-gradient(to left, var(--paper), rgba(255, 255, 255, 0));
+}
+
+.infinite div p:nth-child(n) {
+    border-left-color: var(--ink);
+    background: var(--soft);
+}
+
+.tech-marquee-section,
+.tech-card {
+    background: var(--paper);
+}
+
+.portfolio .circle,
+.portfolio .circle:nth-child(n) {
+    background-color: var(--agenda-blue);
+}
+
+.portfolio .circle:nth-child(2n) {
+    background-color: var(--ink);
+}
+
+.portfolio .circle:nth-child(3n) {
+    background-color: var(--soft-2);
+}
+
+.showcase-wrap {
+    background: var(--paper);
+}
+
+.showcase-desc,
+.showcase-stat span {
+    color: var(--muted);
+}
+
+.showcase-capsule {
+    border-color: var(--line);
+    box-shadow:
+        0 8px 32px rgba(5, 5, 5, 0.10),
+        0 0 0 1px rgba(5, 5, 5, 0.05);
+}
+
+footer.site-footer {
+    background: var(--ink);
+}
+
+.footer-shell {
+    background:
+        radial-gradient(circle at 78% 74%, rgba(216, 230, 227, 0.92), transparent 31%),
+        var(--soft);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.footer-brand {
+    color: var(--ink);
+}
+
+.footer-form {
+    width: min(100%, 560px);
+    min-width: 0;
+    overflow: hidden;
+    background: var(--paper);
+    border-color: var(--line);
+}
+
+.footer-form input {
+    flex: 1 1 0;
+    min-width: 0;
+    color: var(--ink);
+}
+
+.footer-form button {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 132px;
+    white-space: nowrap;
+    margin-top: 0;
+}
+
+.footer-meta a {
+    white-space: nowrap;
+}
+
+.site-footer .logo-img--footer {
+    filter: brightness(0);
+}
+
+@media(max-width: 640px) {
+    footer.site-footer {
+        padding: 32px 20px 104px;
+    }
+
+    .footer-shell {
+        padding: 22px;
+        border-radius: 26px;
+    }
+
+    .footer-form {
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+        padding: 6px;
+        border-radius: 100px;
+    }
+
+    .footer-form input {
+        width: auto;
+        height: 48px;
+        padding: 0 14px;
+        font-size: 14px;
+    }
+
+    .footer-form button {
+        flex: 0 0 108px;
+        width: auto;
+        min-width: 0;
+        height: 48px;
+        padding: 0 16px;
+        font-size: 14px;
+    }
+
+    .footer-meta {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .footer-meta a {
+        width: 100%;
+        min-height: 46px;
+        justify-content: center;
+        font-size: 14px;
+        border-radius: 100px;
+    }
+}
+
+@media(max-width: 360px) {
+    footer.site-footer {
+        padding: 28px 14px 104px;
+    }
+
+    .footer-shell {
+        padding: 20px;
+    }
+
+    .footer-form input {
+        height: 46px;
+        font-size: 13px;
+        padding: 0 12px;
+    }
+
+    .footer-form button {
+        flex-basis: 94px;
+        height: 46px;
+        padding: 0 12px;
+        font-size: 13px;
     }
 }
