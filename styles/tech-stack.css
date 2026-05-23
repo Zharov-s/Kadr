@@ -2,28 +2,30 @@
    TECH STACK — 3D-анимация мячиков
    =========================== */
 
-/*
-  Canvas-wrap is position:absolute with negative top/bottom so the WebGL canvas
-  physically extends 160px into the neighboring sections above and below.
-  section z-index:10 ensures the canvas paints above those neighbors (z-index:auto).
-*/
-
 .tech-stack-section {
     position: relative;
-    z-index: 10;
-    overflow: visible;
-    height: 700px;        /* explicit height — canvas-wrap is out of flow */
-    background: transparent;
+    height: 700px;
 }
 
+/*
+  Fixed overlay — z-index:9999 guarantees canvas is above every element on the page.
+  JS toggles .is-visible when the section enters / leaves the viewport.
+*/
 .tech-stack-canvas-wrap {
-    position: absolute;
-    top: -160px;          /* overlap 160px into section above */
+    position: fixed;
+    top: 0;
     left: 0;
-    right: 0;
-    bottom: -160px;       /* overlap 160px into section below */
-    overflow: visible;
-    pointer-events: none; /* let wrap pass events through; canvas overrides */
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.tech-stack-canvas-wrap.is-visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #tech-stack-canvas {
@@ -32,18 +34,15 @@
     width: 100%;
     height: 100%;
     cursor: crosshair;
-    z-index: 2;
     display: block;
-    pointer-events: auto;
 }
 
-/* Heading offset = 160px extension + 72px original visual offset from section top */
+/* Heading stays in section flow, scrolls with the page */
 .tech-stack-heading {
     position: absolute;
-    top: 232px;
+    top: 72px;
     left: 0;
     right: 0;
-    z-index: 3;
     pointer-events: none;
     text-align: center;
     font-size: 15px;
@@ -52,21 +51,18 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     font-family: "Poppins", sans-serif;
+    z-index: 1;
 }
 
 .tech-stack-fallback {
     display: none;
     position: absolute;
-    top: 160px;           /* same compensation as heading */
-    left: 0;
-    right: 0;
-    bottom: 160px;
+    inset: 0;
     align-items: center;
     justify-content: center;
     color: var(--muted);
     font-size: 14px;
     font-family: "Poppins", sans-serif;
-    z-index: 4;
     pointer-events: none;
 }
 
@@ -85,7 +81,7 @@
 
     .tech-stack-heading {
         font-size: 13px;
-        top: 216px;       /* 160px + 56px */
+        top: 56px;
     }
 }
 
@@ -95,7 +91,7 @@
     }
 
     .tech-stack-heading {
-        top: 204px;       /* 160px + 44px */
+        top: 44px;
     }
 }
 
@@ -106,12 +102,12 @@
 
     .tech-stack-heading {
         font-size: 12px;
-        top: 196px;       /* 160px + 36px */
+        top: 36px;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    #tech-stack-canvas {
+    .tech-stack-canvas-wrap {
         display: none;
     }
 

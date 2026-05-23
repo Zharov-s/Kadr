@@ -8,18 +8,19 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 (function initTechStackBalls() {
   const canvas = document.getElementById('tech-stack-canvas');
   const section = canvas && canvas.closest('.tech-stack-section');
+  const canvasWrap = canvas && canvas.parentElement;
   const fallback = document.getElementById('tech-stack-fallback');
-  if (!canvas || !section) return;
+  if (!canvas || !section || !canvasWrap) return;
 
   let testCtx;
   try { testCtx = canvas.getContext('webgl2') || canvas.getContext('webgl'); } catch (_) {}
   if (!testCtx) {
     if (fallback) fallback.classList.add('visible');
-    canvas.style.display = 'none';
+    canvasWrap.style.display = 'none';
     return;
   }
 
-  // Renderer — alpha:true keeps canvas transparent; GTAOPass only affects areas with geometry
+  // Renderer — alpha:true, transparent bg; canvas is fixed full-viewport overlay
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, stencil: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.shadowMap.enabled = true;
@@ -28,13 +29,11 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
   renderer.toneMappingExposure = 1.5;
   renderer.setClearColor(0x000000, 0);
 
-  // Scene + camera (fov 32.5, z 20 — matches original)
   const scene = new THREE.Scene();
-  // No scene.background — transparent canvas shows page white bg
   const camera = new THREE.PerspectiveCamera(32.5, 1, 1, 100);
   camera.position.z = 20;
 
-  // HDR environment (matches original: char_enviorment.hdr + environmentIntensity=0.5 + rotation=[0,4,2])
+  // HDR environment (matches original)
   const pmrem = new THREE.PMREMGenerator(renderer);
   pmrem.compileEquirectangularShader();
   new RGBELoader().load('./models/char_enviorment.hdr', (hdr) => {
@@ -46,7 +45,7 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
     pmrem.dispose();
   });
 
-  // Lights (matching original)
+  // Lights
   scene.add(new THREE.AmbientLight(0xffffff, 1));
   const spot = new THREE.SpotLight(0xffffff, 1);
   spot.position.set(20, 20, 25);
@@ -59,7 +58,7 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
   dir.position.set(0, 5, -4);
   scene.add(dir);
 
-  // Textures + materials (matching original MeshPhysicalMaterial)
+  // Textures + materials
   const loader = new THREE.TextureLoader();
   const IMAGE_URLS = [
     './images/tech-stack/react.webp',
@@ -74,24 +73,22 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
   const materials = IMAGE_URLS.map(url => {
     const tex = loader.load(url);
     return new THREE.MeshPhysicalMaterial({
-      map: tex,
-      emissive: 0xffffff,
-      emissiveMap: tex,
-      emissiveIntensity: 0.3,
-      metalness: 0.5,
-      roughness: 1,
-      clearcoat: 0.1,
-      envMapIntensity: 0.5,
+      map: tex, emissive: 0xffffff, emissiveMap: tex,
+      emissiveIntensity: 0.3, metalness: 0.5, roughness: 1,
+      clearcoat: 0.1, envMapIntensity: 0.5,
     });
   });
 
   const sphereGeo = new THREE.SphereGeometry(1, 28, 28);
 
-  // Ball config (matches original)
   const BALL_COUNT = 30;
   const SCALE_CHOICES = [0.7, 1, 0.8, 1, 1];
   const LINEAR_DAMPING = 0.75;
   const ANGULAR_DAMPING = 0.15;
+  // Persistent sleep: ball sleeps after SLEEP_FRAMES consecutive frames below SLEEP_V2
+  const SLEEP_V2 = 0.09;    // speed² threshold = speed < 0.3 u/s
+  const SLEEP_AV2 = 0.04;   // angSpeed² threshold
+  const SLEEP_FRAMES = 8;   // frames below threshold → permanently asleep
 
   function rand(s) { return (Math.random() - 0.5) * s; }
 
@@ -107,10 +104,17 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
     scene.add(mesh);
     const pos = new THREE.Vector3(rand(20), rand(20) - 25, rand(20) - 10);
     mesh.position.copy(pos);
-    balls.push({ mesh, pos, vel: new THREE.Vector3(), angVel: new THREE.Vector3(rand(3), rand(3), rand(3)), scale });
+    balls.push({
+      mesh, pos,
+      vel: new THREE.Vector3(),
+      angVel: new THREE.Vector3(rand(3), rand(3), rand(3)),
+      scale,
+      sleepFrames: 0,
+      sleeping: false,
+    });
   }
 
-  // Pointer — target position + lerped world position (lerp 0.2 matching original)
+  // Pointer — target + lerped world position
   const mouseTarget = new THREE.Vector3(1000, 1000, 0);
   const mouseWorld = new THREE.Vector3(1000, 1000, 0);
   let mouseOnCanvas = false;
@@ -132,7 +136,7 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
   canvas.addEventListener('mousemove', e => { mouseOnCanvas = true; updateMouse(e.clientX, e.clientY); });
   canvas.addEventListener('mouseleave', () => { mouseOnCanvas = false; mouseTarget.set(1000, 1000, 0); });
 
-  // Post-processing — GTAOPass approximates N8AO (aoRadius=2, intensity=1.15)
+  // Post-processing
   let composer = null;
 
   function initComposer(w, h) {
@@ -144,44 +148,52 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
       gtao.updateGtaoMaterial({ radius: 0.4, distanceExponent: 2, thickness: 1, scale: 1.5, samples: 16, distanceFallOff: 1, screenSpaceRadius: false });
       gtao.updatePdMaterial({ rings: 2, samples: 16, lodMultiplier: 0 });
       composer.addPass(gtao);
-    } catch (_) { /* GTAOPass unavailable — render without AO */ }
+    } catch (_) {}
     composer.addPass(new OutputPass());
   }
 
-  // Resize handler
+  // Resize: fixed canvas = full viewport
   function onResize() {
-    const w = canvas.parentElement.clientWidth;
-    const h = canvas.parentElement.clientHeight;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
-    if (!composer) {
-      initComposer(w, h);
-    } else {
-      composer.setSize(w, h);
-    }
+    if (!composer) initComposer(w, h);
+    else composer.setSize(w, h);
   }
   window.addEventListener('resize', onResize);
   onResize();
 
-  // IntersectionObserver
+  // IntersectionObserver: show/hide fixed canvas overlay
   let isActive = false, isVisible = false;
   new IntersectionObserver(entries => {
     isVisible = entries[0].isIntersecting;
-    if (isVisible && !isActive) isActive = true;
+    if (isVisible) {
+      canvasWrap.classList.add('is-visible');
+      if (!isActive) isActive = true;
+    } else {
+      canvasWrap.classList.remove('is-visible');
+    }
   }, { threshold: 0.05 }).observe(section);
 
-  // Physics
+  // Physics — with persistent sleep system
   const tmp = new THREE.Vector3();
 
-  function updatePhysics(dt) {
-    dt = Math.min(dt, 0.1); // matches original Math.min(0.1, delta)
+  function wakeUp(b) {
+    b.sleeping = false;
+    b.sleepFrames = 0;
+  }
 
-    // Smooth pointer lerp — matches original vec.lerp(target, 0.2) per frame
+  function updatePhysics(dt) {
+    dt = Math.min(dt, 0.1);
+
+    // Smooth pointer lerp
     mouseWorld.lerp(mouseTarget, 0.2);
 
-    // 1. Attraction toward origin
+    // 1. Attraction — skip sleeping balls
     for (const b of balls) {
+      if (b.sleeping) continue;
       const len = b.pos.length();
       if (len > 0.001) {
         b.vel.x -= (b.pos.x / len) * 50 * dt * b.scale;
@@ -190,10 +202,13 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
       }
     }
 
-    // 2. Mouse repulsion (BallCollider r=2)
+    // 2. Mouse repulsion — also wakes nearby sleeping balls
+    const WAKE_DIST = 3.5;
     for (const b of balls) {
       tmp.copy(b.pos).sub(mouseWorld);
       const dist = tmp.length();
+      if (mouseOnCanvas && dist < WAKE_DIST) wakeUp(b);
+      if (b.sleeping) continue;
       const minD = 2 + b.scale;
       if (dist < minD && dist > 0.001) {
         const nx = tmp.x / dist, ny = tmp.y / dist, nz = tmp.z / dist;
@@ -207,10 +222,11 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
       }
     }
 
-    // 3. Ball–ball — soft spring (avoids jitter from hard position correction)
+    // 3. Ball–ball soft spring — skip if both sleeping; wake sleeping ball on contact
     for (let i = 0; i < BALL_COUNT; i++) {
       for (let j = i + 1; j < BALL_COUNT; j++) {
         const bi = balls[i], bj = balls[j];
+        if (bi.sleeping && bj.sleeping) continue;
         const dx = bj.pos.x - bi.pos.x, dy = bj.pos.y - bi.pos.y, dz = bj.pos.z - bi.pos.z;
         const dist2 = dx * dx + dy * dy + dz * dz;
         const minD = bi.scale + bj.scale;
@@ -218,21 +234,41 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
           const dist = Math.sqrt(dist2) || 0.001;
           const nx = dx / dist, ny = dy / dist, nz = dz / dist;
           const spring = (minD - dist) * 80 * dt;
+          if (bi.sleeping) wakeUp(bi);
+          if (bj.sleeping) wakeUp(bj);
           bi.vel.x -= nx * spring; bi.vel.y -= ny * spring; bi.vel.z -= nz * spring;
           bj.vel.x += nx * spring; bj.vel.y += ny * spring; bj.vel.z += nz * spring;
         }
       }
     }
 
-    // 4. Damping + velocity sleep + integrate
+    // 4. Damping + persistent sleep + integrate
     const linD = Math.exp(-LINEAR_DAMPING * dt);
     const angD = Math.exp(-ANGULAR_DAMPING * dt);
+
     for (const b of balls) {
+      if (b.sleeping) continue;
+
       b.vel.multiplyScalar(linD);
       b.angVel.multiplyScalar(angD);
-      if (b.vel.lengthSq() < 0.01) b.vel.set(0, 0, 0);
-      if (b.angVel.lengthSq() < 0.005) b.angVel.set(0, 0, 0);
-      b.pos.x += b.vel.x * dt; b.pos.y += b.vel.y * dt; b.pos.z += b.vel.z * dt;
+
+      if (b.vel.lengthSq() < SLEEP_V2 && b.angVel.lengthSq() < SLEEP_AV2) {
+        b.sleepFrames++;
+        if (b.sleepFrames >= SLEEP_FRAMES) {
+          // Fully asleep — zero everything and stop integrating
+          b.vel.set(0, 0, 0);
+          b.angVel.set(0, 0, 0);
+          b.sleeping = true;
+          b.sleepFrames = 0;
+          continue;
+        }
+      } else {
+        b.sleepFrames = 0;
+      }
+
+      b.pos.x += b.vel.x * dt;
+      b.pos.y += b.vel.y * dt;
+      b.pos.z += b.vel.z * dt;
       b.mesh.position.copy(b.pos);
       b.mesh.rotation.x += b.angVel.x * dt;
       b.mesh.rotation.y += b.angVel.y * dt;
