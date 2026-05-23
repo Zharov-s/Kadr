@@ -210,7 +210,9 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
       }
     }
 
-    // 3. Ball–ball collision (sphere–sphere impulse + position correction)
+    // 3. Ball–ball collision — мягкая пружина вместо жёсткой коррекции позиции
+    //    Жёсткая коррекция позиции создаёт осцилляции в плотном кластере.
+    //    Пружинная сила затухает вместе с основным демпингом → нет дрожания.
     for (let i = 0; i < BALL_COUNT; i++) {
       for (let j = i + 1; j < BALL_COUNT; j++) {
         const bi = balls[i], bj = balls[j];
@@ -222,15 +224,11 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
         if (dist2 < minD * minD) {
           const dist = Math.sqrt(dist2) || 0.001;
           const nx = dx / dist, ny = dy / dist, nz = dz / dist;
-          const half = (minD - dist) * 0.25;
-          bi.pos.x -= nx * half; bi.pos.y -= ny * half; bi.pos.z -= nz * half;
-          bj.pos.x += nx * half; bj.pos.y += ny * half; bj.pos.z += nz * half;
-          const relVn = (bj.vel.x - bi.vel.x) * nx + (bj.vel.y - bi.vel.y) * ny + (bj.vel.z - bi.vel.z) * nz;
-          if (relVn < 0) {
-            const imp = -1.0 * relVn / 2;
-            bi.vel.x -= imp * nx; bi.vel.y -= imp * ny; bi.vel.z -= imp * nz;
-            bj.vel.x += imp * nx; bj.vel.y += imp * ny; bj.vel.z += imp * nz;
-          }
+          const overlap = minD - dist;
+          // Пружинная сила разделения (не резкий сдвиг позиции)
+          const spring = overlap * 80 * dt;
+          bi.vel.x -= nx * spring; bi.vel.y -= ny * spring; bi.vel.z -= nz * spring;
+          bj.vel.x += nx * spring; bj.vel.y += ny * spring; bj.vel.z += nz * spring;
         }
       }
     }
@@ -243,11 +241,11 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
       b.vel.multiplyScalar(linD);
       b.angVel.multiplyScalar(angD);
 
-      // Velocity sleep — kill micro-jitter when nearly at rest
-      if (b.vel.x * b.vel.x + b.vel.y * b.vel.y + b.vel.z * b.vel.z < 2e-4) {
+      // Velocity sleep — агрессивный порог: всё ниже 0.1 u/s обнуляется
+      if (b.vel.x * b.vel.x + b.vel.y * b.vel.y + b.vel.z * b.vel.z < 0.01) {
         b.vel.x = b.vel.y = b.vel.z = 0;
       }
-      if (b.angVel.x * b.angVel.x + b.angVel.y * b.angVel.y + b.angVel.z * b.angVel.z < 1e-4) {
+      if (b.angVel.x * b.angVel.x + b.angVel.y * b.angVel.y + b.angVel.z * b.angVel.z < 0.005) {
         b.angVel.x = b.angVel.y = b.angVel.z = 0;
       }
 
