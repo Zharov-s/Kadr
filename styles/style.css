@@ -556,7 +556,7 @@ body {
 .pack2-f i,
 .ans,
 .feed p,
-.tech-marquee-heading,
+.tech-stack-heading,
 .footer-note,
 .footer-meta span,
 .footer-column a,
@@ -637,7 +637,6 @@ form,
 .feed,
 .quest,
 .benefit-card,
-.tech-card,
 .nav-links,
 #toggle {
     background-color: var(--paper);
@@ -722,13 +721,11 @@ form textarea::placeholder,
     color: rgba(255, 255, 255, 0.68);
 }
 
-.infinite::before,
-.tech-marquee-wrap::before {
+.infinite::before {
     background: linear-gradient(to right, var(--paper), rgba(255, 255, 255, 0));
 }
 
-.infinite::after,
-.tech-marquee-wrap::after {
+.infinite::after {
     background: linear-gradient(to left, var(--paper), rgba(255, 255, 255, 0));
 }
 
@@ -737,8 +734,7 @@ form textarea::placeholder,
     background: var(--soft);
 }
 
-.tech-marquee-section,
-.tech-card {
+.tech-stack-section {
     background: var(--paper);
 }
 

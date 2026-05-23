@@ -1,0 +1,100 @@
+/* ===========================
+   TECH STACK — 3D-анимация мячиков
+   =========================== */
+
+.tech-stack-section {
+    padding: 80px 0 0;
+    background: var(--paper);
+    overflow: hidden;
+}
+
+.tech-stack-heading {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 0;
+    padding: 0 64px;
+}
+
+.tech-stack-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+}
+
+#tech-stack-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+.tech-stack-fallback {
+    display: none;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+}
+
+.tech-stack-fallback.visible {
+    display: flex;
+}
+
+/* ===========================
+   АДАПТИВ
+   =========================== */
+
+@media (max-width: 768px) {
+    .tech-stack-section {
+        padding: 64px 0 0;
+    }
+
+    .tech-stack-heading {
+        font-size: 13px;
+        padding: 0 40px;
+    }
+
+    .tech-stack-canvas-wrap {
+        height: 400px;
+    }
+}
+
+@media (max-width: 390px) {
+    .tech-stack-canvas-wrap {
+        height: 360px;
+    }
+}
+
+@media (max-width: 320px) {
+    .tech-stack-canvas-wrap {
+        height: 300px;
+    }
+
+    .tech-stack-heading {
+        font-size: 12px;
+        padding: 0 20px;
+    }
+}
+
+/* Пользователь отключил анимации */
+@media (prefers-reduced-motion: reduce) {
+    #tech-stack-canvas {
+        display: none;
+    }
+
+    .tech-stack-fallback {
+        display: flex;
+        position: static;
+        padding: 40px 64px;
+        height: auto;
+    }
+}
