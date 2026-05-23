@@ -2,18 +2,28 @@
    TECH STACK — 3D-анимация мячиков
    =========================== */
 
+/*
+  Canvas-wrap is position:absolute with negative top/bottom so the WebGL canvas
+  physically extends 160px into the neighboring sections above and below.
+  section z-index:10 ensures the canvas paints above those neighbors (z-index:auto).
+*/
+
 .tech-stack-section {
-    background: #ffffff;
     position: relative;
     z-index: 10;
     overflow: visible;
+    height: 700px;        /* explicit height — canvas-wrap is out of flow */
+    background: transparent;
 }
 
 .tech-stack-canvas-wrap {
-    position: relative;
-    width: 100%;
-    height: 700px;
+    position: absolute;
+    top: -160px;          /* overlap 160px into section above */
+    left: 0;
+    right: 0;
+    bottom: -160px;       /* overlap 160px into section below */
     overflow: visible;
+    pointer-events: none; /* let wrap pass events through; canvas overrides */
 }
 
 #tech-stack-canvas {
@@ -24,11 +34,13 @@
     cursor: crosshair;
     z-index: 2;
     display: block;
+    pointer-events: auto;
 }
 
+/* Heading offset = 160px extension + 72px original visual offset from section top */
 .tech-stack-heading {
     position: absolute;
-    top: 72px;
+    top: 232px;
     left: 0;
     right: 0;
     z-index: 3;
@@ -45,7 +57,10 @@
 .tech-stack-fallback {
     display: none;
     position: absolute;
-    inset: 0;
+    top: 160px;           /* same compensation as heading */
+    left: 0;
+    right: 0;
+    bottom: 160px;
     align-items: center;
     justify-content: center;
     color: var(--muted);
@@ -64,34 +79,34 @@
    =========================== */
 
 @media (max-width: 768px) {
-    .tech-stack-canvas-wrap {
+    .tech-stack-section {
         height: 560px;
     }
 
     .tech-stack-heading {
         font-size: 13px;
-        top: 56px;
+        top: 216px;       /* 160px + 56px */
     }
 }
 
 @media (max-width: 390px) {
-    .tech-stack-canvas-wrap {
+    .tech-stack-section {
         height: 480px;
     }
 
     .tech-stack-heading {
-        top: 44px;
+        top: 204px;       /* 160px + 44px */
     }
 }
 
 @media (max-width: 320px) {
-    .tech-stack-canvas-wrap {
+    .tech-stack-section {
         height: 400px;
     }
 
     .tech-stack-heading {
         font-size: 12px;
-        top: 36px;
+        top: 196px;       /* 160px + 36px */
     }
 }
 
