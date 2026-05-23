@@ -222,12 +222,12 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
         if (dist2 < minD * minD) {
           const dist = Math.sqrt(dist2) || 0.001;
           const nx = dx / dist, ny = dy / dist, nz = dz / dist;
-          const half = (minD - dist) * 0.5;
+          const half = (minD - dist) * 0.25;
           bi.pos.x -= nx * half; bi.pos.y -= ny * half; bi.pos.z -= nz * half;
           bj.pos.x += nx * half; bj.pos.y += ny * half; bj.pos.z += nz * half;
           const relVn = (bj.vel.x - bi.vel.x) * nx + (bj.vel.y - bi.vel.y) * ny + (bj.vel.z - bi.vel.z) * nz;
           if (relVn < 0) {
-            const imp = -1.2 * relVn / 2;
+            const imp = -1.0 * relVn / 2;
             bi.vel.x -= imp * nx; bi.vel.y -= imp * ny; bi.vel.z -= imp * nz;
             bj.vel.x += imp * nx; bj.vel.y += imp * ny; bj.vel.z += imp * nz;
           }
@@ -235,13 +235,21 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
       }
     }
 
-    // 4. Damping + position / rotation update
+    // 4. Damping + velocity sleep + position / rotation update
     const linD = Math.exp(-LINEAR_DAMPING * dt);
     const angD = Math.exp(-ANGULAR_DAMPING * dt);
 
     for (const b of balls) {
       b.vel.multiplyScalar(linD);
       b.angVel.multiplyScalar(angD);
+
+      // Velocity sleep — kill micro-jitter when nearly at rest
+      if (b.vel.x * b.vel.x + b.vel.y * b.vel.y + b.vel.z * b.vel.z < 2e-4) {
+        b.vel.x = b.vel.y = b.vel.z = 0;
+      }
+      if (b.angVel.x * b.angVel.x + b.angVel.y * b.angVel.y + b.angVel.z * b.angVel.z < 1e-4) {
+        b.angVel.x = b.angVel.y = b.angVel.z = 0;
+      }
 
       b.pos.x += b.vel.x * dt;
       b.pos.y += b.vel.y * dt;
