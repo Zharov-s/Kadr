@@ -5,6 +5,10 @@
     margin-top: 50px;
 }
 
+.contact > * {
+    min-width: 0;
+}
+
 form {
     background-color: #fbfbfb;
     border: 1px solid #eee;
@@ -12,6 +16,7 @@ form {
     flex-direction: column;
     padding: 40px;
     border-radius: 30px;
+    width: 100%;
 }
 
 .contact-head {
@@ -35,6 +40,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    min-width: 0;
     width: fit-content;
     transition: 0.3s;
 }
@@ -49,6 +55,7 @@ form {
     color: #1b1b1b;
     font-size: 14px;
     font-weight: 600;
+    overflow-wrap: anywhere;
 }
 
 .contact-direct a:hover strong {
@@ -96,6 +103,7 @@ form button:hover {
     overflow: hidden;
     position: relative;
     border-radius: 30px;
+    width: 100%;
 }
 
 .contact-img::before {

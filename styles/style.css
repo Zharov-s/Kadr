@@ -335,6 +335,22 @@ select {
     .contact-img .subhead {
         margin: 30px;
     }
+
+    .video {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        margin-top: 70px;
+        border-radius: 30px;
+    }
+
+    .video video {
+        display: block;
+    }
+
+    form button {
+        width: 100%;
+        padding-inline: 18px;
+    }
 }
 
 @media(max-width: 540px) {
@@ -394,6 +410,11 @@ select {
 
     .contact-direct {
         grid-template-columns: 1fr;
+    }
+
+    form,
+    .contact-img {
+        min-width: 0;
     }
 }
 
