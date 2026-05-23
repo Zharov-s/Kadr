@@ -46,7 +46,7 @@
     line-height: 0.9;
     font-weight: 800;
     letter-spacing: 0;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .tech-orbit-copy h2 span {
@@ -60,39 +60,25 @@
     height: clamp(480px, 54vw, 760px);
     margin: clamp(24px, 3vw, 48px) auto 0;
     overflow: hidden;
-    border-radius: clamp(30px, 4vw, 64px);
-    border: 1px solid rgba(5, 5, 5, 0.08);
-    background:
-        radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0) 34%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(238, 238, 235, 0.72));
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.9),
-        0 28px 80px rgba(5, 5, 5, 0.08);
+    border-radius: 0;
     touch-action: pan-y;
+    cursor: grab;
 }
 
-.tech-orbit-stage::before,
-.tech-orbit-stage::after {
+.tech-orbit-stage:active {
+    cursor: grabbing;
+}
+
+.tech-orbit-stage::before {
     content: '';
     position: absolute;
     pointer-events: none;
     z-index: 2;
-}
-
-.tech-orbit-stage::before {
     inset: auto 8% 9% 8%;
     height: 26%;
     background: radial-gradient(ellipse at center, rgba(5, 5, 5, 0.16), rgba(5, 5, 5, 0) 68%);
     filter: blur(20px);
-    opacity: 0.42;
-}
-
-.tech-orbit-stage::after {
-    inset: 0;
-    border-radius: inherit;
-    background:
-        linear-gradient(90deg, rgba(246, 246, 243, 0.78), rgba(246, 246, 243, 0) 18%, rgba(246, 246, 243, 0) 82%, rgba(246, 246, 243, 0.78)),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0) 24%, rgba(255, 255, 255, 0) 76%, rgba(246, 246, 243, 0.62));
+    opacity: 0.24;
 }
 
 .tech-balls-canvas {
@@ -163,7 +149,6 @@
         width: min(100% - 28px, 760px);
         height: clamp(430px, 112vw, 620px);
         margin-top: 22px;
-        border-radius: 30px;
     }
 }
 
@@ -180,14 +165,12 @@
         max-width: 340px;
         font-size: clamp(32px, 8.8vw, 40px);
         line-height: 1;
-        text-transform: none;
     }
 
     .tech-orbit-stage {
         width: calc(100% - 24px);
         height: min(520px, 118vw);
         min-height: 390px;
-        border-radius: 26px;
     }
 
     .tech-orbit-fallback {
