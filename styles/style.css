@@ -373,19 +373,101 @@ select {
 
 @media(max-width: 500px) {
     .block, .hero, .about {
-        padding: 100px 40px;
+        padding: 72px 28px;
+    }
+
+    .top {
+        padding: 28px;
     }
 
     footer {
-        padding: 64px 40px;
+        padding: 56px 28px;
     }
 
     .s-text {
-        margin: 30px;
+        margin: 24px;
+    }
+
+    .service-block,
+    .s-flex.two,
+    form {
+        padding: 24px;
+        border-radius: 24px;
     }
 
     .about-desc {
         font-size: 25px;
+    }
+
+    .s-grid .serv,
+    .s-grid .serv:nth-child(3) {
+        height: 330px;
+    }
+
+    .s-title {
+        font-size: 22px;
+    }
+
+    .s-desc {
+        font-size: 13.5px;
+        margin: 12px 0;
+    }
+
+    .benefit-anim {
+        grid-template-columns: repeat(2, 1fr);
+        height: 400px;
+        gap: 12px;
+        padding: 0 18px;
+        border-radius: 24px;
+    }
+
+    .benefit-anim .anims:nth-child(n+3) {
+        display: none;
+    }
+
+    .anims {
+        gap: 12px;
+    }
+
+    .anims div {
+        height: 160px;
+        border-radius: 22px;
+    }
+
+    .anims div img {
+        max-width: 56px;
+        max-height: 56px;
+    }
+
+    .pricing {
+        margin-top: 32px;
+    }
+
+    .pack {
+        padding: 8px;
+        border-radius: 24px;
+    }
+
+    .pack-1,
+    .pack-2 {
+        padding: 22px;
+    }
+
+    .pack-title {
+        margin: 24px 0;
+        font-size: 22px;
+    }
+
+    .price {
+        font-size: 26px;
+    }
+
+    .price-head p:nth-child(1) {
+        font-size: 22px;
+    }
+
+    .pack2-f p {
+        font-size: 13.5px;
     }
 }
 
@@ -395,8 +477,8 @@ select {
     }
 
     .pack-title {
-        margin: 30px 0px;
-        font-size: 25px;
+        margin: 24px 0px;
+        font-size: 22px;
     }
 
     .work-flex {

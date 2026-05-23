@@ -71,7 +71,10 @@
             </a>
         </div>
         <div class="video">
-            <video src="./videos/hero.mp4" muted autoplay loop playsinline webkit-playsinline preload="metadata"></video>
+            <video muted autoplay loop playsinline webkit-playsinline preload="metadata">
+                <source src="./videos/hero-mobile.mp4" type="video/mp4" media="(max-width: 590px)">
+                <source src="./videos/hero.mp4" type="video/mp4">
+            </video>
         </div>
     </div>
 
