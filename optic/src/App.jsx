@@ -24,9 +24,17 @@ import FooterBanner from "@/components/FooterBanner";
 import HomeLink from "@/components/HomeLink";
 
 const queryClient = new QueryClient();
-const routerBase = import.meta.env.BASE_URL.startsWith("/")
-  ? import.meta.env.BASE_URL.replace(/\/$/, "")
-  : "";
+const routerBase = (() => {
+  if (import.meta.env.BASE_URL.startsWith("/")) {
+    return import.meta.env.BASE_URL.replace(/\/$/, "");
+  }
+
+  if (typeof window === "undefined") return "";
+
+  return window.location.pathname
+    .replace(/\/index\.html$/, "")
+    .replace(/\/$/, "");
+})();
 
 function Home() {
   return (
@@ -56,6 +64,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/index.html" component={Home} />
       <Route component={NotFound} />
     </Switch>
   );
