@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="./styles/footer.css">
     <link rel="stylesheet" href="./styles/navbar.css">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/featured-works.css">
 
     <!-- Иконки Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -292,6 +293,488 @@
 
             </div>
         </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         Рекомендуемые работы (Featured Works)
+         Порт из Rise-at-Seven: sticky-scroll, GSAP, hover-reveal
+         ═══════════════════════════════════════════════════════ -->
+
+    <!-- Секция: внешний контейнер задаёт высоту через JS (GSAP),
+         внутренний .fw-sticky-wrap становится sticky на desktop -->
+    <section id="fw-section" class="fw-section">
+      <div class="fw-sticky-wrap">
+        <div class="fw-card">
+
+          <!-- ── Левая колонка: список заголовков проектов (desktop only) ── -->
+          <div class="fw-left">
+            <div class="fw-left-divider"></div>
+            <div class="fw-left-inner">
+              <h2 class="fw-section-title">Featured Work</h2>
+
+              <div class="fw-titles-outer">
+                <!-- Туман сверху и снизу -->
+                <div class="fw-blur-top"></div>
+                <div class="fw-blur-bottom"></div>
+
+                <!-- GSAP двигает этот список как единый блок -->
+                <div id="fw-titles-list" class="fw-titles-list">
+
+                  <div class="fw-title-item fw-active">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">SIXT</div>
+                      <div class="fw-title-date">[2023-2025]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">Dojo - B2B</div>
+                      <div class="fw-title-date">[2021-2025]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">Magnet Trade - B2B</div>
+                      <div class="fw-title-date">[2023-2024]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">Leading E Sim brand</div>
+                      <div class="fw-title-date">[2023-2025]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">JD Sports</div>
+                      <div class="fw-title-date">[2025]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">Parkdean Resorts</div>
+                      <div class="fw-title-date">[2019-2025]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">Pooky</div>
+                      <div class="fw-title-date">[2025]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">Parkdean Resorts</div>
+                      <div class="fw-title-date">[2019-2025]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">Revolution Beauty</div>
+                      <div class="fw-title-date">[2022-2025]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">Lloyds Pharmacy</div>
+                      <div class="fw-title-date">[2022-23]</div>
+                    </div>
+                  </div>
+
+                  <div class="fw-title-item">
+                    <div class="fw-title-link">
+                      <div class="fw-title-text">PrettyLittleThing</div>
+                      <div class="fw-title-date">[2021-2023]</div>
+                    </div>
+                  </div>
+
+                </div><!-- /fw-titles-list -->
+              </div><!-- /fw-titles-outer -->
+            </div><!-- /fw-left-inner -->
+          </div><!-- /fw-left -->
+
+          <!-- ── Правая колонка: карточки с изображениями ── -->
+          <!-- GSAP translateY-ит этот блок при скролле на desktop -->
+          <div id="fw-right" class="fw-right">
+
+            <!-- Заголовок для мобильного (левая колонка скрыта) -->
+            <div class="fw-mobile-heading">
+              <h2>Featured Work</h2>
+            </div>
+
+            <!-- ── Карточка 1: SIXT ── -->
+            <div class="fw-image-item">
+              <!-- Слой 1: изображение -->
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/sixt-1.webp" alt="SIXT" loading="lazy">
+                </div>
+              </div>
+              <!-- Слой 2: пилюля с категорией -->
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>Car rental</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <!-- Слой 3: mobile overlay с названием -->
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2023-2025]</div>
+                  <div class="fw-mobile-title-text">SIXT</div>
+                </div>
+              </div>
+              <!-- Слой 4: hover clip-path reveal -->
+              <div class="fw-hover-overlay" style="background-color:#cb7b3a; color:#000000;">
+                <div class="fw-hover-desc">An extra 3m clicks regionally through SEO</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>Car rental</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card SIXT -->
+
+            <!-- ── Карточка 2: Dojo - B2B ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/dojo-go-product-shot-1.webp" alt="Dojo - B2B" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>Card Machines</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2021-2025]</div>
+                  <div class="fw-mobile-title-text">Dojo - B2B</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#fdd8c4; color:#000000;">
+                <div class="fw-hover-desc">A B2B success story for Dojo card machines</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>Card Machines</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card Dojo -->
+
+            <!-- ── Карточка 3: Magnet Trade - B2B ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/Screenshot-2026-02-07-at-17.01.43.webp" alt="Magnet Trade - B2B" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>Full Service SEO</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2023-2024]</div>
+                  <div class="fw-mobile-title-text">Magnet Trade - B2B</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#d8c4fd; color:#000000;">
+                <div class="fw-hover-desc">A full service SEO success story 170%+ increase</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>Full Service SEO</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card Magnet Trade -->
+
+            <!-- ── Карточка 4: Leading E Sim brand ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/eSIM-Europe-p1-what-is-eSIM-2-1.webp" alt="Leading E Sim brand globally" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>Esims</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2023-2025]</div>
+                  <div class="fw-mobile-title-text">Leading E Sim brand globally</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#cb7b3a; color:#000000;">
+                <div class="fw-hover-desc">Increasing brand and non brand visibility UK/ES</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>Esims</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card eSIM -->
+
+            <!-- ── Карточка 5: JD Sports ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/maxresdefault_2025-10-22-141838_nmnu.webp" alt="JD Sports" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>Trainers</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2025]</div>
+                  <div class="fw-mobile-title-text">JD Sports</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#3a8ccb; color:#000000;">
+                <div class="fw-hover-desc">65% up YoY in clicks for JDSports FR, IT, ES</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>Trainers</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card JD Sports -->
+
+            <!-- ── Карточка 6: Parkdean Resorts (Easter Breaks) ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/easter-breaks.webp" alt="Parkdean Resorts" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>Easter Breaks</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2019-2025]</div>
+                  <div class="fw-mobile-title-text">Parkdean Resorts</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#d2b59d; color:#000000;">
+                <div class="fw-hover-desc">Dominating Google and AI search</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>Easter Breaks</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card Parkdean Easter -->
+
+            <!-- ── Карточка 7: Pooky ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/Pooky-Rechargable-Doorstop-Cordless-100-Straight-Empire-Pendant-Silk-Ikat-Shade-in-Black-and-Cream-Atlas-44-Single-chukka-Cordless-95-scaled-1-1.webp" alt="Pooky" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>Rechargeable Lights</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2025]</div>
+                  <div class="fw-mobile-title-text">Pooky</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#39b0bd; color:#000000;">
+                <div class="fw-hover-desc">Driving demand for Pooky Rechargeable Lights</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>Rechargeable Lights</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card Pooky -->
+
+            <!-- ── Карточка 8: Parkdean Resorts (UK holidays) ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/1.webp" alt="Parkdean Resorts UK holidays" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>UK holidays</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2019-2025]</div>
+                  <div class="fw-mobile-title-text">Parkdean Resorts</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#d29dd0; color:#000000;">
+                <div class="fw-hover-desc">Social search and multi channel content to #1</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>UK holidays</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card Parkdean UK -->
+
+            <!-- ── Карточка 9: Revolution Beauty ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/Screenshot-2025-06-10-at-12.13.46.webp" alt="Revolution Beauty" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>Beauty Dupes</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2022-2025]</div>
+                  <div class="fw-mobile-title-text">Revolution Beauty</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#fecacc; color:#000000;">
+                <div class="fw-hover-desc">Building the UK's leading beauty dupe brand</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>Beauty Dupes</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card Revolution Beauty -->
+
+            <!-- ── Карточка 10: Lloyds Pharmacy ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/Screenshot-2025-07-04-at-12.50.54.webp" alt="Lloyds Pharmacy" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>STI tests</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2022-23]</div>
+                  <div class="fw-mobile-title-text">Lloyds Pharmacy</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#60dcfb; color:#000000;">
+                <div class="fw-hover-desc">Driving category leadership for STI tests</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>STI tests</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card Lloyds -->
+
+            <!-- ── Карточка 11: PrettyLittleThing ── -->
+            <div class="fw-image-item">
+              <div class="fw-img-wrap">
+                <div class="fw-img-ratio">
+                  <img src="./images/featuredWorks/Screenshot-2025-06-23-at-14.43.56.webp" alt="PrettyLittleThing" loading="lazy">
+                </div>
+              </div>
+              <div class="fw-pill">
+                <div class="fw-pill-inner">
+                  <span>Outfits</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+              <div class="fw-mobile-overlay">
+                <div class="fw-mobile-gradient"></div>
+                <div class="fw-mobile-overlay-content">
+                  <div class="fw-mobile-date">[2021-2023]</div>
+                  <div class="fw-mobile-title-text">PrettyLittleThing</div>
+                </div>
+              </div>
+              <div class="fw-hover-overlay" style="background-color:#fecacc; color:#000000;">
+                <div class="fw-hover-desc">Driving discovery for everything "outfits" for PLT</div>
+                <div class="fw-hover-bottom">
+                  <div class="fw-hover-pill" style="color:#000000;">
+                    <span>Outfits</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /card PrettyLittleThing -->
+
+          </div><!-- /fw-right -->
+        </div><!-- /fw-card -->
+      </div><!-- /fw-sticky-wrap -->
+    </section><!-- /fw-section -->
+
+    <!-- CTA под секцией -->
+    <div class="fw-cta-wrap">
+      <div class="fw-cta-btn">
+        <div class="fw-cta-btn-content">
+          <div class="fw-cta-btn-row fw-row-1">
+            <span>Смотреть все работы</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+          <div class="fw-cta-btn-row fw-row-2">
+            <span>Смотреть все работы</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Тарифы -->
@@ -567,10 +1050,19 @@
     </footer>
 
 
+    <!-- Кастомный курсор Featured Works (position: fixed, управляется GSAP) -->
+    <div id="fw-cursor" class="fw-cursor" aria-hidden="true">
+      <div class="fw-cursor-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </div>
+    </div>
+
     <!-- Скрипты -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
     <script type="module" src="./scripts/tech-stack-balls.js"></script>
+    <script src="./scripts/featured-works.js"></script>
 </body>
 </html>

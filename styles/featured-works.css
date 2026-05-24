@@ -1,0 +1,692 @@
+/* ============================================================
+   Featured Works — полный порт из Rise-at-Seven (Next.js → vanilla)
+   Дизайн, механика и логика воспроизведены один в один.
+   ============================================================ */
+
+/*
+ * Глобальный переопределитель: в style.css есть правило `* { color: var(--ink) }`,
+ * которое применяется ко ВСЕМ элементам, перебивая наследование.
+ * Здесь мы устанавливаем `color: inherit` для всех потомков fw-section
+ * (специфичность 0,1,0,0 — выше чем у `*`), чтобы они наследовали цвет родителя.
+ * Все явно окрашенные классы ниже переопределяют это правило (стоят позже в файле).
+ */
+.fw-section * {
+  color: inherit;
+}
+
+/* Курсор — за пределами fw-section, его дочерние элементы тоже должны наследовать */
+#fw-cursor * {
+  color: inherit;
+}
+
+/* --- Внешняя секция-обёртка (scroll-контейнер) --- */
+.fw-section {
+  width: 100%;
+  position: relative;
+  /* -my-7 из оригинала: убирает вертикальные отступы между секциями */
+  margin-top: -28px;
+  margin-bottom: -28px;
+  display: flex;
+  overflow: hidden;
+}
+
+/* На устройствах с точным указателем (мышь) overflow убирается,
+   чтобы cursor мог выходить за границы */
+@media (pointer: fine) {
+  .fw-section {
+    overflow: visible;
+  }
+}
+
+/* --- Внутренний sticky-враппер --- */
+.fw-sticky-wrap {
+  width: 100%;
+  padding: 28px 16px;
+}
+
+@media (min-width: 768px) {
+  .fw-sticky-wrap {
+    padding: 28px 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fw-sticky-wrap {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+/* --- Тёмная карточка-контейнер --- */
+.fw-card {
+  width: 100%;
+  overflow: hidden;
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.15rem;         /* ~18px */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .fw-card {
+    border-radius: 1.45rem;       /* ~23px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .fw-card {
+    height: 100%;
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .fw-card {
+    padding: 0 40px;
+  }
+}
+
+/* ============================================================
+   Левая колонка — sticky список заголовков проектов
+   Видима только на desktop (≥1024px)
+   ============================================================ */
+.fw-left {
+  grid-column: span 12;
+  position: relative;
+  display: none;          /* скрыта на mobile */
+}
+
+@media (min-width: 1024px) {
+  .fw-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    grid-column: span 6;
+    height: 96svh;
+  }
+}
+
+/* Вертикальная разделительная черта */
+.fw-left-divider {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  bottom: 40px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Внутреннее содержимое левой колонки */
+.fw-left-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  padding-top: 56px;
+}
+
+@media (min-width: 1024px) {
+  .fw-left-inner {
+    padding-top: 96px;
+    padding-bottom: 128px;
+    gap: 80px;
+  }
+}
+
+/* Заголовок "Featured Work" в левой колонке */
+.fw-section-title {
+  display: inline-flex;
+  flex-wrap: wrap;
+  position: relative;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 25px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .fw-section-title {
+    margin-bottom: 0;             /* gap на родителе уже даёт отступ */
+  }
+}
+
+/* Область прокрутки заголовков */
+.fw-titles-outer {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  padding-right: 16px;
+}
+
+/* Туман сверху — скрывает заголовки которые «уходят» вверх */
+.fw-blur-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  z-index: 20;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    #050505 0%,
+    rgba(5, 5, 5, 0.85) 60%,
+    transparent 100%
+  );
+}
+
+/* Туман снизу — скрывает заголовки которые «уходят» вниз */
+.fw-blur-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28%;
+  z-index: 20;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    #050505 0%,
+    rgba(5, 5, 5, 0.9) 60%,
+    transparent 100%
+  );
+}
+
+/* Список заголовков (GSAP двигает его как единый блок) */
+.fw-titles-list {
+  display: grid;
+  gap: 0;
+  position: relative;
+  z-index: 10;
+  margin-top: 10%;
+}
+
+/* Один элемент списка */
+.fw-title-item {
+  position: relative;
+  cursor: default;
+  user-select: none;
+}
+
+/* Строка: большой заголовок + мелкая дата */
+.fw-title-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  cursor: default;
+}
+
+/* Крупный текст названия проекта */
+.fw-title-text {
+  display: inline-flex;
+  flex-wrap: wrap;
+  text-align: left;
+  font-size: 60px;
+  line-height: 0.93;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.5s ease;
+}
+
+@media (min-width: 1024px) {
+  .fw-title-text { font-size: 72px; line-height: 0.9; }
+}
+@media (min-width: 1280px) {
+  .fw-title-text { font-size: 84px; line-height: 0.88; }
+}
+@media (min-width: 1536px) {
+  .fw-title-text { font-size: 92px; line-height: 0.86; }
+}
+
+/* Активный или hovered заголовок — белый */
+.fw-title-item.fw-active .fw-title-text,
+.fw-title-item.fw-hovered .fw-title-text {
+  color: #ffffff;
+}
+
+/* Мелкая дата рядом с заголовком */
+.fw-title-date {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 10px;
+  font-weight: 500;
+  margin-top: 6px;
+  transition: opacity 0.5s ease;
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .fw-title-date { font-size: 11px; margin-top: 8px; }
+}
+
+.fw-title-item.fw-active .fw-title-date,
+.fw-title-item.fw-hovered .fw-title-date {
+  opacity: 1;
+}
+
+/* ============================================================
+   Правая колонка — прокручиваемые карточки с изображениями
+   GSAP translateY-ит эту колонку при скролле
+   ============================================================ */
+.fw-right {
+  grid-column: span 12;
+  display: grid;
+  padding-top: 28px;
+  padding-bottom: 56px;
+  will-change: transform;
+  align-content: start;
+}
+
+@media (min-width: 1024px) {
+  .fw-right {
+    grid-column: 7 / span 6;
+  }
+}
+
+@media (min-width: 1536px) {
+  .fw-right {
+    grid-column: 8 / span 5;
+  }
+}
+
+/* Заголовок "Featured Work" для mobile (в правой колонке) */
+.fw-mobile-heading {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.fw-mobile-heading h2 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 1024px) {
+  .fw-mobile-heading {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Карточка проекта (image card)
+   Использует CSS grid overlay: все слои на одной ячейке
+   ============================================================ */
+.fw-image-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  cursor: default;
+}
+
+@media (min-width: 1024px) {
+  .fw-image-item {
+    margin-bottom: 28px;
+  }
+}
+
+.fw-image-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Слой 1: изображение */
+.fw-img-wrap {
+  grid-column: 1;
+  grid-row: 1;
+  transition: transform 0.7s ease;
+}
+
+.fw-image-item:hover .fw-img-wrap {
+  transform: scale(1.03);
+}
+
+/* Соотношение сторон 4:3 (75%) */
+.fw-img-ratio {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 75%;
+}
+
+.fw-img-ratio img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.5s;
+}
+
+/* Слой 2: пилюля с категорией (правый верхний угол / нижний на desktop) */
+.fw-pill {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 30;
+  padding: 12px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .fw-pill {
+    padding: 20px;
+    align-items: flex-end;       /* внизу на desktop как в оригинале */
+  }
+}
+
+.fw-pill-inner {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 1;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 14px;
+  gap: 12px;
+  padding: 10px 14px;
+}
+
+@media (min-width: 1024px) {
+  .fw-pill-inner {
+    font-size: 16px;
+  }
+}
+
+.fw-pill-inner svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+/* Слой 3: mobile-only оверлей с названием и датой */
+.fw-mobile-overlay {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 12px;
+  z-index: 30;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .fw-mobile-overlay {
+    display: none;
+  }
+}
+
+.fw-mobile-overlay-content {
+  display: grid;
+  gap: 4px;
+  position: relative;
+  z-index: 20;
+}
+
+.fw-mobile-date {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.fw-mobile-title-text {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.fw-mobile-gradient {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 128px;
+  background: linear-gradient(to top, #000000, transparent);
+  z-index: 10;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Слой 4: hover-оверлей с clip-path circle reveal + цвет бренда */
+.fw-hover-overlay {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 40;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* Старт: скрыт (круг 0px) */
+  clip-path: circle(0px at 50% 50%);
+  transition: clip-path 0.7s ease;
+}
+
+@media (min-width: 1024px) {
+  .fw-hover-overlay {
+    padding: 20px;
+  }
+}
+
+/* На hover: разворачиваем круг на весь блок */
+.fw-image-item:hover .fw-hover-overlay {
+  clip-path: circle(150% at 50% 50%);
+}
+
+/* Описание внутри hover-оверлея */
+.fw-hover-desc {
+  display: inline-flex;
+  flex-wrap: wrap;
+  text-align: left;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #000000;
+  transition: transform 0.7s ease 0.1s;
+  transform: translateY(16px);
+}
+
+@media (min-width: 1024px) {
+  .fw-hover-desc { font-size: 36px; }
+}
+@media (min-width: 1280px) {
+  .fw-hover-desc { font-size: 48px; }
+}
+
+.fw-image-item:hover .fw-hover-desc {
+  transform: translateY(0);
+}
+
+/* Нижняя часть hover-оверлея (пилюля) */
+.fw-hover-bottom {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  transition: transform 0.7s ease 0.15s;
+  transform: translateY(16px);
+}
+
+.fw-image-item:hover .fw-hover-bottom {
+  transform: translateY(0);
+}
+
+/* Пилюля внутри hover-оверлея */
+.fw-hover-pill {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 14px;
+  gap: 12px;
+  padding: 10px 14px;
+}
+
+@media (min-width: 1024px) {
+  .fw-hover-pill {
+    font-size: 16px;
+  }
+}
+
+.fw-hover-pill svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   CTA-кнопка "Смотреть все работы" под секцией
+   ============================================================ */
+.fw-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 0 16px;
+}
+
+@media (min-width: 1024px) {
+  .fw-cta-wrap {
+    margin-top: 28px;
+  }
+}
+
+.fw-cta-btn {
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  overflow: hidden;
+  border: 1px solid transparent;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  transition: border-radius 0.3s ease;
+  background: #ffffff;
+  color: #111111;
+  text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+  .fw-cta-btn {
+    width: auto;
+  }
+}
+
+.fw-cta-btn:hover {
+  border-radius: 16px;
+  color: #111111;
+}
+
+/* Анимированный текст-слайдер */
+.fw-cta-btn-content {
+  position: relative;
+  overflow: hidden;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.fw-cta-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+}
+
+.fw-cta-btn-row.fw-row-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+}
+
+.fw-cta-btn:hover .fw-cta-btn-row.fw-row-1 {
+  transform: translateY(-100%);
+}
+
+.fw-cta-btn:hover .fw-cta-btn-row.fw-row-2 {
+  transform: translateY(0);
+}
+
+.fw-cta-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Кастомный курсор (зелёный круг с стрелкой)
+   Виден только при наведении на карточки
+   ============================================================ */
+.fw-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  /* GSAP управляет transform, opacity, scale */
+  will-change: transform, opacity;
+}
+
+.fw-cursor-inner {
+  width: 112px;
+  height: 112px;
+  border-radius: 9999px;
+  background: #B2F6E3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  /* translate чтобы курсор центрировался на мыши */
+  transform: translate(-50%, -50%);
+}
+
+.fw-cursor-inner svg {
+  width: 20px;
+  height: 20px;
+  color: #111111;
+}
