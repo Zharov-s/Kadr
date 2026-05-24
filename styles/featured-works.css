@@ -341,6 +341,16 @@
   cursor: default;
 }
 
+.fw-project-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.fw-project-link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
 @media (min-width: 1024px) {
   .fw-image-item {
     border-radius: 1.25rem;     /* чуть крупнее на desktop */
