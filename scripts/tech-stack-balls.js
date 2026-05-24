@@ -12,6 +12,8 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
   const fallback = document.getElementById('tech-stack-fallback');
   if (!canvas || !section || !canvasWrap) return;
 
+  document.body.appendChild(canvasWrap);
+
   let testCtx;
   try { testCtx = canvas.getContext('webgl2') || canvas.getContext('webgl'); } catch (_) {}
   if (!testCtx) {
@@ -83,6 +85,8 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
   const BALL_COUNT = 30;
   const SCALE_CHOICES = [0.7, 1, 0.8, 1, 1];
+  const MOBILE_QUERY = window.matchMedia('(max-width: 768px)');
+  function getScaleMultiplier() { return MOBILE_QUERY.matches ? 0.8 : 1; }
   const LINEAR_DAMPING = 0.75;
   const ANGULAR_DAMPING = 0.15;
   // Persistent sleep: ball sleeps after SLEEP_FRAMES consecutive frames below SLEEP_V2
@@ -94,7 +98,8 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
   const balls = [];
   for (let i = 0; i < BALL_COUNT; i++) {
-    const scale = SCALE_CHOICES[Math.floor(Math.random() * SCALE_CHOICES.length)];
+    const baseScale = SCALE_CHOICES[Math.floor(Math.random() * SCALE_CHOICES.length)];
+    const scale = baseScale * getScaleMultiplier();
     const mat = materials[Math.floor(Math.random() * materials.length)];
     const mesh = new THREE.Mesh(sphereGeo, mat);
     mesh.scale.setScalar(scale);
@@ -108,6 +113,7 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
       mesh, pos,
       vel: new THREE.Vector3(),
       angVel: new THREE.Vector3(rand(3), rand(3), rand(3)),
+      baseScale,
       scale,
       sleepFrames: 0,
       sleeping: false,
@@ -153,12 +159,21 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
   }
 
   // Resize: fixed canvas = full viewport
+  function updateBallScales() {
+    const multiplier = getScaleMultiplier();
+    for (const b of balls) {
+      b.scale = b.baseScale * multiplier;
+      b.mesh.scale.setScalar(b.scale);
+    }
+  }
+
   function onResize() {
     const w = window.innerWidth;
     const h = window.innerHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
+    updateBallScales();
     if (!composer) initComposer(w, h);
     else composer.setSize(w, h);
   }
