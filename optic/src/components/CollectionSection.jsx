@@ -33,7 +33,7 @@ const products = [
   },
   {
     id: 3,
-    name: "John Jacobs",
+    name: "Crystal Edge",
     tagline: "Rimless Crystal",
     price: "$2,100",
     frameColor: "#c0c0c0",

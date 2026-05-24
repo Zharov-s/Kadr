@@ -93,14 +93,6 @@ export default function HeroSection() {
           </button>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="flex gap-8 mt-14">
-          {[{ value: "2010", label: "Est." }, { value: "200+", label: "Cities" }, { value: "3D", label: "Try On" }].map((s) => (
-            <div key={s.label}>
-              <div className="text-2xl font-extralight neon-text-dim">{s.value}</div>
-              <div className="text-[10px] tracking-[0.3em] uppercase text-white/25 mt-0.5">{s.label}</div>
-            </div>
-          ))}
-        </motion.div>
       </div>
 
       {/* GIANT CINEMATIC SKETCHFAB CANVAS */}
@@ -168,12 +160,6 @@ export default function HeroSection() {
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-px h-10" style={{ background: "linear-gradient(to bottom,#00d4ff80,transparent)" }} />
       </motion.div>
-
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-2">
-        <span className="text-[8px] tracking-[0.4em] uppercase text-white/20" style={{ writingMode: "vertical-rl" }}>
-          Оптика будущего • Est. 2010
-        </span>
-      </div>
 
       {/* Virtual Try-On Modal Overlay */}
       <VirtualFitModal isOpen={isVirtualFitOpen} onClose={() => setIsVirtualFitOpen(false)} />

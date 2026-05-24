@@ -20,14 +20,14 @@ const banners = [
   {
     id: 3,
     image: "images/banner_zodiac.png",
-    brand: "JOHN JACOBS",
+    brand: "",
     title: "ZODIAC",
     subtitle: "See the Stars Align",
   },
   {
     id: 4,
     image: "images/banner_coastline.png",
-    brand: "JOHN JACOBS",
+    brand: "",
     title: "COASTLINE",
     subtitle: "FT. ABHAY DEOL",
   }
