@@ -80673,7 +80673,6 @@ _ScrollTrigger.ScrollTrigger.defaults({
   scroller: ".mainContainer"
 });
 async function setupViewer() {
-  var _document$querySelect2;
   const viewer = new _webgi.ViewerApp({
     canvas: document.getElementById("webgi-canvas"),
     useRgbm: false,
@@ -80966,18 +80965,6 @@ async function setupViewer() {
   //     needsUpdate = false;
   //   }
   // });
-
-  // SCROLL TO TOP
-  (_document$querySelect2 = document.querySelectorAll(".button--footer")) === null || _document$querySelect2 === void 0 || _document$querySelect2.forEach(item => {
-    item.addEventListener("click", () => {
-      const container = document.getElementsByClassName("mainContainer");
-      container[0].scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-      });
-    });
-  });
 }
 setupViewer();
 },{"webgi":"rbXN","./styles.css":"D9Nj","gsap":"f8Z0","gsap/ScrollTrigger":"rpvU","tweakpane":"KT08"}]},{},["H99C"], null)

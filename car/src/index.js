@@ -346,13 +346,6 @@ async function setupViewer() {
   //   }
   // });
 
-  // SCROLL TO TOP
-  document.querySelectorAll(".button--footer")?.forEach((item) => {
-    item.addEventListener("click", () => {
-      const container = document.getElementsByClassName("mainContainer");
-      container[0].scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    });
-  });
 }
 
 setupViewer();
