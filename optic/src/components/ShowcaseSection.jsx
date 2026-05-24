@@ -6,15 +6,15 @@ const banners = [
   {
     id: 1,
     image: "images/banner_switch.png",
-    brand: "hustlr",
-    title: "SWITCH",
+    brand: "",
+    title: "",
     subtitle: "Change your vibe instantly",
   },
   {
     id: 2,
     image: "images/banner_hustlr.png",
     brand: "",
-    title: "hustlr",
+    title: "",
     subtitle: "For the relentless",
   },
   {
@@ -119,9 +119,11 @@ export default function ShowcaseSection() {
                     {item.brand}
                   </span>
                 )}
-                <h3 className="text-2xl md:text-4xl font-light tracking-widest text-white uppercase" style={{ fontFamily: "Georgia, serif" }}>
-                  {item.title}
-                </h3>
+                {item.title && (
+                  <h3 className="text-2xl md:text-4xl font-light tracking-widest text-white uppercase" style={{ fontFamily: "Georgia, serif" }}>
+                    {item.title}
+                  </h3>
+                )}
                 <motion.p
                   className="text-xs text-white/50 tracking-wide mt-2 h-0 overflow-hidden"
                   animate={{ height: isHovered ? "auto" : 0, opacity: isHovered ? 1 : 0, marginTop: isHovered ? 8 : 0 }}
