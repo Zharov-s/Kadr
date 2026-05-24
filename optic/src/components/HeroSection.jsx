@@ -144,7 +144,7 @@ export default function HeroSection() {
               frameBorder="0"
               allowFullScreen={true}
               allow="autoplay; fullscreen; xr-spatial-tracking"
-              src="https://sketchfab.com/models/1afc16df397c40d8a0ff4b61c74ea652/embed?autostart=1&transparent=1&ui_theme=dark&ui_watermark=0&ui_infos=0&ui_stop=0&ui_inspector=0&autospin=0.35"
+              src="https://sketchfab.com/models/1afc16df397c40d8a0ff4b61c74ea652/embed?autostart=1&transparent=1&ui_theme=dark&ui_watermark=0&ui_infos=0&ui_stop=0&ui_inspector=0&ui_hint=0&autospin=0.35"
               className="w-full h-full bg-transparent border-none outline-none ring-0 pointer-events-none"
             />
           </div>
