@@ -100,39 +100,99 @@
 
   mm.add('(min-width: 1024px)', function() {
 
-    /* Даём браузеру отрендерить разметку, затем инициализируем */
-    var initTimeout = setTimeout(function() {
+    var initTimeout = null;
+    var rebuildTimeout = null;
+    var resizeObserver = null;
+    var rightScrollTrigger = null;
+    var headingsTimeline = null;
 
-      var windowH    = window.innerHeight;
-      var imagesH    = rightColEl.offsetHeight; /* натуральная высота правой колонки (как в оригинале) */
+    function getImagesHeight() {
+      return Math.ceil(rightColEl.scrollHeight || rightColEl.offsetHeight);
+    }
+
+    function getScrollDistance() {
+      return Math.max(0, getImagesHeight() - window.innerHeight);
+    }
+
+    function getSectionStart() {
+      return section.getBoundingClientRect().top + window.pageYOffset;
+    }
+
+    function getSectionEnd() {
+      return getSectionStart() + getScrollDistance();
+    }
+
+    function setActiveFromProgress(progress) {
+      if (!imageItems.length) return;
+      var index = Math.round(progress * (imageItems.length - 1));
+      index = Math.max(0, Math.min(imageItems.length - 1, index));
+
+      if (index !== activeIndex) {
+        activeIndex = index;
+        setActiveTitle(index);
+      }
+    }
+
+    function clearDesktopStyles() {
+      gsap.set(section, { clearProps: 'height' });
+      gsap.set(rightColEl, { clearProps: 'transform,y' });
+      gsap.set(titleItems, { clearProps: 'transform,y' });
+    }
+
+    function killDesktopScene() {
+      if (rightScrollTrigger) {
+        rightScrollTrigger.kill();
+        rightScrollTrigger = null;
+      }
+
+      if (headingsTimeline) {
+        headingsTimeline.kill();
+        headingsTimeline = null;
+      }
+
+      clearDesktopStyles();
+    }
+
+    function buildDesktopScene() {
+      var preservedScrollY = window.pageYOffset;
+
+      killDesktopScene();
+      window.scrollTo(0, preservedScrollY);
+
+      var windowH = window.innerHeight;
+      var imagesH = getImagesHeight(); /* натуральная высота правой колонки */
 
       if (imagesH <= windowH) {
         /* Контент не превышает viewport — анимация не нужна */
         return;
       }
 
-      var scrollDist = imagesH - windowH;
-
       /*
        * 1. Растягиваем секцию на высоту всего правого контента.
        *    Это создаёт «фиктивный» scroll-трек для sticky-элемента.
        */
       gsap.set(section, { height: imagesH + 'px' });
+      window.scrollTo(0, preservedScrollY);
 
       /*
        * 2. Сдвигаем правую колонку вверх синхронно со скроллом
        *    (scrub: true = прямая привязка к позиции скролла)
        */
-      gsap.to(rightColEl, {
-        y: -scrollDist,
+      var rightTween = gsap.to(rightColEl, {
+        y: function() { return -getScrollDistance(); },
         ease: 'none',
         scrollTrigger: {
           trigger: section,
-          start: 'top top',
-          end: '+=' + scrollDist,
+          start: getSectionStart,
+          end: getSectionEnd,
           scrub: true,
+          invalidateOnRefresh: true,
+          onUpdate: function(self) {
+            setActiveFromProgress(self.progress);
+          },
         },
       });
+      rightScrollTrigger = rightTween.scrollTrigger;
 
       /*
        * 3. Список заголовков движется параллельно с изображениями:
@@ -142,12 +202,13 @@
       var titlesH = titlesListEl.scrollHeight;
       var titleTargetY = -(titlesH - 300);
 
-      var headingsTimeline = gsap.timeline({
+      headingsTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top top',
-          end: '+=' + scrollDist,
+          start: getSectionStart,
+          end: getSectionEnd,
           scrub: true,
+          invalidateOnRefresh: true,
         },
       });
 
@@ -161,42 +222,64 @@
       });
 
       /*
-       * 4. Observer на каждой карточке — определяет «активную» карточку
-       *    (та, у которой центр находится в зоне 45% от верха/низа viewport)
+       * Обновляем ScrollTrigger после установки высоты и принудительно
+       * синхронизируем состояние с текущим scrollY. Это особенно важно
+       * после reload, когда браузер восстанавливает позицию внутри секции.
        */
-      imageItems.forEach(function(imgItem, i) {
-        ScrollTrigger.create({
-          trigger: imgItem,
-          start: 'top 45%',
-          end: 'bottom 45%',
-          onToggle: function(self) {
-            if (self.isActive) {
-              activeIndex = i;
-              setActiveTitle(i);
-            }
-          },
-        });
-      });
-
-      /* Обновляем ScrollTrigger после установки высоты */
       ScrollTrigger.refresh();
+      window.scrollTo(0, preservedScrollY);
+      ScrollTrigger.update();
+      if (rightScrollTrigger) {
+        setActiveFromProgress(rightScrollTrigger.progress);
+      }
+    }
 
-    }, 100);
+    function scheduleBuild(delay) {
+      clearTimeout(initTimeout);
+      initTimeout = setTimeout(buildDesktopScene, delay || 0);
+    }
+
+    function scheduleRebuild() {
+      clearTimeout(rebuildTimeout);
+      rebuildTimeout = setTimeout(buildDesktopScene, 150);
+    }
+
+    /*
+     * Строим сцену после первичного рендера, затем повторяем после load/pageshow:
+     * на reload браузер может восстановить scrollY уже внутри sticky-секции,
+     * поэтому одиночный ранний расчет часто оставляет ScrollTrigger stale.
+     */
+    scheduleBuild(100);
+    window.addEventListener('load', scheduleRebuild);
+    window.addEventListener('pageshow', scheduleRebuild);
+
+    if (typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(scheduleRebuild);
+      resizeObserver.observe(rightColEl);
+    }
 
     /* Возвращаем cleanup-функцию для gsap.matchMedia */
     return function() {
       clearTimeout(initTimeout);
+      clearTimeout(rebuildTimeout);
+      window.removeEventListener('load', scheduleRebuild);
+      window.removeEventListener('pageshow', scheduleRebuild);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+        resizeObserver = null;
+      }
       /* Сбрасываем инлайн-стиль высоты, чтобы не сломать mobile-вид */
-      gsap.set(section, { clearProps: 'height' });
-      gsap.set(rightColEl, { clearProps: 'transform,y' });
-      ScrollTrigger.getAll().forEach(function(t) { t.kill(); });
+      killDesktopScene();
     };
   });
 
-  /* Cleanup при уничтожении (на случай SPA/hot-reload) */
+  /*
+   * На reload нельзя вызывать mm.revert(): cleanup сбрасывает высоту sticky-секции
+   * до того, как браузер сохранит scrollY, и после перезагрузки позиция
+   * восстанавливается уже по схлопнутому layout.
+   */
   window.addEventListener('beforeunload', function() {
     window.removeEventListener('mousemove', onMouseMove);
-    mm.revert();
   });
 
 })();

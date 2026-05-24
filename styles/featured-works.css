@@ -24,6 +24,7 @@
   width: 100%;
   position: relative;
   display: flex;
+  overflow-anchor: none;
   /* overflow убран: позволяет sticky работать корректно и курсору выходить за границы */
   overflow: visible;
 }
