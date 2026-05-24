@@ -3,13 +3,13 @@ import { motion, useInView } from "framer-motion";
 
 const testimonialsRow1 = [
   {
-    quote: "Wearing Lenskart is experiencing the perfect blend of style and technology. The clarity is unlike anything else.",
+    quote: "Wearing these frames is experiencing the perfect blend of style and technology. The clarity is unlike anything else.",
     author: "Isabella Marchetti",
     title: "Creative Director",
     rating: 5,
   },
   {
-    quote: "Nothing compares to the precision and modern aesthetic of Lenskart's frames. They become a natural part of you.",
+    quote: "Nothing compares to the precision and modern aesthetic of these frames. They become a natural part of you.",
     author: "James Worthington",
     title: "Architect",
     rating: 5,
@@ -48,7 +48,7 @@ const testimonialsRow2 = [
     rating: 5,
   },
   {
-    quote: "A flawless mix of heritage design and ultra-modern materials. Lenskart set a new standard here.",
+    quote: "A flawless mix of heritage design and ultra-modern materials. This collection set a new standard here.",
     author: "David Althaus",
     title: "Industrial Designer",
     rating: 5,

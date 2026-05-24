@@ -56,7 +56,7 @@ export default function VideoSection() {
             transition={{ duration: 1 }}
           >
             <span className="text-xs tracking-[0.5em] uppercase text-[#00d4ff]/70 mb-6 block">
-              — The Lenskart Experience —
+              — The Optical Experience —
             </span>
             <h2
               className="text-5xl md:text-7xl font-extralight leading-none tracking-tight text-white mb-6"
@@ -67,7 +67,7 @@ export default function VideoSection() {
               <span className="neon-text italic">Perfectionists</span>
             </h2>
             <p className="text-white/50 max-w-lg mx-auto text-sm leading-relaxed mb-10">
-              Our designers and engineers are devoted to the pursuit of optical perfection. Each pair of Lenskart glasses is crafted with precision to deliver unparalleled clarity and comfort.
+              Our designers and engineers are devoted to the pursuit of optical perfection. Each pair of glasses is crafted with precision to deliver unparalleled clarity and comfort.
             </p>
             <button className="btn-neon px-10 py-4 rounded-sm">
               Discover Our Process

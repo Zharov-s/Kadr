@@ -28,7 +28,7 @@ export default function StoresSection() {
             Premium Stores
           </h2>
           <p className="text-white/35 mt-4 text-sm max-w-md mx-auto">
-            Experience Lenskart in person. Discover our vast collections, get a precise eye test, and find your perfect frame with 3D try-on.
+            Experience the collection in person. Discover our vast selection, get a precise eye test, and find your perfect frame with 3D try-on.
           </p>
         </motion.div>
 

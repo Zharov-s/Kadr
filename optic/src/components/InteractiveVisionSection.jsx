@@ -258,7 +258,7 @@ export default function InteractiveVisionSection() {
 
       <div className="absolute bottom-10 left-10 z-20 pointer-events-none">
         <div className="text-xl font-extralight tracking-widest text-white uppercase italic" style={{ fontFamily: "Georgia, serif" }}>
-          Lenskart <span className="text-[#00d4ff]">BLU</span>
+          ОПТИКА <span className="text-[#00d4ff]">БУДУЩЕГО</span>
         </div>
         <div className="text-[9px] tracking-[0.3em] text-white/30 uppercase mt-2">
           Experience the Flow

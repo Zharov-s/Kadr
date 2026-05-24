@@ -46,7 +46,7 @@ export default function VirtualFitModal({ isOpen, onClose }) {
 
                 {/* Text Logs Top Left */}
                 <div className="absolute top-16 left-16 flex flex-col gap-1 text-[8px] tracking-[0.3em] font-mono text-[#00d4ff]/70 uppercase">
-                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>LENSKART VIRTUAL_FIT v2.4</motion.span>
+                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>OPTIC FUTURE VIRTUAL_FIT v2.4</motion.span>
                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>Initializing camera protocol...</motion.span>
                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: scanState >= 1 ? 1 : 0 }}>Commencing facial topology scan...</motion.span>
                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: scanState >= 2 ? 1 : 0 }} className="text-white font-bold">Topology Match: 98.4% (Optimal)</motion.span>

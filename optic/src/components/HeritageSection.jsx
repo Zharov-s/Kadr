@@ -4,9 +4,9 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 const timelineEvents = [
   { year: "2010", event: "Founded by Peyush Bansal, revolutionizing eyewear in India." },
   { year: "2015", event: "Introduced 3D try-on technology to the eyewear market." },
-  { year: "2019", event: "Unveiled the Lenskart Omni-channel experience across the nation." },
-  { year: "2021", event: "Launched Lenskart Vision Fund to invest in eyewear startups." },
-  { year: "2026", event: "Introducing the Lenskart Smart Collection — the future of vision." },
+  { year: "2019", event: "Unveiled an omni-channel optical experience across the nation." },
+  { year: "2021", event: "Launched a vision fund to invest in eyewear startups." },
+  { year: "2026", event: "Introducing the Smart Collection — the future of vision." },
 ];
 
 function OctagonAnim() {
@@ -133,10 +133,10 @@ export default function HeritageSection() {
               <span className="neon-text italic">Excellence</span>
             </h2>
             <p className="text-white/35 leading-relaxed mb-6 max-w-md">
-              When Lenskart started its journey, the vision was clear: to bring high-quality, perfectly fitting eyewear to everyone. That promise endures today.
+              When the studio started its journey, the vision was clear: to bring high-quality, perfectly fitting eyewear to everyone. That promise endures today.
             </p>
             <p className="text-white/25 leading-relaxed mb-10 max-w-md text-sm">
-              Today, Lenskart stands at the forefront of eyewear technology and design. No shortcuts. No compromises.
+              Today, the studio stands at the forefront of eyewear technology and design. No shortcuts. No compromises.
             </p>
             <button className="btn-white px-8 py-3.5 rounded-sm">
               Our Full Story

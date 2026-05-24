@@ -93,7 +93,7 @@ export default function ContactSection() {
           className="grid md:grid-cols-3 gap-8 mt-10"
         >
           {[
-            { label: "Email", value: "support@lenskart.com" },
+            { label: "Email", value: "support@opticfuture.com" },
             { label: "Phone", value: "+91 99998 99998" },
             { label: "Headquarters", value: "New Delhi, India" },
           ].map((item) => (

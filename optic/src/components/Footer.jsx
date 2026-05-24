@@ -11,10 +11,10 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 relative overflow-hidden rounded-full">
-                <img src={assetPath("images/logo.jpg")} alt="Lenskart Logo" className="w-full h-full object-cover" />
+                <img src={assetPath("images/logo.jpg")} alt="Оптика будущего" className="w-full h-full object-cover" />
               </div>
-              <span className="text-lg font-bold tracking-[0.3em] uppercase text-white">
-                LENS<span className="neon-text">KART</span>
+              <span className="text-lg font-bold tracking-[0.24em] uppercase text-white">
+                ОПТИКА <span className="neon-text">БУДУЩЕГО</span>
               </span>
             </div>
             <p className="text-white/25 text-xs leading-relaxed max-w-xs mb-6">
@@ -71,7 +71,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] tracking-[0.2em] text-white/18">
-          <p>© {year} Lenskart. All rights reserved.</p>
+          <p>© {year} Оптика будущего. All rights reserved.</p>
           <div className="flex gap-8">
             {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((l) => (
               <a key={l} href="#" className="hover:text-white/40 transition-colors">{l}</a>

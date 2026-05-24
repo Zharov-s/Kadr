@@ -29,10 +29,10 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-3">
             <div className="w-10 h-10 relative overflow-hidden rounded-full">
-              <img src={assetPath("images/logo.jpg")} alt="Lenskart Logo" className="w-full h-full object-cover" />
+              <img src={assetPath("images/logo.jpg")} alt="Оптика будущего" className="w-full h-full object-cover" />
             </div>
-            <span className="text-lg font-bold tracking-[0.3em] uppercase text-white">
-              LENS<span className="neon-text">KART</span>
+            <span className="text-sm md:text-lg font-bold tracking-[0.18em] md:tracking-[0.24em] uppercase text-white">
+              ОПТИКА <span className="neon-text">БУДУЩЕГО</span>
             </span>
           </a>
 

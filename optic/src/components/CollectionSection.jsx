@@ -47,7 +47,7 @@ const products = [
   },
   {
     id: 4,
-    name: "Lenskart BLU",
+    name: "Optic Future BLU",
     tagline: "Square Acetate",
     price: "$750",
     frameColor: "#2a2a2a",

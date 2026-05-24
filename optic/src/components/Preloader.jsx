@@ -33,10 +33,10 @@ export default function Preloader() {
                         className="flex flex-col items-center mb-12"
                     >
                         <div className="w-20 h-20 relative mb-6 overflow-hidden rounded-full" style={{ filter: 'drop-shadow(0 0 8px rgba(0,212,255,0.4))' }}>
-                            <img src={assetPath("images/logo.jpg")} alt="Lenskart Logo" className="w-full h-full object-cover" />
+                            <img src={assetPath("images/logo.jpg")} alt="Оптика будущего" className="w-full h-full object-cover" />
                         </div>
-                        <span className="text-xl font-bold tracking-[0.4em] uppercase text-white">
-                            LENS<span className="text-[#00d4ff]" style={{ textShadow: "0 0 10px #00d4ff" }}>KART</span>
+                        <span className="text-xl font-bold tracking-[0.24em] uppercase text-white">
+                            ОПТИКА <span className="text-[#00d4ff]" style={{ textShadow: "0 0 10px #00d4ff" }}>БУДУЩЕГО</span>
                         </span>
                         <span className="text-[9px] tracking-[0.5em] text-white/40 mt-3 font-light">LUXE EXPERIENCE</span>
                     </motion.div>

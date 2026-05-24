@@ -171,7 +171,7 @@ export default function HeroSection() {
 
       <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-2">
         <span className="text-[8px] tracking-[0.4em] uppercase text-white/20" style={{ writingMode: "vertical-rl" }}>
-          Lenskart • Est. 2010
+          Оптика будущего • Est. 2010
         </span>
       </div>
 
