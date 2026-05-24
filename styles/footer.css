@@ -1,8 +1,8 @@
 footer.site-footer {
     padding: 96px 64px 120px;
     background:
-        radial-gradient(circle at 16% 8%, rgba(16, 208, 127, 0.20), transparent 28%),
-        linear-gradient(135deg, #101010 0%, #171717 48%, #0b2a1d 100%);
+        radial-gradient(circle at 16% 8%, rgba(216, 230, 227, 0.16), transparent 28%),
+        linear-gradient(135deg, #101010 0%, #171717 48%, #242424 100%);
 }
 
 .footer-shell {
@@ -12,7 +12,7 @@ footer.site-footer {
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 34px;
     background:
-        radial-gradient(circle at 78% 74%, rgba(16, 208, 127, 0.10), transparent 30%),
+        radial-gradient(circle at 78% 74%, rgba(216, 230, 227, 0.18), transparent 30%),
         #f4f4f1;
     box-shadow: 0 34px 120px rgba(0, 0, 0, 0.28);
     overflow: hidden;
@@ -105,7 +105,7 @@ footer.site-footer {
 }
 
 .footer-form button:hover {
-    background: #10d07f;
+    background: #d8e6e3;
     color: #101010;
 }
 
@@ -148,7 +148,7 @@ footer.site-footer {
 
 .footer-column a:hover,
 .footer-column .footer-accent-link {
-    color: #0aae6a;
+    color: #151515;
 }
 
 .footer-bottom {
@@ -156,7 +156,7 @@ footer.site-footer {
 }
 
 .footer-brand {
-    color: #10d07f;
+    color: #151515;
     font-size: clamp(120px, 19vw, 300px);
     font-weight: 800;
     line-height: 0.74;
@@ -192,7 +192,7 @@ footer.site-footer {
 }
 
 .footer-meta a:hover {
-    background: #10d07f;
+    background: #d8e6e3;
     color: #101010;
 }
 

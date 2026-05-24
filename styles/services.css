@@ -12,8 +12,8 @@
 
 .block .heading.three span,
 .block .heading.four span {
-    background: linear-gradient(90deg, rgba(16, 208, 127, .32), rgba(16, 208, 127, .04));
-    border-left: 4px solid #10d07f;
+    background: linear-gradient(90deg, rgba(216, 230, 227, .72), rgba(216, 230, 227, .18));
+    border-left: 4px solid #151515;
     color: #1b1b1b;
     padding: 0px 8px;
 }
@@ -48,8 +48,8 @@
 }
 
 .s-flex p:nth-child(2) {
-    color: #0a955a;
-    background: rgba(16, 208, 127, .1);
+    color: #151515;
+    background: rgba(216, 230, 227, .62);
     font-weight: 600;
     font-size: 14px;
     padding: 10px 15px;

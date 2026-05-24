@@ -55,8 +55,8 @@
 }
 
 .price-head p:nth-child(2) {
-    color: #0a955a;
-    background: rgba(16, 208, 127, .1);
+    color: #151515;
+    background: rgba(216, 230, 227, .62);
     font-weight: 600;
     font-size: 14px;
     padding: 10px 15px;

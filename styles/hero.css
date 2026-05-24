@@ -14,7 +14,7 @@
 }
 
 .green {
-    background-color: #10d07f;
+    background-color: #151515;
     border-radius: 50%;
     width: 10px;
     height: 10px;
@@ -30,8 +30,8 @@
 }
 
 .heading span {
-    background: linear-gradient(90deg, rgba(16, 208, 127, .32), rgba(16, 208, 127, .04));
-    border-left: 4px solid #10d07f;
+    background: linear-gradient(90deg, rgba(216, 230, 227, .72), rgba(216, 230, 227, .18));
+    border-left: 4px solid #151515;
     padding: 0px 8px;
 }
 
