@@ -777,6 +777,13 @@ footer.site-footer {
         radial-gradient(circle at 78% 74%, rgba(216, 230, 227, 0.92), transparent 31%),
         var(--soft);
     border-color: rgba(255, 255, 255, 0.18);
+    max-width: 100%;
+}
+
+.footer-top,
+.footer-cta,
+.footer-bottom {
+    min-width: 0;
 }
 
 .footer-brand {
@@ -794,6 +801,7 @@ footer.site-footer {
 
 .footer-form input {
     flex: 1 1 0;
+    width: 0;
     min-width: 0;
     color: var(--ink);
 }
@@ -828,19 +836,26 @@ footer.site-footer {
         display: flex;
         flex-direction: row;
         gap: 6px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
         padding: 6px;
         border-radius: 100px;
     }
 
     .footer-form input {
-        width: auto;
+        flex: 1 1 0;
+        width: 0;
+        min-width: 0;
         height: 48px;
         padding: 0 14px;
         font-size: 14px;
     }
 
     .footer-form button {
-        flex: 0 1 100px;
+        flex: 0 0 100px;
+        width: auto;
+        max-width: 40%;
         min-width: 0;
         height: 48px;
         padding: 0 14px;
@@ -879,6 +894,7 @@ footer.site-footer {
 
     .footer-form button {
         flex-basis: 94px;
+        max-width: 42%;
         height: 46px;
         padding: 0 12px;
         font-size: 13px;
