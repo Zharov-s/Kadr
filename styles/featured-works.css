@@ -23,19 +23,9 @@
 .fw-section {
   width: 100%;
   position: relative;
-  /* -my-7 из оригинала: убирает вертикальные отступы между секциями */
-  margin-top: -28px;
-  margin-bottom: -28px;
   display: flex;
-  overflow: hidden;
-}
-
-/* На устройствах с точным указателем (мышь) overflow убирается,
-   чтобы cursor мог выходить за границы */
-@media (pointer: fine) {
-  .fw-section {
-    overflow: visible;
-  }
+  /* overflow убран: позволяет sticky работать корректно и курсору выходить за границы */
+  overflow: visible;
 }
 
 /* --- Внутренний sticky-враппер --- */
@@ -331,13 +321,13 @@
   grid-template-rows: 1fr;
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   cursor: default;
 }
 
 @media (min-width: 1024px) {
   .fw-image-item {
-    margin-bottom: 28px;
+    margin-bottom: 8px;
   }
 }
 
