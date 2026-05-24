@@ -91,16 +91,6 @@ select {
     }
 }
 
-@media(max-width: 1100px) {
-    .anims div {
-        width: 240px;
-    }
-
-    .benefit-anim {
-        justify-content: center;
-    }
-}
-
 @media(max-width: 1000px) {
     .s-flex.two {
         flex-direction: column;
@@ -424,32 +414,6 @@ select {
     .s-desc {
         font-size: 13.5px;
         margin: 12px 0;
-    }
-
-    .benefit-anim {
-        grid-template-columns: repeat(2, 1fr);
-        height: 400px;
-        gap: 12px;
-        padding: 0 18px;
-        border-radius: 24px;
-    }
-
-    .benefit-anim .anims:nth-child(n+3) {
-        display: none;
-    }
-
-    .anims {
-        gap: 12px;
-    }
-
-    .anims div {
-        height: 160px;
-        border-radius: 22px;
-    }
-
-    .anims div img {
-        max-width: 56px;
-        max-height: 56px;
     }
 
     .pricing {
