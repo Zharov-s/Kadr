@@ -159,11 +159,6 @@ export default function HeroSection() {
           <div className="text-xs text-white/70 font-light">Aerospace Titanium</div>
         </motion.div>
 
-        <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="absolute top-24 left-8 glass-neon px-4 py-3 rounded-sm z-10 pointer-events-none">
-          <div className="text-[9px] tracking-[0.3em] uppercase text-[#00d4ff]/60 mb-0.5">Origin</div>
-          <div className="text-xs text-white/70 font-light">New Delhi, India</div>
-        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}

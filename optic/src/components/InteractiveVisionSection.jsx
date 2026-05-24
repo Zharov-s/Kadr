@@ -22,18 +22,22 @@ export default function InteractiveVisionSection() {
       W = canvas.width = window.innerWidth;
       H = canvas.height = window.innerHeight;
 
-      const fontSize = Math.min(W / 9, 130);
+      const lines = ["ОПТИКА", "БУДУЩЕГО"];
+      const maxTextWidth = W * 0.82;
+      let fontSize = Math.min(W / 8, 130);
 
       ctx.fillStyle = "white";
-      ctx.font = `900 ${fontSize}px "Inter", "Helvetica", sans-serif`;
+      ctx.font = `900 ${fontSize}px "Inter", "Helvetica", "Arial", sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
 
-      const line1 = "FUTURE OF";
-      const line2 = "EYEWEAR";
+      while (fontSize > 48 && Math.max(...lines.map((line) => ctx.measureText(line).width)) > maxTextWidth) {
+        fontSize -= 4;
+        ctx.font = `900 ${fontSize}px "Inter", "Helvetica", "Arial", sans-serif`;
+      }
 
-      ctx.fillText(line1, W / 2, H / 2 - fontSize * 0.6);
-      ctx.fillText(line2, W / 2, H / 2 + fontSize * 0.6);
+      ctx.fillText(lines[0], W / 2, H / 2 - fontSize * 0.62);
+      ctx.fillText(lines[1], W / 2, H / 2 + fontSize * 0.62);
 
       // Extract pixel data for text particles
       const textCoordinates = ctx.getImageData(0, 0, W, H);
