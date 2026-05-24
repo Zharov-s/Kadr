@@ -257,24 +257,9 @@
   color: #ffffff;
 }
 
-/* Мелкая дата рядом с заголовком */
+/* Мелкая дата рядом с заголовком — скрыта */
 .fw-title-date {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 10px;
-  font-weight: 500;
-  margin-top: 6px;
-  transition: opacity 0.5s ease;
-  opacity: 0.35;
-  flex-shrink: 0;
-}
-
-@media (min-width: 1024px) {
-  .fw-title-date { font-size: 11px; margin-top: 8px; }
-}
-
-.fw-title-item.fw-active .fw-title-date,
-.fw-title-item.fw-hovered .fw-title-date {
-  opacity: 1;
+  display: none;
 }
 
 /* ============================================================
@@ -469,10 +454,7 @@
 }
 
 .fw-mobile-date {
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 500;
-  margin-top: 8px;
+  display: none;
 }
 
 .fw-mobile-title-text {
