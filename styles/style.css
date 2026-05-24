@@ -203,6 +203,8 @@ select {
         border-radius: 20px;
         transition: 0.3s;
         transform: translateY(-35px);
+        position: relative;
+        z-index: 1001;
     }
 
     .nav-links a {
