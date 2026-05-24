@@ -1,7 +1,7 @@
-# Project Description: Lenskart Luxe (Glass-Vision-Studio)
+# Project Description: Оптика будущего (Glass-Vision-Studio)
 
 ## What is this project?
-This project is a highly interactive, visually stunning frontend web application designed to redefine the online eyewear shopping experience. It is built conceptually as "Lenskart Luxe" — a premium, high-end tier of Lenskart. It is not just a standard store, but a "cinematic" and engaging journey that uses modern web technologies, smooth animations, and 3D elements to present eyewear.
+This project is a highly interactive, visually stunning frontend web application designed to redefine the online eyewear shopping experience. It is built conceptually as "Оптика будущего" — a premium, high-end tier of Lenskart. It is not just a standard store, but a "cinematic" and engaging journey that uses modern web technologies, smooth animations, and 3D elements to present eyewear.
 
 ## Why was it built?
 Traditional e-commerce websites can sometimes feel flat or boring. This project was built to solve that by providing a "luxury" feel, making the act of browsing for glasses an experience in itself. By using dark mode aesthetics, neon glowing accents (cyan and purple), smooth scrolling, and interactive elements, the website feels premium, futuristic, and engaging for the Indian and global customer base.

@@ -1,4 +1,4 @@
-# Lenskart Luxe - Advanced Eyewear Experience
+# Оптика будущего - Advanced Eyewear Experience
 
 A highly interactive, visually stunning frontend web application built to redefine the online eyewear shopping experience. Designed with a premium 'Luxe' aesthetic, this project combines modern web technologies with advanced CSS and Canvas-based animations to create a cinematic and engaging user flow.
 
