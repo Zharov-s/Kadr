@@ -58,7 +58,11 @@
   border-radius: 1.15rem;         /* ~18px */
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  padding: 0 16px;
+  /* Горизонтальный padding убран полностью:
+     раньше он создавал тёмные полосы по бокам колонки изображений.
+     Теперь изображения доходят до краёв карточки (обрезаются border-radius).
+     Отступ для текста левой колонки задан на .fw-left */
+  padding: 0;
 }
 
 @media (min-width: 768px) {
@@ -70,13 +74,6 @@
 @media (min-width: 1024px) {
   .fw-card {
     height: 100%;
-    padding: 0 32px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .fw-card {
-    padding: 0 40px;
   }
 }
 
@@ -97,6 +94,13 @@
     align-items: center;
     grid-column: span 6;
     height: 96svh;
+    padding-left: 32px;  /* компенсация убранного padding fw-card */
+  }
+}
+
+@media (min-width: 1280px) {
+  .fw-left {
+    padding-left: 40px;
   }
 }
 
@@ -282,6 +286,11 @@
 @media (min-width: 1024px) {
   .fw-right {
     grid-column: 7 / span 6;
+    /* На desktop убираем отступы сверху/снизу: fw-card уже обрезает
+       содержимое через overflow:hidden, а лишние отступы создают
+       тёмные полосы между изображениями и краями карточки */
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -317,16 +326,22 @@
 .fw-image-item {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  /* border-radius убран с карточек: при скруглённых углах тёмный фон
-     "просвечивает" через углы двух соседних карточек, образуя два
-     чёрных пятна на стыке. Скругление сохранено на внешнем fw-card. */
-  border-radius: 0;
   overflow: hidden;
-  /* gap убран: нет зазора — нет тёмной полосы между карточками */
-  margin-bottom: 0;
+  border-radius: 1rem;          /* rounded-2xl — как в оригинале */
+  margin-bottom: 20px;          /* mb-5 — отступ между карточками */
   cursor: default;
+}
+
+@media (min-width: 1024px) {
+  .fw-image-item {
+    border-radius: 1.25rem;     /* чуть крупнее на desktop */
+    margin-bottom: 28px;        /* lg:mb-7 — как в оригинале */
+  }
+}
+
+/* Последняя карточка без нижнего отступа */
+.fw-image-item:last-child {
+  margin-bottom: 0;
 }
 
 /* Слой 1: изображение */
