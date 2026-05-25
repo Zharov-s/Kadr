@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/featured-works.css">
     <link rel="stylesheet" href="./styles/svc-accordion.css">
+    <link rel="stylesheet" href="./styles/logo-ticker.css">
 
     <!-- Иконки Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -97,7 +98,8 @@
           <div class="hero-main">
             <h1 class="hero-heading" aria-label="Сайты, которые объясняют продукт и ведут к действию">
               <span class="hero-hw-line"><span class="hero-hw">Сайты, которые</span></span>
-              <span class="hero-hw-line"><em class="hero-hw">объясняют</em><span class="hero-hw"> продукт</span></span>
+              <span class="hero-hw-line"><span class="hero-hw">объясняют</span></span>
+              <span class="hero-hw-line"><span class="hero-hw">продукт</span></span>
               <span class="hero-hw-line"><span class="hero-hw">и ведут к действию</span></span>
             </h1>
             <div class="hero-actions">
@@ -114,6 +116,45 @@
         </div><!-- /hero-body -->
       </div><!-- /hero-card -->
     </section><!-- /hero-outer -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         Бегущая строка логотипов технологий
+         Трек дублирован дважды → seamless translateX(-50%) loop
+         ═══════════════════════════════════════════════════════ -->
+    <div class="logo-ticker" aria-label="Технологии, которые мы используем">
+      <div class="logo-ticker__track">
+        <!-- ── сет 1 ── -->
+        <div class="logo-ticker__item"><img src="./images/logo/figma_logo.png"          alt="Figma"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/Nextjs-logo.png"         alt="Next.js"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/TypeScript_Logo.png"     alt="TypeScript"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/Tailwind_CSS_logo.png"   alt="Tailwind CSS"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/GSAP_logo.webp"          alt="GSAP"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/JavaScript-logo.png"     alt="JavaScript"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/Python_logo.png"         alt="Python"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/vue.js_logo.png"         alt="Vue.js"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/Sass_Logo.png"           alt="Sass"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/HTML5_logo.png"          alt="HTML5"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/purple-css-logo.webp"    alt="CSS"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/canvas_logo.png"         alt="Canvas"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/PHP-logo.png"            alt="PHP"></div>
+        <div class="logo-ticker__item"><img src="./images/logo/github_logo.png"         alt="GitHub"></div>
+        <!-- ── сет 2 (дубль для seamless loop) ── -->
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/figma_logo.png"          alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/Nextjs-logo.png"         alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/TypeScript_Logo.png"     alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/Tailwind_CSS_logo.png"   alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/GSAP_logo.webp"          alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/JavaScript-logo.png"     alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/Python_logo.png"         alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/vue.js_logo.png"         alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/Sass_Logo.png"           alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/HTML5_logo.png"          alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/purple-css-logo.webp"    alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/canvas_logo.png"         alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/PHP-logo.png"            alt=""></div>
+        <div class="logo-ticker__item" aria-hidden="true"><img src="./images/logo/github_logo.png"         alt=""></div>
+      </div>
+    </div><!-- /logo-ticker -->
 
     <!-- О студии -->
     <div class="about" data-aos="fade-up">

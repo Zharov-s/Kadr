@@ -1,0 +1,104 @@
+/* ═══════════════════════════════════════════════════════
+   Logo Ticker — бегущая строка логотипов под hero
+   Механика: дублированный трек, translateX(-50%) → seamless loop.
+   Дизайн: grayscale + low-opacity → hover показывает цвет.
+   ═══════════════════════════════════════════════════════ */
+
+.logo-ticker {
+  width: 100%;
+  padding: 32px 0;
+  overflow: hidden;
+  position: relative;
+  /* тонкий разделитель сверху */
+  border-top: 1px solid var(--line, #e8e8e8);
+  border-bottom: 1px solid var(--line, #e8e8e8);
+}
+
+/* Fade-маски по краям */
+.logo-ticker::before,
+.logo-ticker::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  z-index: 2;
+  pointer-events: none;
+}
+.logo-ticker::before {
+  left: 0;
+  background: linear-gradient(to right, #fbfbfb 20%, transparent);
+}
+.logo-ticker::after {
+  right: 0;
+  background: linear-gradient(to left, #fbfbfb 20%, transparent);
+}
+
+/* Бесконечный трек */
+.logo-ticker__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: logo-ticker-scroll 34s linear infinite;
+}
+
+/* Один логотип */
+.logo-ticker__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 48px;
+  flex-shrink: 0;
+  /* тонкий разделитель */
+  border-right: 1px solid var(--line, #e8e8e8);
+}
+.logo-ticker__item:first-child {
+  border-left: 1px solid var(--line, #e8e8e8);
+}
+
+.logo-ticker__item img {
+  height: 26px;
+  width: auto;
+  display: block;
+  /* сдержанный grayscale — вписывается в монохромный стиль страницы */
+  filter: grayscale(1) opacity(0.42);
+  transition: filter 320ms ease, opacity 320ms ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (pointer: fine) {
+  .logo-ticker__item img:hover {
+    filter: grayscale(0) opacity(1);
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-ticker { padding: 36px 0; }
+  .logo-ticker__item { padding: 0 56px; }
+  .logo-ticker__item img { height: 28px; }
+}
+
+/* ── Анимация ── */
+@keyframes logo-ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Пауза при ховере на трек */
+@media (pointer: fine) {
+  .logo-ticker:hover .logo-ticker__track {
+    animation-play-state: paused;
+  }
+}
+
+/* Accessibility: убираем анимацию */
+@media (prefers-reduced-motion: reduce) {
+  .logo-ticker__track {
+    animation: none;
+  }
+  .logo-ticker {
+    overflow-x: auto;
+  }
+}
