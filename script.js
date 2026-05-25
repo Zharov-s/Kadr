@@ -117,56 +117,6 @@ AOS.init();
   tl.from('.hero-btn', { y: 14, opacity: 0, duration: 0.55, stagger: 0.10 }, 0.84);
 })();
 
-// ---- Логотип: wiggle loop + magnetic pull ----
-(function () {
-    var logo = document.querySelector('.hero-logo-img');
-    var zone = document.querySelector('.hero-logo');
-    if (!logo || !zone || typeof gsap === 'undefined') return;
-
-    var STRENGTH = 0.38;
-
-    // Точка трансформации — центр логотипа
-    gsap.set(logo, { transformOrigin: '50% 50%' });
-
-    // Wiggle-таймлайн: симулирует CustomWiggle({wiggles: 8, type: easeOut})
-    // Амплитуда убывает геометрически (~×0.65 на каждом обороте)
-    var wiggle = gsap.timeline({ repeat: -1, repeatDelay: 2.5 });
-    wiggle
-        .to(logo, { rotation:  8,    duration: 0.18, ease: 'power2.out'   })
-        .to(logo, { rotation: -5.5,  duration: 0.17, ease: 'power2.inOut' })
-        .to(logo, { rotation:  3.8,  duration: 0.16, ease: 'power2.inOut' })
-        .to(logo, { rotation: -2.6,  duration: 0.15, ease: 'power2.inOut' })
-        .to(logo, { rotation:  1.7,  duration: 0.13, ease: 'power2.inOut' })
-        .to(logo, { rotation: -1.1,  duration: 0.12, ease: 'power2.inOut' })
-        .to(logo, { rotation:  0.6,  duration: 0.10, ease: 'power2.inOut' })
-        .to(logo, { rotation:  0,    duration: 0.09, ease: 'power2.in'    });
-
-    // Magnetic pull — overwrite: "auto" не трогает rotation из wiggle
-    zone.addEventListener('mousemove', function (e) {
-        var rect = zone.getBoundingClientRect();
-        var x = gsap.utils.mapRange(rect.left, rect.right, -rect.width  / 2, rect.width  / 2, e.clientX);
-        var y = gsap.utils.mapRange(rect.top,  rect.bottom, -rect.height / 2, rect.height / 2, e.clientY);
-
-        gsap.to(logo, {
-            x: x * STRENGTH,
-            y: y * STRENGTH,
-            duration: 0.4,
-            ease: 'power2.out',
-            overwrite: 'auto'
-        });
-    });
-
-    // Elastic return — wiggle продолжается
-    zone.addEventListener('mouseleave', function () {
-        gsap.to(logo, {
-            x: 0,
-            y: 0,
-            duration: 0.7,
-            ease: 'elastic.out(1, 0.4)',
-            overwrite: 'auto'
-        });
-    });
-})();
 
 // ---- ScrollMotion Showcase: iframe scale + scroll forwarding ----
 (function () {

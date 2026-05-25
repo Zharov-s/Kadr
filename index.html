@@ -157,12 +157,31 @@
     </div><!-- /logo-ticker -->
 
     <!-- О студии -->
-    <div class="about" data-aos="fade-up">
-        <div>
-            <img src="./images/about.svg" alt="Изображение">
-            <p class="about-desc"><span>Сайт — это разговор между продуктом и человеком.</span> Мы помогаем выстроить его правильно: <span>найти смысл, выстроить структуру и придать форму.</span> <br><br>Работаем с новыми продуктами и редизайном — <span>там, где нужно не просто обновить страницу, а переосмыслить, как продукт разговаривает с аудиторией.</span></p>
+    <section class="about" aria-label="О студии">
+      <div class="about__inner">
+
+        <!-- Левая: метка + описание -->
+        <div class="about__left" data-aos="fade-up" data-aos-delay="80">
+          <div class="about__label">
+            <span class="about__label-dot" aria-hidden="true"></span>
+            О студии
+          </div>
+          <p class="about__desc">
+            <strong>Дизайн-студия из Москвы.</strong> Создаём сайты, которые не просто выглядят — они объясняют продукт, снимают возражения и ведут пользователя к нужному действию.<br><br>Берёмся за новые продукты и редизайн там, где сайт должен работать на бизнес, а не просто занимать место в интернете.
+          </p>
         </div>
-    </div>
+
+        <!-- Правая: крупный заголовок + кнопки -->
+        <div class="about__right" data-aos="fade-up">
+          <h2 class="about__heading">Дизайн,<br>структура<br>и&nbsp;смысл.</h2>
+          <div class="about__actions">
+            <a href="#contact" class="about__btn about__btn--primary">Написать нам</a>
+            <a href="#services-accordion" class="about__btn about__btn--ghost">Наши услуги</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- ═══════════════════════════════════════════════════════
          Наши технические работы
