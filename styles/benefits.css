@@ -1,48 +1,186 @@
+/* ════════════════════════════════════════════════════════
+   Shared: head-flex используется в тарифах и контактах
+   ════════════════════════════════════════════════════════ */
 .head-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
-.s-flex div {
-    width: 50%;
+/* ════════════════════════════════════════════════════════
+   Benefits — «Почему выбирают freymi»
+   Сетка = hero/fw-sticky-wrap: padding 16px → 28px
+   ════════════════════════════════════════════════════════ */
+
+.bnf-section {
+  padding: 72px 16px;
+}
+@media (min-width: 768px) {
+  .bnf-section { padding: 88px 28px; }
+}
+@media (min-width: 1024px) {
+  .bnf-section { padding: 108px 28px; }
 }
 
-.service-block .s-flex div p {
-    font-size: 16px;
+/* ── Шапка: заголовок + кнопка ── */
+.bnf-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+@media (min-width: 768px) {
+  .bnf-head { margin-bottom: 52px; }
 }
 
-.benefit-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.bnf-title {
+  font-size: clamp(2.8rem, 7vw, 5.4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: var(--ink);
+  margin: 0;
+}
+.bnf-title span {
+  color: var(--muted-2);
 }
 
-.other {
-    display: flex;
-    padding-bottom: 40px;
-    font-weight: 600;
+.bnf-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 24px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  background: var(--ink);
+  color: var(--paper) !important;
+  text-decoration: none;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 220ms ease, padding 220ms ease;
+}
+.bnf-cta i {
+  color: var(--paper) !important;
+  font-size: 16px;
+}
+@media (pointer: fine) {
+  .bnf-cta:hover {
+    background: #222;
+    padding: 14px 32px;
+  }
 }
 
-.benefit div {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    border-top: 1px solid #eee;
-    padding: 20px 0px;
-    font-weight: 500;
+/* ── Карточка сравнения ── */
+.bnf-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: clamp(16px, 1.8vw, 26px);
+  overflow: hidden;
+  /* Тонкая рамка видна только между колонками */
+  border: 1px solid var(--line);
+}
+@media (min-width: 640px) {
+  .bnf-card { grid-template-columns: 1fr 1fr; }
 }
 
-.benefit div p {
-    line-height: 1.4em;
+/* ── Колонки ── */
+.bnf-col {
+  padding: 32px 28px;
+}
+@media (min-width: 768px) {
+  .bnf-col { padding: 44px 40px; }
+}
+@media (min-width: 1024px) {
+  .bnf-col { padding: 52px 48px; }
 }
 
-.benefit div i {
-    font-size: 18px;
-    padding: 5px;
-    border-radius: 6px;
-    border: 1px solid #eee;
+/* Freymi: тёмная, сильная */
+.bnf-col--us {
+  background: var(--ink);
 }
 
-.benefit:nth-child(2) p {
-    color: #8b8b8b;
+/* Другие: светлая, приглушённая */
+.bnf-col--them {
+  background: var(--paper);
+  border-left: 1px solid var(--line);
 }
+@media (max-width: 639px) {
+  .bnf-col--them {
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* ── Лейбл колонки ── */
+.bnf-col-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+@media (min-width: 768px) {
+  .bnf-col-label { margin-bottom: 36px; }
+}
+.bnf-col--us  .bnf-col-label { color: rgba(255, 255, 255, 0.36); }
+.bnf-col--them .bnf-col-label { color: var(--muted-2); }
+
+/* ── Список пунктов ── */
+.bnf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.bnf-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-top: 1px solid transparent;
+}
+.bnf-col--us  .bnf-item { border-color: rgba(255, 255, 255, 0.07); }
+.bnf-col--them .bnf-item { border-color: var(--line); }
+
+/* Иконка чекбокса */
+.bnf-check {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 15px;
+  line-height: 1;
+}
+.bnf-col--us  .bnf-check {
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.bnf-col--them .bnf-check {
+  background: var(--soft);
+  color: var(--muted-2);
+  border: 1px solid var(--line);
+}
+
+/* Текст пункта */
+.bnf-item-text {
+  font-size: clamp(13.5px, 1.35vw, 15px);
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: -0.015em;
+}
+.bnf-col--us  .bnf-item-text { color: rgba(255, 255, 255, 0.88); }
+.bnf-col--them .bnf-item-text { color: var(--muted); }
