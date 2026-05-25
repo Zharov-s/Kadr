@@ -83,8 +83,8 @@
   grid-template-columns: 1fr;
   border-radius: clamp(16px, 1.8vw, 26px);
   overflow: hidden;
-  /* Тонкая рамка видна только между колонками */
   border: 1px solid var(--line);
+  background: var(--paper);
 }
 @media (min-width: 640px) {
   .bnf-card { grid-template-columns: 1fr 1fr; }
@@ -101,14 +101,7 @@
   .bnf-col { padding: 52px 48px; }
 }
 
-/* Freymi: тёмная, сильная */
-.bnf-col--us {
-  background: var(--ink);
-}
-
-/* Другие: светлая, приглушённая */
 .bnf-col--them {
-  background: var(--paper);
   border-left: 1px solid var(--line);
 }
 @media (max-width: 639px) {
@@ -130,7 +123,7 @@
 @media (min-width: 768px) {
   .bnf-col-label { margin-bottom: 36px; }
 }
-.bnf-col--us  .bnf-col-label { color: rgba(255, 255, 255, 0.36); }
+.bnf-col--us   .bnf-col-label { color: var(--ink); }
 .bnf-col--them .bnf-col-label { color: var(--muted-2); }
 
 /* ── Список пунктов ── */
@@ -147,10 +140,8 @@
   align-items: center;
   gap: 14px;
   padding: 18px 0;
-  border-top: 1px solid transparent;
+  border-top: 1px solid var(--line);
 }
-.bnf-col--us  .bnf-item { border-color: rgba(255, 255, 255, 0.07); }
-.bnf-col--them .bnf-item { border-color: var(--line); }
 
 /* Иконка чекбокса */
 .bnf-check {
@@ -163,24 +154,17 @@
   flex-shrink: 0;
   font-size: 15px;
   line-height: 1;
-}
-.bnf-col--us  .bnf-check {
-  background: rgba(255, 255, 255, 0.09);
-  color: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-.bnf-col--them .bnf-check {
   background: var(--soft);
-  color: var(--muted-2);
   border: 1px solid var(--line);
 }
+.bnf-col--us   .bnf-check { color: var(--ink); }
+.bnf-col--them .bnf-check { color: var(--muted-2); }
 
 /* Текст пункта */
 .bnf-item-text {
   font-size: clamp(13.5px, 1.35vw, 15px);
-  font-weight: 500;
   line-height: 1.42;
   letter-spacing: -0.015em;
 }
-.bnf-col--us  .bnf-item-text { color: rgba(255, 255, 255, 0.88); }
-.bnf-col--them .bnf-item-text { color: var(--muted); }
+.bnf-col--us   .bnf-item-text { font-weight: 500; color: var(--ink); }
+.bnf-col--them .bnf-item-text { font-weight: 400; color: var(--muted); }
