@@ -893,64 +893,81 @@
         </a>
       </div>
 
-      <!-- Карточка сравнения -->
-      <div class="bnf-card" data-aos="fade-up" data-aos-delay="60">
+      <!-- Floka-style таблица строк -->
+      <div class="bnf-table js-bnf-table">
 
-        <!-- Левая: freymi -->
-        <div class="bnf-col bnf-col--us">
-          <span class="bnf-col-label">Студия freymi</span>
-          <ul class="bnf-list">
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Понимаем продукт до начала дизайна</span>
-            </li>
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Работаем по актуальным стандартам</span>
-            </li>
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Не шаблоны — ответ на конкретную задачу</span>
-            </li>
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Результат важнее процесса</span>
-            </li>
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Проверяем каждый сценарий до запуска</span>
-            </li>
-          </ul>
+        <!-- Заголовки колонок -->
+        <div class="bnf-col-headers">
+          <span class="bnf-col-header">Студия freymi</span>
+          <span class="bnf-col-header">Другие студии</span>
         </div>
 
-        <!-- Правая: другие -->
-        <div class="bnf-col bnf-col--them">
-          <span class="bnf-col-label">Другие студии</span>
-          <ul class="bnf-list">
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Неизвестно, кто именно делает проект</span>
-            </li>
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Шаблоны из прошлого десятилетия</span>
-            </li>
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Один и тот же визуал для всех клиентов</span>
-            </li>
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Сроки и процессы важнее вашего результата</span>
-            </li>
-            <li class="bnf-item">
-              <span class="bnf-check"><i class='bx bx-check' aria-hidden="true"></i></span>
-              <span class="bnf-item-text">Сдали — и забыли</span>
-            </li>
-          </ul>
+        <!-- Строка 1 -->
+        <div class="bnf-row js-bnf-row">
+          <div class="bnf-row-blob" aria-hidden="true"></div>
+          <div class="bnf-row-content">
+            <div class="bnf-row-cell bnf-row-cell--us">
+              <span class="bnf-row-text">Понимаем продукт до начала дизайна</span>
+            </div>
+            <div class="bnf-row-cell bnf-row-cell--them">
+              <span class="bnf-row-text">Неизвестно, кто именно делает проект</span>
+            </div>
+          </div>
         </div>
 
-      </div>
+        <!-- Строка 2 -->
+        <div class="bnf-row js-bnf-row">
+          <div class="bnf-row-blob" aria-hidden="true"></div>
+          <div class="bnf-row-content">
+            <div class="bnf-row-cell bnf-row-cell--us">
+              <span class="bnf-row-text">Работаем по актуальным стандартам</span>
+            </div>
+            <div class="bnf-row-cell bnf-row-cell--them">
+              <span class="bnf-row-text">Шаблоны из прошлого десятилетия</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Строка 3 -->
+        <div class="bnf-row js-bnf-row">
+          <div class="bnf-row-blob" aria-hidden="true"></div>
+          <div class="bnf-row-content">
+            <div class="bnf-row-cell bnf-row-cell--us">
+              <span class="bnf-row-text">Не шаблоны — ответ на конкретную задачу</span>
+            </div>
+            <div class="bnf-row-cell bnf-row-cell--them">
+              <span class="bnf-row-text">Один и тот же визуал для всех клиентов</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Строка 4 -->
+        <div class="bnf-row js-bnf-row">
+          <div class="bnf-row-blob" aria-hidden="true"></div>
+          <div class="bnf-row-content">
+            <div class="bnf-row-cell bnf-row-cell--us">
+              <span class="bnf-row-text">Результат важнее процесса</span>
+            </div>
+            <div class="bnf-row-cell bnf-row-cell--them">
+              <span class="bnf-row-text">Сроки и процессы важнее вашего результата</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Строка 5 -->
+        <div class="bnf-row js-bnf-row">
+          <div class="bnf-row-blob" aria-hidden="true"></div>
+          <div class="bnf-row-content">
+            <div class="bnf-row-cell bnf-row-cell--us">
+              <span class="bnf-row-text">Проверяем каждый сценарий до запуска</span>
+            </div>
+            <div class="bnf-row-cell bnf-row-cell--them">
+              <span class="bnf-row-text">Сдали — и забыли</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /bnf-table -->
     </section>
 
     <!-- ScrollMotion Showcase -->

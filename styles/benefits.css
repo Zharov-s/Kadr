@@ -11,18 +11,15 @@
 
 /* ════════════════════════════════════════════════════════
    Benefits — «Почему выбирают freymi»
-   Сетка = hero/fw-sticky-wrap: padding 16px → 28px
+   Механика: floka-style строки с blob-ховером и GSAP-входом
+   Сетка: padding 16px → 28px (= hero)
    ════════════════════════════════════════════════════════ */
 
 .bnf-section {
   padding: 72px 16px;
 }
-@media (min-width: 768px) {
-  .bnf-section { padding: 88px 28px; }
-}
-@media (min-width: 1024px) {
-  .bnf-section { padding: 108px 28px; }
-}
+@media (min-width: 768px) { .bnf-section { padding: 88px 28px; } }
+@media (min-width: 1024px) { .bnf-section { padding: 108px 28px; } }
 
 /* ── Шапка: заголовок + кнопка ── */
 .bnf-head {
@@ -31,11 +28,9 @@
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 52px;
 }
-@media (min-width: 768px) {
-  .bnf-head { margin-bottom: 52px; }
-}
+@media (min-width: 768px) { .bnf-head { margin-bottom: 64px; } }
 
 .bnf-title {
   font-size: clamp(2.8rem, 7vw, 5.4rem);
@@ -45,9 +40,7 @@
   color: var(--ink);
   margin: 0;
 }
-.bnf-title span {
-  color: var(--muted-2);
-}
+.bnf-title span { color: var(--muted-2); }
 
 .bnf-cta {
   display: inline-flex;
@@ -66,105 +59,115 @@
   flex-shrink: 0;
   transition: background 220ms ease, padding 220ms ease;
 }
-.bnf-cta i {
-  color: var(--paper) !important;
-  font-size: 16px;
-}
+.bnf-cta i { color: var(--paper) !important; font-size: 16px; }
 @media (pointer: fine) {
-  .bnf-cta:hover {
-    background: #222;
-    padding: 14px 32px;
-  }
+  .bnf-cta:hover { background: #222; padding: 14px 32px; }
 }
 
-/* ── Карточка сравнения ── */
-.bnf-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  border-radius: clamp(16px, 1.8vw, 26px);
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--paper);
-}
-@media (min-width: 640px) {
-  .bnf-card { grid-template-columns: 1fr 1fr; }
-}
+/* ════════════════════════════════════════════════════════
+   Таблица-строки в стиле floka
+   ════════════════════════════════════════════════════════ */
 
-/* ── Колонки ── */
-.bnf-col {
-  padding: 32px 28px;
-}
-@media (min-width: 768px) {
-  .bnf-col { padding: 44px 40px; }
-}
-@media (min-width: 1024px) {
-  .bnf-col { padding: 52px 48px; }
-}
-
-.bnf-col--them {
-  border-left: 1px solid var(--line);
-}
-@media (max-width: 639px) {
-  .bnf-col--them {
-    border-left: none;
-    border-top: 1px solid var(--line);
-  }
-}
-
-/* ── Лейбл колонки ── */
-.bnf-col-label {
-  display: block;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 28px;
-}
-@media (min-width: 768px) {
-  .bnf-col-label { margin-bottom: 36px; }
-}
-.bnf-col--us   .bnf-col-label { color: var(--ink); }
-.bnf-col--them .bnf-col-label { color: var(--muted-2); }
-
-/* ── Список пунктов ── */
-.bnf-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.bnf-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 18px 0;
+.bnf-table {
   border-top: 1px solid var(--line);
 }
 
-/* Иконка чекбокса */
-.bnf-check {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+/* Заголовки колонок */
+.bnf-col-headers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 18px 0 22px;
+}
+.bnf-col-header {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.bnf-col-header:last-child {
+  padding-left: 28px;
+}
+@media (min-width: 768px) {
+  .bnf-col-header:last-child { padding-left: 40px; }
+}
+
+/* ── Строка ── */
+.bnf-row {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  /* убираем курсор на десктопе — blob заменяет его */
+}
+@media (pointer: fine) {
+  .bnf-row { cursor: none; }
+}
+
+/* Blob — следует за мышью */
+.bnf-row-blob {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: var(--soft-2, #eeeeeb);
+  border-radius: 50%;
+  filter: blur(72px);
+  pointer-events: none;
+  /* центр на курсоре */
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: -999px;   /* вне экрана по умолчанию */
+  opacity: 0;
+  transition: opacity 280ms ease;
+  z-index: 0;
+  will-change: left, top;
+}
+.bnf-row.is-hovered .bnf-row-blob { opacity: 1; }
+
+/* Контент поверх blob */
+.bnf-row-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── Ячейка ── */
+.bnf-row-cell {
+  padding: 26px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 15px;
-  line-height: 1;
-  background: var(--soft);
-  border: 1px solid var(--line);
 }
-.bnf-col--us   .bnf-check { color: var(--ink); }
-.bnf-col--them .bnf-check { color: var(--muted-2); }
+.bnf-row-cell--us   { padding-right: 20px; }
+.bnf-row-cell--them {
+  padding-left: 28px;
+  border-left: 1px solid var(--line);
+}
+@media (min-width: 768px) {
+  .bnf-row-cell { padding-top: 30px; padding-bottom: 30px; }
+  .bnf-row-cell--us   { padding-right: 32px; }
+  .bnf-row-cell--them { padding-left: 40px; }
+}
 
-/* Текст пункта */
-.bnf-item-text {
-  font-size: clamp(13.5px, 1.35vw, 15px);
-  line-height: 1.42;
-  letter-spacing: -0.015em;
+/* Текст */
+.bnf-row-text {
+  font-size: clamp(11.5px, 1.2vw, 13.5px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  line-height: 1.5;
+  transition: color 200ms ease;
 }
-.bnf-col--us   .bnf-item-text { font-weight: 500; color: var(--ink); }
-.bnf-col--them .bnf-item-text { font-weight: 400; color: var(--muted); }
+.bnf-row-cell--us   .bnf-row-text { color: var(--ink); }
+.bnf-row-cell--them .bnf-row-text { color: var(--muted-2); font-weight: 400; }
+
+/* Тонкая полоска-акцент слева у freymi-ячейки на ховере */
+.bnf-row.is-hovered .bnf-row-cell--us .bnf-row-text { color: #000; }
+
+/* ── Mobile (<480px): стек ── */
+@media (max-width: 479px) {
+  .bnf-row-content    { grid-template-columns: 1fr; }
+  .bnf-col-headers    { grid-template-columns: 1fr; gap: 2px; }
+  .bnf-col-header:last-child { padding-left: 0; }
+  .bnf-row-cell--them { border-left: none; border-top: 1px solid var(--line); padding-left: 0; }
+  .bnf-row-cell--us   { padding-right: 0; }
+}

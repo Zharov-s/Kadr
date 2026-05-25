@@ -1,4 +1,45 @@
 
+// ── Benefits: floka-style blob hover + GSAP stagger entrance ─────────────────
+(function () {
+  // ── Blob следует за мышью ──
+  document.querySelectorAll('.js-bnf-row').forEach(function (row) {
+    var blob = row.querySelector('.bnf-row-blob');
+    if (!blob) return;
+
+    row.addEventListener('mouseenter', function () {
+      row.classList.add('is-hovered');
+    });
+    row.addEventListener('mouseleave', function () {
+      row.classList.remove('is-hovered');
+    });
+    row.addEventListener('mousemove', function (e) {
+      var rect = row.getBoundingClientRect();
+      blob.style.left = (e.clientX - rect.left) + 'px';
+      blob.style.top  = (e.clientY - rect.top)  + 'px';
+    });
+  });
+
+  // ── GSAP stagger entrance (только pointer:fine / нет reduced-motion) ──
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var table = document.querySelector('.js-bnf-table');
+  if (!table) return;
+
+  gsap.from('.bnf-col-headers', {
+    opacity: 0, y: 10, duration: 0.45, ease: 'power2.out',
+    scrollTrigger: { trigger: table, start: 'top 88%', once: true }
+  });
+
+  gsap.from('.js-bnf-row', {
+    opacity: 0, y: 16,
+    duration: 0.52,
+    stagger: 0.06,
+    ease: 'power2.out',
+    scrollTrigger: { trigger: table, start: 'top 85%', once: true }
+  });
+})();
+
 // ── Services Accordion: GSAP entrance animations ─────────────────────────────
 (function () {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
