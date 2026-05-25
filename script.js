@@ -1,25 +1,52 @@
 
 // ── Benefits: floka-style blob hover + GSAP stagger entrance ─────────────────
 (function () {
-  // ── Blob следует за мышью ──
-  document.querySelectorAll('.js-bnf-row').forEach(function (row) {
-    var blob = row.querySelector('.bnf-row-blob');
-    if (!blob) return;
+  var rows = document.querySelectorAll('.js-bnf-row');
+  if (!rows.length) return;
 
-    row.addEventListener('mouseenter', function () {
-      row.classList.add('is-hovered');
+  // ── Blob: GSAP управляет позицией, opacity и scale ──
+  // xPercent/yPercent = translate(-50%,-50%) — центрирует blob на курсоре
+  // scale 0.7→1 при входе, 1→0.7 при выходе (как в floka framer-motion)
+  rows.forEach(function (row) {
+    var blob = row.querySelector('.bnf-row-blob');
+    if (!blob || typeof gsap === 'undefined') return;
+
+    // Начальное состояние: центрирован относительно себя, невидим
+    gsap.set(blob, { xPercent: -50, yPercent: -50, scale: 0.7, opacity: 0 });
+
+    row.addEventListener('mouseenter', function (e) {
+      var rect = row.getBoundingClientRect();
+      // Мгновенно ставим в точку под курсором — без анимации, чтобы не прыгал
+      gsap.set(blob, {
+        left: e.clientX - rect.left,
+        top:  e.clientY - rect.top
+      });
+      // Затем появление с scale-анимацией
+      gsap.to(blob, {
+        opacity: 1, scale: 1,
+        duration: 0.4, ease: 'power2.out', overwrite: 'auto'
+      });
     });
+
     row.addEventListener('mouseleave', function () {
-      row.classList.remove('is-hovered');
+      gsap.to(blob, {
+        opacity: 0, scale: 0.7,
+        duration: 0.35, ease: 'power2.in', overwrite: 'auto'
+      });
     });
+
+    // Плавное следование за курсором с небольшим лагом
     row.addEventListener('mousemove', function (e) {
       var rect = row.getBoundingClientRect();
-      blob.style.left = (e.clientX - rect.left) + 'px';
-      blob.style.top  = (e.clientY - rect.top)  + 'px';
+      gsap.to(blob, {
+        left: e.clientX - rect.left,
+        top:  e.clientY - rect.top,
+        duration: 0.18, ease: 'none', overwrite: 'auto'
+      });
     });
   });
 
-  // ── GSAP stagger entrance (только pointer:fine / нет reduced-motion) ──
+  // ── GSAP ScrollTrigger: stagger entrance ──
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -33,9 +60,7 @@
 
   gsap.from('.js-bnf-row', {
     opacity: 0, y: 16,
-    duration: 0.52,
-    stagger: 0.06,
-    ease: 'power2.out',
+    duration: 0.52, stagger: 0.06, ease: 'power2.out',
     scrollTrigger: { trigger: table, start: 'top 85%', once: true }
   });
 })();

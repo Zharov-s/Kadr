@@ -97,13 +97,9 @@
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
-  /* убираем курсор на десктопе — blob заменяет его */
-}
-@media (pointer: fine) {
-  .bnf-row { cursor: none; }
 }
 
-/* Blob — следует за мышью */
+/* Blob — GSAP полностью управляет позицией, opacity и scale */
 .bnf-row-blob {
   position: absolute;
   width: 260px;
@@ -112,16 +108,13 @@
   border-radius: 50%;
   filter: blur(72px);
   pointer-events: none;
-  /* центр на курсоре */
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: -999px;   /* вне экрана по умолчанию */
+  /* transform/opacity/left/top — только через GSAP, не через CSS */
   opacity: 0;
-  transition: opacity 280ms ease;
+  top: 0;
+  left: 0;
   z-index: 0;
-  will-change: left, top;
+  will-change: transform, opacity, left, top;
 }
-.bnf-row.is-hovered .bnf-row-blob { opacity: 1; }
 
 /* Контент поверх blob */
 .bnf-row-content {
@@ -160,8 +153,8 @@
 .bnf-row-cell--us   .bnf-row-text { color: var(--ink); }
 .bnf-row-cell--them .bnf-row-text { color: var(--muted-2); font-weight: 400; }
 
-/* Тонкая полоска-акцент слева у freymi-ячейки на ховере */
-.bnf-row.is-hovered .bnf-row-cell--us .bnf-row-text { color: #000; }
+/* Усиление текста freymi на ховере строки */
+.bnf-row:hover .bnf-row-cell--us .bnf-row-text { color: #000; }
 
 /* ── Mobile (<480px): стек ── */
 @media (max-width: 479px) {
