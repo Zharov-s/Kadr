@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="./styles/navbar.css">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/featured-works.css">
+    <link rel="stylesheet" href="./styles/svc-accordion.css">
 
     <!-- Иконки Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -601,6 +602,197 @@
             </div>
         </div>
     </div>
+
+    <!-- ══════════════════════════════════════════════════
+         Услуги — Accordion (riseatseven.com/services/ pattern)
+         CSS sticky stacking: каждая панель прилипает к top: N×72px
+         ══════════════════════════════════════════════════ -->
+    <section class="svc-acc-section" id="services-accordion" aria-label="Услуги freymi">
+      <div class="svc-acc-inner">
+
+        <!-- Heading -->
+        <div class="svc-acc-head">
+          <h2 class="svc-acc-title" aria-label="Наши услуги">
+            <span class="svc-acc-word-wrap"><span class="svc-acc-word js-svc-word">Наши</span></span>
+            <span class="svc-acc-head-img js-svc-head-img" aria-hidden="true">
+              <img src="./images/services-acc/1.webp" alt="" loading="lazy">
+            </span>
+            <span class="svc-acc-word-wrap"><span class="svc-acc-word js-svc-word">услуги</span></span>
+          </h2>
+        </div>
+
+        <!-- Panels -->
+        <div class="svc-acc-panels">
+
+          <!-- 01 Сайты под ключ -->
+          <div class="svc-panel js-svc-panel" style="--pi: 0">
+            <div class="svc-panel-hdr">
+              <span class="svc-panel-num">01</span>
+              <span class="svc-panel-hdr-title">Сайты под ключ</span>
+              <div class="svc-panel-thumb"><img src="./images/services-acc/1.webp" alt="" loading="lazy"></div>
+            </div>
+            <div class="svc-panel-body">
+              <div class="svc-panel-body-in">
+                <div class="svc-panel-left">
+                  <h3 class="svc-panel-name">Сайты под ключ</h3>
+                  <p class="svc-panel-desc">От структуры и прототипа — до верстки и запуска. Делаем сайт, который понятен с первого экрана и ведёт к целевому действию.</p>
+                  <div class="svc-panel-tags">
+                    <span class="svc-panel-tag">Прототипирование</span>
+                    <span class="svc-panel-tag">Верстка</span>
+                    <span class="svc-panel-tag">Запуск</span>
+                    <span class="svc-panel-tag">CMS-интеграция</span>
+                  </div>
+                </div>
+                <div class="svc-panel-img">
+                  <img src="./images/services-acc/1.webp" alt="Сайты под ключ" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 UX/UI-проектирование -->
+          <div class="svc-panel js-svc-panel" style="--pi: 1">
+            <div class="svc-panel-hdr">
+              <span class="svc-panel-num">02</span>
+              <span class="svc-panel-hdr-title">UX/UI-проектирование</span>
+              <div class="svc-panel-thumb"><img src="./images/services-acc/4.webp" alt="" loading="lazy"></div>
+            </div>
+            <div class="svc-panel-body">
+              <div class="svc-panel-body-in">
+                <div class="svc-panel-left">
+                  <h3 class="svc-panel-name">UX/UI-проектирование</h3>
+                  <p class="svc-panel-desc">Проектируем сценарии, прототипы и визуальные системы. Для сайтов, которые должны работать, а не просто выглядеть.</p>
+                  <div class="svc-panel-tags">
+                    <span class="svc-panel-tag">UX-исследование</span>
+                    <span class="svc-panel-tag">Прототип</span>
+                    <span class="svc-panel-tag">Дизайн-система</span>
+                    <span class="svc-panel-tag">Интерфейс</span>
+                  </div>
+                </div>
+                <div class="svc-panel-img">
+                  <img src="./images/services-acc/4.webp" alt="UX/UI-проектирование" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 Редизайн и развитие -->
+          <div class="svc-panel js-svc-panel" style="--pi: 2">
+            <div class="svc-panel-hdr">
+              <span class="svc-panel-num">03</span>
+              <span class="svc-panel-hdr-title">Редизайн и развитие</span>
+              <div class="svc-panel-thumb"><img src="./images/services-acc/5.webp" alt="" loading="lazy"></div>
+            </div>
+            <div class="svc-panel-body">
+              <div class="svc-panel-body-in">
+                <div class="svc-panel-left">
+                  <h3 class="svc-panel-name">Редизайн и развитие</h3>
+                  <p class="svc-panel-desc">Разбираемся, что работает, а что мешает. Обновляем дизайн и структуру — постепенно или за один этап.</p>
+                  <div class="svc-panel-tags">
+                    <span class="svc-panel-tag">Аудит</span>
+                    <span class="svc-panel-tag">Редизайн</span>
+                    <span class="svc-panel-tag">Оптимизация</span>
+                    <span class="svc-panel-tag">Итерации</span>
+                  </div>
+                </div>
+                <div class="svc-panel-img">
+                  <img src="./images/services-acc/5.webp" alt="Редизайн и развитие" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 Брендинг и айдентика -->
+          <div class="svc-panel js-svc-panel" style="--pi: 3">
+            <div class="svc-panel-hdr">
+              <span class="svc-panel-num">04</span>
+              <span class="svc-panel-hdr-title">Брендинг и айдентика</span>
+              <div class="svc-panel-thumb"><img src="./images/services-acc/2.webp" alt="" loading="lazy"></div>
+            </div>
+            <div class="svc-panel-body">
+              <div class="svc-panel-body-in">
+                <div class="svc-panel-left">
+                  <h3 class="svc-panel-name">Брендинг и айдентика</h3>
+                  <p class="svc-panel-desc">Создаём визуальный язык бренда: логотип, типографику, цвет и систему применения на всех носителях.</p>
+                  <div class="svc-panel-tags">
+                    <span class="svc-panel-tag">Логотип</span>
+                    <span class="svc-panel-tag">Гайдлайн</span>
+                    <span class="svc-panel-tag">Фирменный стиль</span>
+                  </div>
+                </div>
+                <div class="svc-panel-img">
+                  <img src="./images/services-acc/2.webp" alt="Брендинг и айдентика" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 Лендинги и промо -->
+          <div class="svc-panel js-svc-panel" style="--pi: 4">
+            <div class="svc-panel-hdr">
+              <span class="svc-panel-num">05</span>
+              <span class="svc-panel-hdr-title">Лендинги и промо</span>
+              <div class="svc-panel-thumb"><img src="./images/services-acc/3.webp" alt="" loading="lazy"></div>
+            </div>
+            <div class="svc-panel-body">
+              <div class="svc-panel-body-in">
+                <div class="svc-panel-left">
+                  <h3 class="svc-panel-name">Лендинги и промо</h3>
+                  <p class="svc-panel-desc">Быстрые, точные и конверсионные страницы под конкретную задачу: запуск продукта, продажа, презентация.</p>
+                  <div class="svc-panel-tags">
+                    <span class="svc-panel-tag">Лендинг</span>
+                    <span class="svc-panel-tag">Промо-страница</span>
+                    <span class="svc-panel-tag">Конверсия</span>
+                  </div>
+                </div>
+                <div class="svc-panel-img">
+                  <img src="./images/services-acc/3.webp" alt="Лендинги и промо" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 Поддержка сайтов -->
+          <div class="svc-panel js-svc-panel" style="--pi: 5">
+            <div class="svc-panel-hdr">
+              <span class="svc-panel-num">06</span>
+              <span class="svc-panel-hdr-title">Поддержка сайтов</span>
+              <div class="svc-panel-thumb"><img src="./images/services-acc/6.webp" alt="" loading="lazy"></div>
+            </div>
+            <div class="svc-panel-body">
+              <div class="svc-panel-body-in">
+                <div class="svc-panel-left">
+                  <h3 class="svc-panel-name">Поддержка сайтов</h3>
+                  <p class="svc-panel-desc">Следим за работоспособностью, вносим правки и помогаем развивать сайт после запуска — без лишних вопросов.</p>
+                  <div class="svc-panel-tags">
+                    <span class="svc-panel-tag">Обновления</span>
+                    <span class="svc-panel-tag">Мониторинг</span>
+                    <span class="svc-panel-tag">Сопровождение</span>
+                  </div>
+                </div>
+                <div class="svc-panel-img">
+                  <img src="./images/services-acc/6.webp" alt="Поддержка сайтов" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /svc-acc-panels -->
+
+        <!-- Мобильная CTA (скрыта на десктопе) -->
+        <div class="svc-acc-mobile-cta">
+          <a href="#contact">
+            <span>Обсудить проект</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </a>
+        </div>
+
+      </div><!-- /svc-acc-inner -->
+    </section><!-- /services-accordion -->
 
     <!-- Услуги -->
     <div class="block" id="services">

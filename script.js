@@ -1,4 +1,58 @@
 
+// ── Services Accordion: GSAP entrance animations ─────────────────────────────
+(function () {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // 1. Заголовок: слова выезжают снизу (clip-reveal)
+  var words = document.querySelectorAll('.js-svc-word');
+  if (words.length) {
+    gsap.from(words, {
+      y: '100%',
+      opacity: 0,
+      duration: 0.9,
+      stagger: 0.10,
+      ease: 'power4.out',
+      scrollTrigger: {
+        trigger: '.svc-acc-head',
+        start: 'top 88%'
+      }
+    });
+  }
+
+  // 2. Превью-картинка в заголовке: scale 0 → 1
+  var headImg = document.querySelector('.js-svc-head-img');
+  if (headImg) {
+    gsap.from(headImg, {
+      scale: 0,
+      opacity: 0,
+      duration: 1.0,
+      ease: 'back.out(1.7)',
+      scrollTrigger: {
+        trigger: '.svc-acc-head',
+        start: 'top 88%'
+      }
+    });
+  }
+
+  // 3. Тело каждой панели: fade-up при первом появлении
+  document.querySelectorAll('.js-svc-panel').forEach(function (panel) {
+    var body = panel.querySelector('.svc-panel-body-in');
+    if (!body) return;
+    gsap.from(body, {
+      y: 36,
+      opacity: 0,
+      duration: 0.75,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: panel,
+        start: 'top 82%',
+        once: true   // анимируется один раз — не повторяется при обратном скроле
+      }
+    });
+  });
+})();
+
 // FAQ section
 document.querySelectorAll('.quest').forEach(item => {
     item.addEventListener('click', () => {

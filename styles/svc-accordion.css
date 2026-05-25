@@ -1,0 +1,350 @@
+/* ════════════════════════════════════════════════════════
+   Services Accordion
+   Механика: CSS sticky stacking — каждая панель прилипает
+   к верху с offset = N × HEADER_H (72px), накрывая тело
+   предыдущей. Анимации входа через GSAP ScrollTrigger.
+
+   Сетка: padding-inline 16px → 28px — в точности как у
+   .fw-sticky-wrap в featured-works.css.
+   Бордеры-полосы идут от края до края (секция без
+   боковых отступов, отступы только у внутренних элементов).
+   ════════════════════════════════════════════════════════ */
+
+/* ── Секция-обёртка: только вертикальные отступы ──
+   Боковых padding нет — бордеры пойдут во всю ширину. */
+.svc-acc-section {
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 0;
+  /* overflow: visible — обязателен для sticky */
+}
+@media (min-width: 768px) {
+  .svc-acc-section { padding-top: 72px; }
+}
+
+/* ── Внутренний враппер: без боковых отступов ──
+   Отступы прописаны у каждого дочернего элемента. */
+.svc-acc-inner {
+  /* intentionally empty — padding делегирован дочерним */
+}
+
+/* ── Heading-строка ──
+   Боковой padding = fw-sticky-wrap: 16px → 28px */
+.svc-acc-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  padding: 0 16px 20px;
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 768px) {
+  .svc-acc-head { padding: 0 28px 20px; }
+}
+
+.svc-acc-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.0;
+  color: var(--ink);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.28em;
+}
+
+/* Контейнер строки — overflow:hidden клипирует clip-reveal */
+.svc-acc-word-wrap {
+  display: block;
+  overflow: hidden;
+  line-height: 1.12;
+}
+/* Анимируемая единица (GSAP translateY 100% → 0) */
+.svc-acc-word {
+  display: inline-block;
+}
+
+/* Мини-превью в заголовке (между словами) */
+.svc-acc-head-img {
+  display: inline-block;
+  width: clamp(52px, 5.5vw, 82px);
+  aspect-ratio: 1;
+  border-radius: 14%;
+  overflow: hidden;
+  background: var(--soft);
+  vertical-align: middle;
+  position: relative;
+  flex-shrink: 0;
+}
+.svc-acc-head-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Панели-контейнер: без отступов — полосы во всю ширину ── */
+.svc-acc-panels {
+  /* Пусто — sticky работает внутри */
+}
+
+/* ─────────────────────────────────────────────────────────
+   Одна панель
+   --pi : порядковый индекс (0 … 5) — задан инлайн
+   ──────────────────────────────────────────────────────── */
+.svc-panel {
+  /* Фон = цвет body — нужен непрозрачным для sticky stacking */
+  background: #fbfbfb;
+  /* Полоса-разделитель — full-width */
+  border-bottom: 1px solid var(--line);
+}
+
+/* Desktop: sticky stacking */
+@media (min-width: 768px) {
+  .svc-panel {
+    position: sticky;
+    top: calc(var(--pi, 0) * 72px);
+    z-index: calc(10 + var(--pi, 0));
+  }
+}
+
+/* ── Collapsed header row (72px, всегда виден как «таб») ──
+   Боковой padding = fw-sticky-wrap */
+.svc-panel-hdr {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  gap: 14px;
+  padding-inline: 16px;
+}
+@media (min-width: 768px) {
+  .svc-panel-hdr { padding-inline: 28px; }
+}
+
+.svc-panel-num {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--muted-2);
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.svc-panel-hdr-title {
+  flex: 1;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.svc-panel-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.svc-panel-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Expanded body ── */
+.svc-panel-body {
+  overflow: hidden;
+}
+
+/* Боковой padding = fw-sticky-wrap */
+.svc-panel-body-in {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  padding: 20px 16px 52px;
+}
+@media (min-width: 640px) {
+  .svc-panel-body-in {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 32px 28px 60px;
+  }
+}
+@media (min-width: 1024px) {
+  .svc-panel-body-in {
+    grid-template-columns: 5fr 7fr;
+    gap: 56px;
+    padding: 40px 28px 72px;
+  }
+}
+
+/* Left: заголовок + описание + теги — контент СВЕРХУ */
+.svc-panel-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;   /* ← контент у верхнего края */
+  gap: 18px;
+}
+
+.svc-panel-name {
+  font-size: clamp(1.8rem, 3.8vw, 3.0rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  color: var(--ink);
+}
+
+.svc-panel-desc {
+  font-size: clamp(13px, 1.35vw, 15px);
+  line-height: 1.72;
+  color: var(--muted);
+  max-width: 42ch;
+}
+
+.svc-panel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.svc-panel-tag {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  padding: 5px 13px;
+  line-height: 1.1;
+}
+
+/* Right: изображение */
+.svc-panel-img {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--soft);
+}
+@media (min-width: 640px) {
+  .svc-panel-img {
+    border-radius: 18px;
+    aspect-ratio: unset;
+    min-height: 300px;
+  }
+}
+@media (min-width: 1024px) {
+  .svc-panel-img {
+    min-height: 380px;
+    border-radius: 20px;
+  }
+}
+.svc-panel-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Последняя панель: доп. нижний паддинг */
+.svc-panel:last-child .svc-panel-body-in {
+  padding-bottom: 96px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE (< 768px): список с превью слева + крупный заголовок
+   Поведение — как на riseatseven.com/services/ на телефоне:
+   квадратное превью слева, большой текст справа, без номера.
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* Скрываем расширенный контент — показываем только строку-таб */
+  .svc-panel-body {
+    display: none;
+  }
+
+  /* Сдвигаем порядок: превью уходит влево, номер скрываем */
+  .svc-panel-num {
+    display: none;
+  }
+
+  .svc-panel-thumb {
+    order: -1;          /* перед заголовком */
+    width: 68px;
+    height: 68px;
+    border-radius: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Строка без фиксированной высоты — пусть тянется по контенту */
+  .svc-panel-hdr {
+    height: auto;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    gap: 16px;
+    align-items: center;
+  }
+
+  /* Крупный заголовок — разрешаем перенос строк */
+  .svc-panel-hdr-title {
+    font-size: clamp(1.45rem, 5.5vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    white-space: normal;     /* разрешаем перенос */
+    overflow: visible;
+    text-overflow: unset;
+  }
+}
+
+/* ── Мобильная кнопка CTA под списком услуг ── */
+.svc-acc-mobile-cta {
+  display: none;
+}
+@media (max-width: 767px) {
+  .svc-acc-mobile-cta {
+    display: block;
+    padding: 12px 16px 48px;
+  }
+  .svc-acc-mobile-cta a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 18px 24px;
+    border-radius: 9999px;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    border: 1px solid var(--line);
+    text-decoration: none;
+    transition: background 200ms ease;
+  }
+  .svc-acc-mobile-cta a:hover {
+    background: var(--soft);
+  }
+  .svc-acc-mobile-cta svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+}
+
+/* Accessibility: prefers-reduced-motion — sticky отключаем */
+@media (prefers-reduced-motion: reduce) {
+  .svc-panel {
+    position: static !important;
+    top: auto !important;
+  }
+}
