@@ -57,36 +57,63 @@
         </div>
     </nav>
 
-    <!-- Верхний блок -->
-    <div class="top">
+    <!-- Верхний блок (скрыт инлайн — логотип перенесён в hero-card) -->
+    <div class="top" aria-hidden="true" style="display:none">
         <a href="index.html" class="logo">
-            <img src="./fraymi_logo.svg" alt="freymi" class="logo-img">
+            <img src="./fraymi_logo.svg" alt="" class="logo-img">
         </a>
     </div>
 
-    <!-- Первый экран -->
-    <div class="hero">
-        <div class="subhead">
-            <div class="green"></div>
-            <p>Дизайн-студия в Москве</p>
-        </div>
-        <center><p class="heading">Сайты, которые <span>объясняют</span> продукт и ведут к действию</p></center>
-        <div class="links">
-            <a href="#contact">
-                <i class='bx bx-phone'></i>
-                <span style="color: var(--paper);">Назначить звонок</span>
+    <!-- ═══════════════════════════════════════════════════════
+         Первый экран — видео-фон
+         Тёмная карточка, сетка = fw-sticky-wrap (16px → 28px)
+         ═══════════════════════════════════════════════════════ -->
+    <section class="hero-outer" aria-label="Главная секция">
+      <div class="hero-card">
+
+        <!-- Фоновое видео (autoplay, loop, muted — стандарт для фонов) -->
+        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata">
+          <source src="./videos/1hero.mp4" type="video/mp4">
+        </video>
+
+        <!-- Тёмный градиент-оверлей -->
+        <div class="hero-overlay" aria-hidden="true"></div>
+
+        <!-- Контент -->
+        <div class="hero-body">
+
+          <!-- Топ-бар: логотип слева, бейдж справа -->
+          <div class="hero-topbar">
+            <a href="index.html" class="hero-logo" aria-label="freymi — на главную">
+              <img src="./fraymi_logo.svg" alt="freymi" class="hero-logo-img">
             </a>
-            <a href="#services">
-                <span>Смотреть услуги</span>
-            </a>
-        </div>
-        <div class="video">
-            <video muted autoplay loop playsinline webkit-playsinline preload="metadata">
-                <source src="./videos/hero-mobile.mp4" type="video/mp4" media="(max-width: 590px)">
-                <source src="./videos/hero.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
+            <div class="hero-badge">
+              <span class="hero-badge-dot" aria-hidden="true"></span>
+              <span>Дизайн-студия в Москве</span>
+            </div>
+          </div>
+
+          <!-- Заголовок + кнопки — прибиты к нижнему краю карточки -->
+          <div class="hero-main">
+            <h1 class="hero-heading" aria-label="Сайты, которые объясняют продукт и ведут к действию">
+              <span class="hero-hw-line"><span class="hero-hw">Сайты, которые</span></span>
+              <span class="hero-hw-line"><em class="hero-hw">объясняют</em><span class="hero-hw"> продукт</span></span>
+              <span class="hero-hw-line"><span class="hero-hw">и ведут к действию</span></span>
+            </h1>
+            <div class="hero-actions">
+              <a href="#contact" class="hero-btn hero-btn--primary">
+                <i class='bx bx-phone' aria-hidden="true"></i>
+                Назначить звонок
+              </a>
+              <a href="#services-accordion" class="hero-btn hero-btn--ghost">
+                Смотреть услуги
+              </a>
+            </div>
+          </div>
+
+        </div><!-- /hero-body -->
+      </div><!-- /hero-card -->
+    </section><!-- /hero-outer -->
 
     <!-- О студии -->
     <div class="about" data-aos="fade-up">

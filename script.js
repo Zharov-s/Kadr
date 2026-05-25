@@ -87,10 +87,40 @@ updateNavbarVisibility();
 
 AOS.init();
 
+// ── Hero: entrance timeline (page load) ───────────────────────────────────────
+(function () {
+  if (typeof gsap === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!document.querySelector('.hero-card')) return;
+
+  var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+  // 1. Карточка: подъём + появление
+  tl.from('.hero-card', {
+    y: 20, scale: 0.975, opacity: 0, duration: 1.0,
+    transformOrigin: 'center bottom', clearProps: 'transform'
+  }, 0);
+
+  // 2. Логотип
+  tl.from('.hero-logo', { opacity: 0, duration: 0.55 }, 0.30);
+
+  // 3. Бейдж
+  tl.from('.hero-badge', { y: 10, opacity: 0, duration: 0.55 }, 0.38);
+
+  // 4. Слова заголовка: clip-reveal снизу
+  tl.from('.hero-hw', {
+    y: '108%', opacity: 0, duration: 0.80,
+    stagger: 0.07, ease: 'power4.out'
+  }, 0.46);
+
+  // 5. Кнопки: stagger
+  tl.from('.hero-btn', { y: 14, opacity: 0, duration: 0.55, stagger: 0.10 }, 0.84);
+})();
+
 // ---- Логотип: wiggle loop + magnetic pull ----
 (function () {
-    var logo = document.querySelector('.top .logo-img');
-    var zone = document.querySelector('.top .logo');
+    var logo = document.querySelector('.hero-logo-img');
+    var zone = document.querySelector('.hero-logo');
     if (!logo || !zone || typeof gsap === 'undefined') return;
 
     var STRENGTH = 0.38;
