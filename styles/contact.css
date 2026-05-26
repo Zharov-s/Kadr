@@ -43,6 +43,43 @@
     min-width: 0;
 }
 
+/* ── SheryJS gooey image container ── */
+.cnt-shery-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    width: 100%;
+    min-height: 460px;
+    cursor: none; /* SheryJS handles cursor */
+}
+
+.cnt-shery-img > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* SheryJS WebGL canvas — поверх изображения */
+.cnt-shery-img ._canvas_container,
+._canvas_container {
+    z-index: 99999 !important;
+    pointer-events: none;
+}
+
+@media (max-width: 1000px) {
+    .cnt-shery-img { min-height: 360px; }
+}
+@media (max-width: 460px) {
+    .cnt-shery-img {
+        min-height: 260px;
+        border-radius: 24px;
+    }
+}
+
 form {
     background-color: #fbfbfb;
     border: 1px solid #eee;

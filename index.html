@@ -29,6 +29,9 @@
     <!-- Иконки Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+    <!-- SheryJS: CSS для gooey image effect -->
+    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
+
 </head>
 <body>
 
@@ -1135,21 +1138,10 @@
             <span style="color: var(--paper);">Отправить сообщение</span>
           </button>
         </form>
-        <div class="contact-img">
-          <img src="./images/contact.webp" alt="Изображение">
-          <div class="contact-img-div">
-            <p class="contact-head" style="color: var(--paper);">Обсудим задачу в звонке</p>
-            <div class="links">
-              <a href="#contact">
-                <i class='bx bx-phone' style="color: var(--ink);"></i>
-                <span>Назначить звонок</span>
-              </a>
-            </div>
-          </div>
-          <div class="subhead">
-            <div class="green"></div>
-            <p style="color: var(--paper);">Берём новые проекты</p>
-          </div>
+        <!-- SheryJS gooey image effect (obys-style) -->
+        <div class="cnt-shery-img">
+          <img src="./images/Laxer_1-2.jpg" alt="freymi studio">
+          <img src="./images/Laxer_2.jpg" alt="">
         </div>
       </div>
     </section>
@@ -1215,6 +1207,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Three.js + SheryJS (gooey image effect) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
+    <script src="https://unpkg.com/sheryjs/dist/Shery.js"></script>
+
     <script src="script.js"></script>
     <script src="./scripts/featured-works.js"></script>
 </body>
