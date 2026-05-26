@@ -50,7 +50,12 @@
     border-radius: 30px;
     width: 100%;
     min-height: 460px;
-    cursor: none; /* SheryJS handles cursor */
+    cursor: none;
+    /* Принудительный GPU-слой: только так overflow:hidden клипирует WebGL-canvas */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    /* WebKit-фикс для overflow:hidden на GPU-контенте */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .cnt-shery-img > img {
@@ -63,14 +68,19 @@
     display: block;
 }
 
-/* SheryJS WebGL canvas — поверх изображения, закруглённые углы через clip-path */
+/* SheryJS-контейнер canvas: clip-path + border-radius */
 ._canvas_container {
     z-index: 99999 !important;
     pointer-events: none;
     border-radius: 30px !important;
     overflow: hidden !important;
-    /* clip-path клипирует WebGL-контент надёжнее, чем overflow:hidden */
     clip-path: inset(0 round 30px) !important;
+    -webkit-clip-path: inset(0 round 30px) !important;
+}
+
+/* Прямой border-radius на canvas-элементе */
+._canvas_container canvas {
+    border-radius: 30px !important;
 }
 
 @media (max-width: 1000px) {

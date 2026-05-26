@@ -6,6 +6,28 @@
   var el = document.querySelector('.cnt-shery-img');
   if (!el) return;
 
+  // Применяем border-radius на canvas-контейнер после инициализации SheryJS
+  // (перебивает inline-стили, которые SheryJS может выставлять динамически)
+  function patchSheryCorners() {
+    var BR = '30px';
+    var container = document.querySelector('._canvas_container');
+    if (!container) { requestAnimationFrame(patchSheryCorners); return; }
+
+    function applyBR() {
+      container.style.setProperty('border-radius', BR, 'important');
+      container.style.setProperty('overflow', 'hidden', 'important');
+      container.style.setProperty('clip-path', 'inset(0 round ' + BR + ')', 'important');
+      var canvas = container.querySelector('canvas');
+      if (canvas) canvas.style.setProperty('border-radius', BR, 'important');
+    }
+
+    applyBR();
+    // MutationObserver: восстанавливаем после любых изменений SheryJS
+    new MutationObserver(applyBR).observe(container, { attributes: true, subtree: true });
+  }
+
+  requestAnimationFrame(patchSheryCorners);
+
   Shery.imageEffect('.cnt-shery-img', {
     style: 5,
     gooey: true,
