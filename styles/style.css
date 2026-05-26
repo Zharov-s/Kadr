@@ -642,10 +642,7 @@ form textarea::placeholder,
 .contact-direct strong,
 .footer-column .footer-accent-link,
 .footer-column a:hover,
-.contact-direct a:hover strong,
-.showcase-title,
-.showcase-heading em,
-.showcase-stat strong {
+.contact-direct a:hover strong {
     color: var(--ink);
 }
 
@@ -721,21 +718,6 @@ form textarea::placeholder,
     background-color: var(--soft-2);
 }
 
-.showcase-wrap {
-    background: var(--paper);
-}
-
-.showcase-desc,
-.showcase-stat span {
-    color: var(--muted);
-}
-
-.showcase-capsule {
-    border-color: var(--line);
-    box-shadow:
-        0 8px 32px rgba(5, 5, 5, 0.10),
-        0 0 0 1px rgba(5, 5, 5, 0.05);
-}
 
 footer.site-footer {
     background: var(--ink);
