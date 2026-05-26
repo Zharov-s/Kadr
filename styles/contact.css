@@ -63,11 +63,14 @@
     display: block;
 }
 
-/* SheryJS WebGL canvas — поверх изображения */
-.cnt-shery-img ._canvas_container,
+/* SheryJS WebGL canvas — поверх изображения, закруглённые углы через clip-path */
 ._canvas_container {
     z-index: 99999 !important;
     pointer-events: none;
+    border-radius: 30px !important;
+    overflow: hidden !important;
+    /* clip-path клипирует WebGL-контент надёжнее, чем overflow:hidden */
+    clip-path: inset(0 round 30px) !important;
 }
 
 @media (max-width: 1000px) {
