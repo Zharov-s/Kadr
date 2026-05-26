@@ -101,19 +101,46 @@
     });
   }
 
-  // 3. Тело каждой панели: fade-up при первом появлении
-  document.querySelectorAll('.js-svc-panel').forEach(function (panel) {
-    var body = panel.querySelector('.svc-panel-body-in');
-    if (!body) return;
-    gsap.from(body, {
-      y: 36,
-      opacity: 0,
-      duration: 0.75,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: panel,
-        start: 'top 82%',
-        once: true   // анимируется один раз — не повторяется при обратном скроле
+  // 3. Тело каждой панели: fade-up при первом появлении (только десктоп)
+  if (window.innerWidth >= 768) {
+    document.querySelectorAll('.js-svc-panel').forEach(function (panel) {
+      var body = panel.querySelector('.svc-panel-body-in');
+      if (!body) return;
+      gsap.from(body, {
+        y: 36,
+        opacity: 0,
+        duration: 0.75,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: panel,
+          start: 'top 82%',
+          once: true   // анимируется один раз — не повторяется при обратном скроле
+        }
+      });
+    });
+  }
+})();
+
+// ── Services: мобильный аккордеон (< 768px) ──────────────────────────────────
+(function () {
+  var mq = window.matchMedia('(max-width: 767px)');
+
+  document.querySelectorAll('.js-svc-hdr').forEach(function (hdr) {
+    var panel = hdr.closest('.js-svc-panel');
+    if (!panel) return;
+
+    function toggle() {
+      if (!mq.matches) return; // на десктопе клик ничего не делает
+      var isOpen = panel.classList.toggle('is-open');
+      hdr.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    hdr.addEventListener('click', toggle);
+    // Клавиатурная поддержка: Enter / Space
+    hdr.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
       }
     });
   });
