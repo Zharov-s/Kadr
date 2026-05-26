@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="./styles/infinite.css">
     <link rel="stylesheet" href="./styles/services.css">
     <link rel="stylesheet" href="./styles/benefits.css">
-    <link rel="stylesheet" href="./styles/tech-stack.css">
     <link rel="stylesheet" href="./styles/pricing.css">
     <link rel="stylesheet" href="./styles/faq.css">
     <link rel="stylesheet" href="./styles/contact.css">
@@ -30,15 +29,6 @@
     <!-- Иконки Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <!-- Three.js importmap (для tech-stack-balls.js) -->
-    <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.min.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/"
-      }
-    }
-    </script>
 </head>
 <body>
 
@@ -1158,18 +1148,6 @@
       </div>
     </section>
 
-    <!-- Технический стек: 3D-анимация мячиков -->
-    <section class="tech-stack-section" aria-label="Технический стек">
-        <!-- canvas-wrap becomes position:fixed via JS when section is visible -->
-        <div class="tech-stack-canvas-wrap">
-            <canvas id="tech-stack-canvas"></canvas>
-        </div>
-        <p class="tech-stack-heading">Наш технический стек</p>
-        <div class="tech-stack-fallback" id="tech-stack-fallback">
-            <p>Ваш браузер не поддерживает WebGL</p>
-        </div>
-    </section>
-
     <!-- Подвал -->
     <footer class="site-footer">
         <div class="footer-shell" data-aos="fade-up">
@@ -1199,7 +1177,6 @@
                         <a href="#services">Сайты под ключ</a>
                         <a href="#services">UX/UI-проектирование</a>
                         <a href="#services">Редизайн</a>
-                        <a href="./Apple-ScrollMotion-Experience/index.html">ScrollMotion</a>
                     </div>
                     <div class="footer-column">
                         <p>Контакты</p>
@@ -1233,7 +1210,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
-    <script type="module" src="./scripts/tech-stack-balls.js"></script>
     <script src="./scripts/featured-works.js"></script>
 </body>
 </html>
