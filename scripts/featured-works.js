@@ -33,6 +33,19 @@
   var activeIndex  = 0;
   var hoveredIndex = -1;
 
+  /* ─── Надёжная навигация для кликабельных карточек ─────── */
+  imageItems.forEach(function(card) {
+    if (!(card instanceof HTMLAnchorElement) || !card.href) return;
+
+    card.addEventListener('click', function(e) {
+      if (e.defaultPrevented) return;
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      e.preventDefault();
+      window.location.assign(card.href);
+    }, true);
+  });
+
   /* ─── Вспомогательные функции ────────────────────────────── */
 
   function setActiveTitle(index) {
