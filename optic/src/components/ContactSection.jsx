@@ -15,14 +15,14 @@ export default function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-14"
         >
-          <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/70 mb-4 block">— Get In Touch —</span>
+          <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/70 mb-4 block">— Напишите нам —</span>
           <h2
             className="text-5xl font-extralight leading-none tracking-tight text-white"
             style={{ fontFamily: "Georgia, serif" }}
           >
-            We'd Love to Hear
+            Остались
             <br />
-            <span className="neon-text italic">from You</span>
+            <span className="neon-text italic">вопросы?</span>
           </h2>
         </motion.div>
 
@@ -37,16 +37,16 @@ export default function ContactSection() {
             <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="space-y-7">
               <div className="grid md:grid-cols-2 gap-7">
                 <div className="space-y-2">
-                  <label className="text-[10px] tracking-[0.3em] uppercase text-white/35">Name</label>
+                  <label className="text-[10px] tracking-[0.3em] uppercase text-white/35">Ваше имя</label>
                   <input
                     type="text" required value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     className="w-full bg-transparent border-b border-white/[0.08] focus:border-[#00d4ff]/50 py-3 text-sm text-white/65 outline-none transition-colors placeholder:text-white/18"
-                    placeholder="Your full name"
+                    placeholder="Имя и фамилия"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] tracking-[0.3em] uppercase text-white/35">Email</label>
+                  <label className="text-[10px] tracking-[0.3em] uppercase text-white/35">Электронная почта</label>
                   <input
                     type="email" required value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -56,16 +56,16 @@ export default function ContactSection() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] tracking-[0.3em] uppercase text-white/35">Message</label>
+                <label className="text-[10px] tracking-[0.3em] uppercase text-white/35">Сообщение</label>
                 <textarea
                   required rows={5} value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="w-full bg-transparent border-b border-white/[0.08] focus:border-[#00d4ff]/50 py-3 text-sm text-white/65 outline-none transition-colors resize-none placeholder:text-white/18"
-                  placeholder="How can we assist you?"
+                  placeholder="Расскажите, чем можем помочь"
                 />
               </div>
               <div className="flex justify-end pt-1">
-                <button type="submit" className="btn-neon px-10 py-3.5 rounded-sm">Send Message</button>
+                <button type="submit" className="btn-neon px-10 py-3.5 rounded-sm">Отправить</button>
               </div>
             </form>
           ) : (
@@ -80,8 +80,8 @@ export default function ContactSection() {
               >
                 <span className="neon-text text-2xl">✓</span>
               </div>
-              <h3 className="text-2xl font-extralight text-white/80 mb-3" style={{ fontFamily: "Georgia, serif" }}>Message Received</h3>
-              <p className="text-white/35 text-sm">A member of our team will be in touch within 24 hours.</p>
+              <h3 className="text-2xl font-extralight text-white/80 mb-3" style={{ fontFamily: "Georgia, serif" }}>Сообщение отправлено</h3>
+              <p className="text-white/35 text-sm">Мы свяжемся с вами в течение рабочего дня.</p>
             </motion.div>
           )}
         </motion.div>
@@ -93,9 +93,9 @@ export default function ContactSection() {
           className="grid md:grid-cols-3 gap-8 mt-10"
         >
           {[
-            { label: "Email", value: "support@opticfuture.com" },
-            { label: "Phone", value: "+91 99998 99998" },
-            { label: "Headquarters", value: "New Delhi, India" },
+            { label: "Электронная почта", value: "info@optika-moskva.ru" },
+            { label: "Телефон", value: "+7 (495) 123-45-67" },
+            { label: "Адрес", value: "г. Москва, ул. Тверская, д. 18, стр. 1" },
           ].map((item) => (
             <div key={item.label} className="text-center">
               <div className="text-[10px] tracking-[0.3em] uppercase text-[#00d4ff]/50 mb-2">{item.label}</div>

@@ -29,7 +29,7 @@ export default function VirtualFitModal({ isOpen, onClose }) {
                     onClick={onClose}
                     className="absolute top-8 right-8 text-[#00d4ff] hover:text-white transition-colors z-[100001] tracking-[0.2em] text-[10px] uppercase font-bold"
                 >
-                    [ Close System ]
+                    [ Закрыть ]
                 </button>
 
                 {/* HUD Overlay Elements */}
@@ -46,10 +46,10 @@ export default function VirtualFitModal({ isOpen, onClose }) {
 
                 {/* Text Logs Top Left */}
                 <div className="absolute top-16 left-16 flex flex-col gap-1 text-[8px] tracking-[0.3em] font-mono text-[#00d4ff]/70 uppercase">
-                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>OPTIC FUTURE VIRTUAL_FIT v2.4</motion.span>
-                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>Initializing camera protocol...</motion.span>
-                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: scanState >= 1 ? 1 : 0 }}>Commencing facial topology scan...</motion.span>
-                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: scanState >= 2 ? 1 : 0 }} className="text-white font-bold">Topology Match: 98.4% (Optimal)</motion.span>
+                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>OPTIKA VIRTUAL_FIT v2.4</motion.span>
+                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>Инициализация камеры...</motion.span>
+                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: scanState >= 1 ? 1 : 0 }}>Сканирование контуров лица...</motion.span>
+                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: scanState >= 2 ? 1 : 0 }} className="text-white font-bold">Совпадение: 98.4% (Оптимально)</motion.span>
                 </div>
 
                 {/* The Main Scanner Box */}
@@ -114,11 +114,11 @@ export default function VirtualFitModal({ isOpen, onClose }) {
 
                     {/* Status Text Bottom Center */}
                     <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-center">
-                        {scanState === 0 && <span className="text-[#00d4ff] text-xs uppercase tracking-[0.2em] animate-pulse">Calibrating...</span>}
-                        {scanState === 1 && <span className="text-white font-bold text-xs uppercase tracking-[0.3em]">Analyzing Mesh...</span>}
+                        {scanState === 0 && <span className="text-[#00d4ff] text-xs uppercase tracking-[0.2em] animate-pulse">Калибровка...</span>}
+                        {scanState === 1 && <span className="text-white font-bold text-xs uppercase tracking-[0.3em]">Анализ контуров...</span>}
                         {scanState === 2 && (
                             <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="glass-neon px-6 py-2 rounded-full border border-[#00d4ff]">
-                                <span className="text-[#00d4ff] font-bold text-sm uppercase tracking-[0.2em]">Perfect Fit Detected</span>
+                                <span className="text-[#00d4ff] font-bold text-sm uppercase tracking-[0.2em]">Подходящий размер найден</span>
                             </motion.div>
                         )}
                     </div>

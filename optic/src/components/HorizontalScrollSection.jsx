@@ -32,10 +32,10 @@ export default function HorizontalScrollSection() {
         <div className="px-8 md:px-16 mb-8 md:mb-12 relative z-10 w-full flex items-center justify-between">
            <h2 className="text-3xl md:text-5xl font-extralight tracking-widest text-white uppercase flex items-center gap-6">
               <span className="w-16 h-px bg-[#00d4ff] hidden md:block"></span>
-              Featured Campaigns
+              Наши коллекции
            </h2>
            <div className="hidden md:flex items-center gap-2 opacity-50">
-             <span className="text-[10px] tracking-[0.2em] uppercase">Scroll to explore</span>
+             <span className="text-[10px] tracking-[0.2em] uppercase">Листайте вправо</span>
              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="animate-pulse">
                <path d="M5 12h14M12 5l7 7-7 7"/>
              </svg>
@@ -65,7 +65,7 @@ export default function HorizontalScrollSection() {
                 {/* View Label */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
                   <span className="glass-neon px-8 py-3 rounded-full text-xs uppercase tracking-[0.3em] text-white/90 backdrop-blur-md border border-white/20">
-                    Explore Campaign
+                    Смотреть
                   </span>
                 </div>
               </div>

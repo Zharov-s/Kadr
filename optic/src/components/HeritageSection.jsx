@@ -2,11 +2,11 @@ import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
 const timelineEvents = [
-  { year: "2010", event: "Founded by Peyush Bansal, revolutionizing eyewear in India." },
-  { year: "2015", event: "Introduced 3D try-on technology to the eyewear market." },
-  { year: "2019", event: "Unveiled an omni-channel optical experience across the nation." },
-  { year: "2021", event: "Launched a vision fund to invest in eyewear startups." },
-  { year: "2026", event: "Introducing the Smart Collection — the future of vision." },
+  { year: "2010", event: "Открытие первой точки. Курс — на индивидуальный подход к каждому клиенту." },
+  { year: "2015", event: "Внедрение современного оборудования для проверки зрения." },
+  { year: "2019", event: "Расширение ассортимента: более 300 оправ от мировых производителей." },
+  { year: "2021", event: "Запуск онлайн-подбора очков и доставки по Москве." },
+  { year: "2026", event: "Новая коллекция оправ — функциональный дизайн для современного образа жизни." },
 ];
 
 function OctagonAnim() {
@@ -108,9 +108,9 @@ export default function HeritageSection() {
               style={{ y }}
               className="absolute bottom-10 left-6 glass-neon px-5 py-4 rounded-sm"
             >
-              <div className="text-[10px] tracking-[0.3em] uppercase text-[#00d4ff]/60 mb-1">Est.</div>
+              <div className="text-[10px] tracking-[0.3em] uppercase text-[#00d4ff]/60 mb-1">Осн.</div>
               <div className="text-4xl font-extralight neon-text">2010</div>
-              <div className="text-[10px] text-white/35 mt-1">New Delhi, India</div>
+              <div className="text-[10px] text-white/35 mt-1">Москва, Россия</div>
             </motion.div>
           </motion.div>
 
@@ -122,24 +122,24 @@ export default function HeritageSection() {
           >
             <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/70 mb-6 flex items-center gap-3">
               <span className="w-10 h-px bg-[#00d4ff] inline-block" />
-              Our Story
+              О нас
             </span>
             <h2
               className="text-5xl md:text-6xl font-extralight leading-none tracking-tight mb-8 text-white"
               style={{ fontFamily: "Georgia, serif" }}
             >
-              A Century of
+              Современная
               <br />
-              <span className="neon-text italic">Excellence</span>
+              <span className="neon-text italic">оптика</span>
             </h2>
             <p className="text-white/35 leading-relaxed mb-6 max-w-md">
-              When the studio started its journey, the vision was clear: to bring high-quality, perfectly fitting eyewear to everyone. That promise endures today.
+              Когда мы открылись, цель была простой: помочь каждому подобрать качественные очки, которые комфортно сидят. Этот принцип не изменился.
             </p>
             <p className="text-white/25 leading-relaxed mb-10 max-w-md text-sm">
-              Today, the studio stands at the forefront of eyewear technology and design. No shortcuts. No compromises.
+              Сегодня у нас широкий выбор оправ и линз, собственная мастерская и внимательные специалисты. Без торопливости и навязывания лишнего.
             </p>
             <button className="btn-white px-8 py-3.5 rounded-sm">
-              Our Full Story
+              Узнать больше
             </button>
           </motion.div>
         </div>
@@ -148,7 +148,7 @@ export default function HeritageSection() {
         <div ref={timelineRef}>
           <div className="text-center mb-14">
             <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/60">
-              — A Timeline of Milestones —
+              — История компании —
             </span>
           </div>
           <div className="relative">

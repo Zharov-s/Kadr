@@ -2,10 +2,10 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const stores = [
-  { city: "New Delhi", address: "Connaught Place, Block E", country: "India", hours: "Mon–Sat 10–21", flagship: true },
-  { city: "Mumbai", address: "Bandra Kurla Complex", country: "India", hours: "Mon–Sat 10–21", flagship: false },
-  { city: "Bengaluru", address: "Indiranagar, 100 Feet Rd", country: "India", hours: "Mon–Sat 10–21", flagship: false },
-  { city: "Gurugram", address: "Cyber Hub, DLF Phase 2", country: "India", hours: "Mon–Sat 10–21", flagship: false },
+  { city: "Тверская", address: "ул. Тверская, д. 18, стр. 1", country: "Москва", hours: "Ежедневно 10:00–21:00", flagship: true },
+  { city: "Арбат", address: "ул. Арбат, д. 45", country: "Москва", hours: "Ежедневно 10:00–21:00", flagship: false },
+  { city: "Кутузовский", address: "Кутузовский просп., д. 32", country: "Москва", hours: "Ежедневно 10:00–21:00", flagship: false },
+  { city: "Патриаршие", address: "ул. Малая Бронная, д. 26", country: "Москва", hours: "Ежедневно 10:00–21:00", flagship: false },
 ];
 
 export default function StoresSection() {
@@ -20,15 +20,15 @@ export default function StoresSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-20"
         >
-          <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/70 mb-4 block">— Visit Us —</span>
+          <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/70 mb-4 block">— Наши адреса —</span>
           <h2
             className="text-5xl font-extralight leading-none tracking-tight text-white"
             style={{ fontFamily: "Georgia, serif" }}
           >
-            Premium Stores
+            Где нас найти
           </h2>
           <p className="text-white/35 mt-4 text-sm max-w-md mx-auto">
-            Experience the collection in person. Discover our vast selection, get a precise eye test, and find your perfect frame with 3D try-on.
+            Приходите — проверим зрение, поможем с выбором оправы и подгоним очки по размеру.
           </p>
         </motion.div>
 
@@ -46,7 +46,7 @@ export default function StoresSection() {
             >
               {store.flagship && (
                 <div className="absolute top-4 right-4 text-[8px] tracking-[0.3em] uppercase text-[#00d4ff] border border-[#00d4ff]/30 px-2 py-0.5 rounded-sm" style={{ boxShadow: "0 0 8px rgba(0,212,255,0.15)" }}>
-                  Flagship
+                  Главный
                 </div>
               )}
               <span className="text-[10px] tracking-[0.3em] uppercase text-[#00d4ff]/50 block mb-1">{store.country}</span>
@@ -55,7 +55,7 @@ export default function StoresSection() {
               <p className="text-xs text-white/20 mb-6">{store.hours}</p>
               <div className="divider-neon mb-5 opacity-25" />
               <button className="text-[10px] tracking-[0.3em] uppercase text-[#00d4ff]/40 group-hover:text-[#00d4ff] transition-colors flex items-center gap-2">
-                Book Appointment <span className="transition-transform group-hover:translate-x-1">→</span>
+                Записаться <span className="transition-transform group-hover:translate-x-1">→</span>
               </button>
             </motion.div>
           ))}

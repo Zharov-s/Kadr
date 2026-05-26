@@ -60,7 +60,7 @@ export default function HeroSection() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }}
           className="flex items-center gap-3 mb-7">
           <span className="w-10 h-px bg-[#00d4ff]" />
-          <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/80 font-light">New Collection 2026</span>
+          <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/80 font-light">Новая коллекция 2026</span>
         </motion.div>
 
         <motion.div
@@ -70,26 +70,26 @@ export default function HeroSection() {
           variants={{ visible: { transition: { staggerChildren: 0.15, delayChildren: 0.5 } } }}
         >
           <div className="overflow-hidden inline-block py-1">
-            <motion.span className="inline-block text-white" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } } }}>See The</motion.span>
+            <motion.span className="inline-block text-white" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } } }}>Видеть</motion.span>
           </div><br />
           <div className="overflow-hidden inline-block py-1">
-            <motion.span className="inline-block neon-text italic pb-2" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } } }}>World</motion.span>
+            <motion.span className="inline-block neon-text italic pb-2" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } } }}>Чётче.</motion.span>
           </div><br />
           <div className="overflow-hidden inline-block py-1">
-            <motion.span className="inline-block white-gradient-text" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } } }}>Differently</motion.span>
+            <motion.span className="inline-block white-gradient-text" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } } }}>Жить ярче.</motion.span>
           </div>
         </motion.div>
 
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.8 }}
           className="text-white/45 text-sm leading-relaxed mb-10 max-w-xs">
-          Do More, Be More. Innovative eyewear crafted with cutting-edge technology and unparalleled precision.
+          Очки, контактные линзы и проверка зрения в одном месте. Современный подход к коррекции зрения в Москве.
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.8 }}
           className="flex flex-wrap items-center gap-4">
-          <button className="btn-white px-8 py-3.5 rounded-sm">Explore Collection</button>
+          <button className="btn-white px-8 py-3.5 rounded-sm">Смотреть коллекцию</button>
           <button className="btn-neon px-8 py-3.5 rounded-sm" onClick={() => setIsVirtualFitOpen(true)}>
-            Virtual Try-On
+            Примерить онлайн
           </button>
         </motion.div>
 
@@ -147,8 +147,8 @@ export default function HeroSection() {
 
         <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-24 right-10 glass-neon px-4 py-3 rounded-sm z-10 pointer-events-none">
-          <div className="text-[9px] tracking-[0.3em] uppercase text-[#00d4ff]/60 mb-0.5">Material</div>
-          <div className="text-xs text-white/70 font-light">Aerospace Titanium</div>
+          <div className="text-[9px] tracking-[0.3em] uppercase text-[#00d4ff]/60 mb-0.5">Материал</div>
+          <div className="text-xs text-white/70 font-light">Авиационный титан</div>
         </motion.div>
 
       </motion.div>
@@ -156,7 +156,7 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-[9px] tracking-[0.4em] uppercase text-white/25">Scroll</span>
+        <span className="text-[9px] tracking-[0.4em] uppercase text-white/25">Листать</span>
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-px h-10" style={{ background: "linear-gradient(to bottom,#00d4ff80,transparent)" }} />
       </motion.div>

@@ -12,7 +12,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = ["Collection", "Quality", "Our Story", "Stores", "Contact"];
+  const navLinks = ["Коллекция", "Качество", "О нас", "Адреса", "Контакты"];
 
   return (
     <>
@@ -41,7 +41,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <a
                 key={link}
-                href={`#${link.toLowerCase().replace(' ', '-')}`}
+                href={`#${({'Коллекция':'collection','Качество':'quality','О нас':'our-story','Адреса':'stores','Контакты':'contact'})[link] || link.toLowerCase()}`}
                 className="text-[11px] tracking-[0.2em] uppercase text-white/45 hover:text-[#00d4ff] transition-colors duration-300"
               >
                 {link}
@@ -52,7 +52,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
             <button className="btn-neon px-5 py-2 rounded-sm">
-              Shop Now
+              Записаться
             </button>
           </div>
 
@@ -81,7 +81,7 @@ export default function Navbar() {
             {navLinks.map((link, i) => (
               <motion.a
                 key={link}
-                href={`#${link.toLowerCase().replace(' ', '-')}`}
+                href={`#${({'Коллекция':'collection','Качество':'quality','О нас':'our-story','Адреса':'stores','Контакты':'contact'})[link] || link.toLowerCase()}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.07 }}
@@ -97,7 +97,7 @@ export default function Navbar() {
               transition={{ delay: navLinks.length * 0.07 }}
               className="btn-neon px-10 py-3 rounded-sm mt-4"
             >
-              Shop Now
+              Записаться
             </motion.button>
           </motion.div>
         )}

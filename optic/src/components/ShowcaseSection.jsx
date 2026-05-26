@@ -8,28 +8,28 @@ const banners = [
     image: "images/banner_switch.png",
     brand: "",
     title: "",
-    subtitle: "Change your vibe instantly",
+    subtitle: "Смените образ мгновенно",
   },
   {
     id: 2,
     image: "images/banner_hustlr.png",
     brand: "",
     title: "",
-    subtitle: "For the relentless",
+    subtitle: "Для активного образа жизни",
   },
   {
     id: 3,
     image: "images/banner_zodiac.png",
     brand: "",
     title: "ZODIAC",
-    subtitle: "See the Stars Align",
+    subtitle: "Взгляд в будущее",
   },
   {
     id: 4,
     image: "images/banner_coastline.png",
     brand: "",
     title: "COASTLINE",
-    subtitle: "FT. ABHAY DEOL",
+    subtitle: "Спортивная серия",
   }
 ];
 
@@ -51,13 +51,13 @@ export default function ShowcaseSection() {
         >
           <div className="overflow-hidden inline-block py-1">
             <motion.span className="inline-block" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } } }}>
-              Express Your <span className="neon-text italic">Identity</span>
+              Подберём оправу <span className="neon-text italic">под ваш стиль</span>
             </motion.span>
           </div>
           <br />
           <div className="overflow-hidden inline-block py-1">
             <motion.span className="inline-block" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } } }}>
-              With Our Unique Style
+              Большой выбор — от классики до ярких акцентов
             </motion.span>
           </div>
         </motion.div>
@@ -68,7 +68,7 @@ export default function ShowcaseSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Showcase your true self with our attractive eyewear collection that defines your style and vision. Engineered for those who dare to stand out.
+          Широкий выбор оправ — от классических до ярких. Поможем найти то, что подходит именно вам.
         </motion.p>
       </div>
 

@@ -38,7 +38,7 @@ export default function Preloader() {
                         <span className="text-xl font-bold tracking-[0.24em] uppercase text-white">
                             ОПТИКА <span className="text-[#00d4ff]" style={{ textShadow: "0 0 10px #00d4ff" }}>БУДУЩЕГО</span>
                         </span>
-                        <span className="text-[9px] tracking-[0.5em] text-white/40 mt-3 font-light">LUXE EXPERIENCE</span>
+                        <span className="text-[9px] tracking-[0.5em] text-white/40 mt-3 font-light">ОПТИКА МОСКВЫ</span>
                     </motion.div>
 
                     {/* Progress Bar Container */}

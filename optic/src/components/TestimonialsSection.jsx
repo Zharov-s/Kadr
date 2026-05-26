@@ -3,54 +3,54 @@ import { motion, useInView } from "framer-motion";
 
 const testimonialsRow1 = [
   {
-    quote: "Wearing these frames is experiencing the perfect blend of style and technology. The clarity is unlike anything else.",
-    author: "Isabella Marchetti",
-    title: "Creative Director",
+    quote: "Обратилась за новыми очками для работы за компьютером. Специалист внимательно проверил зрение, объяснил разницу между линзами и помог подобрать удобную оправу. Очки получила быстро, ношу с удовольствием.",
+    author: "Анна К.",
+    title: "Москва",
     rating: 5,
   },
   {
-    quote: "Nothing compares to the precision and modern aesthetic of these frames. They become a natural part of you.",
-    author: "James Worthington",
-    title: "Architect",
+    quote: "Заказывал очки по рецепту. Понравилось, что всё объяснили простым языком: какие линзы подойдут, чем отличаются покрытия, сколько займёт изготовление. Оправу подогнали сразу на месте.",
+    author: "Сергей П.",
+    title: "Москва",
     rating: 5,
   },
   {
-    quote: "The moment I put on The Venetian, I understood what luxury truly means. Every detail speaks of refinement.",
-    author: "Amélie Fontaine",
-    title: "Film Director",
+    quote: "Покупала контактные линзы впервые. Мне подробно рассказали, как их надевать, снимать и ухаживать за ними. Очень спокойный и внимательный подход.",
+    author: "Мария С.",
+    title: "Москва",
     rating: 5,
   },
   {
-    quote: "Exquisite craftsmanship meets state-of-the-art vision tech. Best eyewear investment I have ever made.",
-    author: "Marcus Chen",
-    title: "Tech Entrepreneur",
+    quote: "Зашёл отрегулировать старую оправу, в итоге ещё подобрал солнцезащитные очки. Хороший выбор, нормальные цены, сотрудники не навязывают лишнего.",
+    author: "Дмитрий А.",
+    title: "Москва",
     rating: 5,
   }
 ];
 
 const testimonialsRow2 = [
   {
-    quote: "These frames don't just improve my vision, they elevate my entire presence in the boardroom.",
-    author: "Eleanor Vance",
-    title: "CEO, InnovateTech",
+    quote: "Понравился сервис. Проверка зрения прошла аккуратно, без спешки. Подобрали лёгкую оправу и линзы для постоянного ношения. Буду обращаться ещё.",
+    author: "Ольга Н.",
+    title: "Москва",
     rating: 5,
   },
   {
-    quote: "The Titanium series feels lighter than air, yet rugged enough to withstand my daily travels.",
-    author: "Julian Cross",
-    title: "Global Nomad",
+    quote: "Обратился с рецептом после офтальмолога. Помогли подобрать хорошие антибликовые линзы. Объяснили всё доступно, без лишних трат.",
+    author: "Алексей М.",
+    title: "Москва",
     rating: 5,
   },
   {
-    quote: "I never thought glasses could make me feel this confident. Absolute game-changer in eyewear.",
-    author: "Sofia Rostova",
-    title: "Gallery Curator",
+    quote: "Ребёнку понадобились очки — пришли всей семьёй. Специалист нашёл подходящие детские оправы, примерка прошла быстро и без капризов.",
+    author: "Екатерина В.",
+    title: "Москва",
     rating: 5,
   },
   {
-    quote: "A flawless mix of heritage design and ultra-modern materials. This collection set a new standard here.",
-    author: "David Althaus",
-    title: "Industrial Designer",
+    quote: "Долго не мог подобрать себе удобную оправу — всё давило или спадало. Здесь наконец нашли нужную форму и подогнали по размеру. Доволен.",
+    author: "Михаил С.",
+    title: "Москва",
     rating: 5,
   }
 ];
@@ -92,10 +92,10 @@ export default function TestimonialsSection() {
           className="text-center"
         >
           <span className="text-[10px] tracking-[0.3em] uppercase text-[#00d4ff]/70 mb-4 block">
-            — Voices of Discernment —
+            — Отзывы клиентов —
           </span>
           <h2 className="text-4xl md:text-5xl font-extralight tracking-widest text-white uppercase uppercase flex items-center justify-center gap-4">
-            Testimonials
+            Что говорят клиенты
           </h2>
         </motion.div>
       </div>

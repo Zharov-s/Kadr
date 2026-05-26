@@ -6,13 +6,13 @@ const products = [
   {
     id: 1,
     name: "Air Classic",
-    tagline: "Oval Titanium Frame",
+    tagline: "Овальная титановая оправа",
     price: "91 900 ₽",
     frameColor: "#d0d0d0",
     lensColor: "#050e18",
-    colorName: "Silver Titanium",
+    colorName: "Серебристый титан",
     limited: true,
-    description: "Inspired by the reflections of Venetian canals at dusk.",
+    description: "Лёгкая титановая оправа для повседневного ношения.",
     image: "images/glasses1.jpg",
     shape: "oval",
     neonAccent: "#00d4ff",
@@ -20,13 +20,13 @@ const products = [
   {
     id: 2,
     name: "Vincent Chase",
-    tagline: "Rectangular Acetate",
+    tagline: "Прямоугольная ацетатная оправа",
     price: "63 400 ₽",
     frameColor: "#1a1a1a",
     lensColor: "#0a0a18",
-    colorName: "Matte Black",
+    colorName: "Матовый чёрный",
     limited: false,
-    description: "Renaissance geometry captured in every angular curve.",
+    description: "Классическая форма, подходит для большинства типов лица.",
     image: "images/glasses2.jpg",
     shape: "rect",
     neonAccent: "#00aaff",
@@ -34,13 +34,13 @@ const products = [
   {
     id: 3,
     name: "Crystal Edge",
-    tagline: "Rimless Crystal",
+    tagline: "Безободковая оправа",
     price: "149 500 ₽",
     frameColor: "#c0c0c0",
     lensColor: "#06101a",
-    colorName: "Platinum Haze",
+    colorName: "Платиновый туман",
     limited: true,
-    description: "The pinnacle of modern optical innovation.",
+    description: "Максимальная лёгкость. Минимум металла.",
     image: "images/glasses3.jpg",
     shape: "round",
     neonAccent: "#00ffee",
@@ -48,13 +48,13 @@ const products = [
   {
     id: 4,
     name: "Optic Future BLU",
-    tagline: "Square Acetate",
+    tagline: "Квадратная ацетатная оправа",
     price: "53 400 ₽",
     frameColor: "#2a2a2a",
     lensColor: "#050b12",
-    colorName: "Charcoal Gray",
+    colorName: "Угольно-серый",
     limited: false,
-    description: "Timeless geometry rooted in ancient Roman architecture.",
+    description: "Строгий дизайн для рабочего и делового стиля.",
     image: "images/glasses4.jpg",
     shape: "square",
     neonAccent: "#0088cc",
@@ -114,7 +114,7 @@ function ProductCard({ product, index, isInView }) {
             className="absolute top-4 right-4 z-10 text-[9px] tracking-[0.3em] uppercase px-2 py-1 rounded-sm font-medium"
             style={{ background: product.neonAccent, color: "#080808" }}
           >
-            Limited
+            Лимитед
           </div>
         )}
 
@@ -165,7 +165,7 @@ function ProductCard({ product, index, isInView }) {
               className="px-4 py-1.5 rounded-sm text-[10px] tracking-[0.2em] uppercase border transition-all duration-300 opacity-0 group-hover:opacity-100"
               style={{ borderColor: `${product.neonAccent}60`, color: product.neonAccent }}
             >
-              View
+              Смотреть
             </button>
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function CollectionSection() {
           className="text-center mb-20"
         >
           <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/70 mb-4 block">
-            — The Collection —
+            — Коллекция —
           </span>
           <motion.div
             className="text-5xl md:text-6xl font-extralight leading-none tracking-tight text-white flex justify-center gap-[0.25em]"
@@ -203,17 +203,17 @@ export default function CollectionSection() {
           >
             <div className="overflow-hidden inline-block py-2">
               <motion.span className="inline-block" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } } }}>
-                Visionary
+                Наши
               </motion.span>
             </div>
             <div className="overflow-hidden inline-block py-2">
               <motion.span className="inline-block italic text-[#00d4ff]" variants={{ hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } } }}>
-                Collections
+                оправы
               </motion.span>
             </div>
           </motion.div>
           <p className="text-white/35 mt-5 text-sm max-w-md mx-auto leading-relaxed">
-            Every frame in our collection is crafted with cutting-edge materials and precision engineering to give you the perfect fit.
+            Каждая оправа подобрана с учётом качества материалов и точности изготовления — чтобы вам было комфортно носить.
           </p>
         </motion.div>
 
@@ -230,7 +230,7 @@ export default function CollectionSection() {
           className="text-center mt-14"
         >
           <button className="btn-neon px-12 py-3.5 rounded-sm">
-            View Full Collection
+            Смотреть все оправы
           </button>
         </motion.div>
       </div>

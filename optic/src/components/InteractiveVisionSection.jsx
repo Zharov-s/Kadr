@@ -252,8 +252,8 @@ export default function InteractiveVisionSection() {
 
       {/* HUD Elements */}
       <div className="absolute top-10 w-full flex justify-between px-10 z-20 pointer-events-none">
-        <span className="text-[10px] tracking-[0.4em] uppercase text-[#00d4ff]/60">Fluid Simulation Active</span>
-        <span className="text-[10px] tracking-[0.4em] uppercase text-white/40">Hold & Move</span>
+        <span className="text-[10px] tracking-[0.4em] uppercase text-[#00d4ff]/60">Интерактивный режим</span>
+        <span className="text-[10px] tracking-[0.4em] uppercase text-white/40">Двигайте курсором</span>
       </div>
 
       <div className="absolute bottom-10 left-10 z-20 pointer-events-none">
@@ -261,7 +261,7 @@ export default function InteractiveVisionSection() {
           ОПТИКА <span className="text-[#00d4ff]">БУДУЩЕГО</span>
         </div>
         <div className="text-[9px] tracking-[0.3em] text-white/30 uppercase mt-2">
-          Experience the Flow
+          Почувствуйте разницу
         </div>
       </div>
     </section>

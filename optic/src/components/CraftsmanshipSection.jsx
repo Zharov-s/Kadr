@@ -4,35 +4,35 @@ import { motion, useInView } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Material Selection",
-    description: "We use premium TR90, flexible Ultem, and aerospace-grade titanium, ensuring every frame is lightweight and supremely durable.",
+    title: "Подбор материала",
+    description: "Используем TR90, гибкий Ultem и авиационный титан — лёгкие и прочные материалы для долгой и комфортной носки.",
     icon: "◆",
   },
   {
     number: "02",
-    title: "Master Cutting",
-    description: "Each frame blank is hand-cut by artisans using century-old patterns. Computer-aided precision ensures micron-level accuracy in every dimension.",
+    title: "Точная резка",
+    description: "Каждая заготовка вырезается по точным шаблонам. Компьютерный контроль обеспечивает точность до сотых миллиметра.",
     icon: "◈",
   },
   {
     number: "03",
-    title: "Temple Forming",
-    description: "Temple arms are individually bent, heated, and shaped by hand over brass mandrels — a skill that takes years to perfect.",
+    title: "Формовка заушников",
+    description: "Заушники гнут, нагревают и подгоняют по форме вручную — так оправа сидит точно и не давит.",
     icon: "◉",
   },
   {
     number: "04",
-    title: "Surface Finishing",
-    description: "Frames undergo 18 stages of polishing: from coarse grit to mirror-polish, with hand-buffing at every stage to achieve perfection.",
+    title: "Финишная обработка",
+    description: "Оправы проходят 18 этапов полировки — от грубой обработки до зеркального блеска. Каждый этап контролируется вручную.",
     icon: "◎",
   },
 ];
 
 const stats = [
-  { value: "100+", label: "Years of Heritage" },
-  { value: "72h", label: "Crafting Time per Frame" },
-  { value: "18", label: "Polishing Stages" },
-  { value: "0.01mm", label: "Tolerance Precision" },
+  { value: "100+", label: "Лет традиций" },
+  { value: "72 ч", label: "Изготовление оправы" },
+  { value: "18", label: "Этапов полировки" },
+  { value: "0,01 мм", label: "Точность изготовления" },
 ];
 
 export default function CraftsmanshipSection() {
@@ -57,21 +57,21 @@ export default function CraftsmanshipSection() {
           >
             <span className="text-[11px] tracking-[0.4em] uppercase text-[#00d4ff]/70 mb-6 flex items-center gap-3">
               <span className="w-10 h-px bg-[#00d4ff]" />
-              Our Craft
+              Наше качество
             </span>
             <h2
               className="text-5xl md:text-6xl font-extralight leading-none tracking-tight mb-8 text-white"
               style={{ fontFamily: "Georgia, serif" }}
             >
-              Mastery
+              Внимание
               <br />
-              <span className="neon-text italic">in Every Detail</span>
+              <span className="neon-text italic">к деталям</span>
             </h2>
             <p className="text-white/35 leading-relaxed mb-8 max-w-md">
-              The Florentine craft tradition has been passed from master to apprentice for over a century. In our workshops, time is not a constraint — it is an ingredient.
+              Мы подходим к подбору очков внимательно: проверяем зрение, помогаем выбрать подходящую оправу и подбираем линзы под ваши задачи. Имеются противопоказания. Необходима консультация специалиста.
             </p>
             <button className="btn-neon px-8 py-3.5 rounded-sm">
-              Visit Our Stores
+              Записаться на приём
             </button>
           </motion.div>
 
