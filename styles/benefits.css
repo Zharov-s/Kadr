@@ -97,6 +97,7 @@
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
+  transition: background 280ms ease;
 }
 
 /* Blob — GSAP полностью управляет позицией, opacity и scale */
@@ -129,6 +130,7 @@
   padding: 26px 0;
   display: flex;
   align-items: center;
+  transition: padding 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .bnf-row-cell--us   { padding-right: 20px; }
 .bnf-row-cell--them {
@@ -141,6 +143,39 @@
   .bnf-row-cell--them { padding-left: 40px; }
 }
 
+/* ── Hover: строки растягиваются как кнопки в баре — только pointer:fine ── */
+@media (pointer: fine) {
+  .bnf-row:hover {
+    background: var(--soft, #f6f6f3);
+  }
+  /* Вертикальный растяг: строка "пружинит" вниз */
+  .bnf-row:hover .bnf-row-cell {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+  @media (min-width: 768px) {
+    .bnf-row:hover .bnf-row-cell {
+      padding-top: 42px;
+      padding-bottom: 42px;
+    }
+  }
+  /* Горизонтальный сдвиг: контент "отодвигается" вглубь — как padding у nav */
+  .bnf-row:hover .bnf-row-cell--us {
+    padding-left: 16px;
+  }
+  .bnf-row:hover .bnf-row-cell--them {
+    padding-left: 44px;
+  }
+  @media (min-width: 768px) {
+    .bnf-row:hover .bnf-row-cell--us {
+      padding-left: 24px;
+    }
+    .bnf-row:hover .bnf-row-cell--them {
+      padding-left: 56px;
+    }
+  }
+}
+
 /* Текст */
 .bnf-row-text {
   font-size: clamp(11.5px, 1.2vw, 13.5px);
@@ -148,13 +183,18 @@
   text-transform: uppercase;
   letter-spacing: 0.07em;
   line-height: 1.5;
-  transition: color 200ms ease;
+  transition: color 220ms ease, letter-spacing 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .bnf-row-cell--us   .bnf-row-text { color: var(--ink); }
 .bnf-row-cell--them .bnf-row-text { color: var(--muted-2); font-weight: 400; }
 
 /* Усиление текста freymi на ховере строки */
-.bnf-row:hover .bnf-row-cell--us .bnf-row-text { color: #000; }
+@media (pointer: fine) {
+  .bnf-row:hover .bnf-row-cell--us .bnf-row-text {
+    color: #000;
+    letter-spacing: 0.10em;
+  }
+}
 
 /* ── Mobile (<480px): стек ── */
 @media (max-width: 479px) {
