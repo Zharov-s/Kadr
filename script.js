@@ -119,16 +119,14 @@
   });
 })();
 
-// FAQ section
-document.querySelectorAll('.quest').forEach(item => {
-    item.addEventListener('click', () => {
-        const answer = item.querySelector('.ans');
-        if (answer.style.display === 'none' || answer.style.display === '') {
-            answer.style.display = 'block';
-        } else {
-            answer.style.display = 'none';
-        }
-    });
+// FAQ — accordion toggle (класс is-open, иконка + → ×)
+document.querySelectorAll('.js-faq-item').forEach(function (item) {
+  var btn = item.querySelector('.faq-q');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var isOpen = item.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
 });
 
 // Sidebar
