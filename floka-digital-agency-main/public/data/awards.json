@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "BEST DESIGNER AWARDS",
+    "company": "AWARDS",
+    "year": "2025"
+  },
+  {
+    "id": 2,
+    "title": "PEAKY UI DESIGNER",
+    "company": "GOOGLE",
+    "year": "2024"
+  },
+  {
+    "id": 3,
+    "title": "GREAT IN UX",
+    "company": "APPLE",
+    "year": "2023"
+  },
+  {
+    "id": 4,
+    "title": "BEST WEBSITE PICK",
+    "company": "MICROSOFT",
+    "year": "2022"
+  },
+  {
+    "id": 5,
+    "title": "NELSON UI & UX DESIGNER",
+    "company": "SAMSUNG",
+    "year": "2021"
+  }
+]

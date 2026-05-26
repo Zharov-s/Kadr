@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "User Interface & Experience Design",
+    "description": "From brand strategy to immersive digital experiences, we offer end-to-end creative solutions…",
+    "tags": ["BRANDING", "MAGAZINE", "PRODUCT"],
+    "image": "https://i.ibb.co.com/6706vX2y/cdbf60a0-a793-4571-ad97-4176d9c8cb7f.png"
+  },
+  {
+    "id": 2,
+    "title": "Web Development",
+    "description": "From brand strategy to immersive digital experiences, we offer end-to-end creative solutions…",
+    "tags": ["BRANDING", "MODULE", "PRODUCT", "UX"],
+    "image": "https://i.ibb.co.com/6RMNg6dB/person-Flying.png"
+  },
+  {
+    "id": 3,
+    "title": "Search Engine Optimization",
+    "description": "Data-driven SEO strategies that improve your organic visibility, drive targeted traffic, and increase conversion rates sustainably over time.",
+    "tags": ["ANALYTICS", "CONTENT", "AUDIT"],
+    "image": "https://i.ibb.co.com/FkwNCX3Q/running.png"
+  },
+  {
+    "id": 4,
+    "title": "Low-Code Development",
+    "description": "Rapid prototyping and deployment using premium low-code platforms to get your MVP to market faster without sacrificing quality.",
+    "tags": ["WEBFLOW", "SHOPIFY", "AUTOMATION"],
+    "image": "https://i.ibb.co.com/qYhf6Czw/stich.png"
+  }
+]

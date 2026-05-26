@@ -1,0 +1,401 @@
+/* ═══════════════════════════════════════════════════════
+   Services Section — порт из Rise-at-Seven (vanilla CSS)
+   Префикс r7s- исключает конфликты с существующими стилями
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Секция ── */
+.r7s-section {
+  width: 100%;
+  padding-bottom: 3rem;
+  overflow: hidden;
+}
+@media (min-width: 1280px) {
+  .r7s-section { padding-bottom: 6rem; }
+}
+
+/* ── Внутренний контейнер ── */
+.r7s-inner {
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+@media (min-width: 768px) {
+  .r7s-inner { padding: 0 1.75rem; }
+}
+
+/* ── Шапка: 12-колоночная сетка ── */
+.r7s-header {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 0.75rem;
+  row-gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  padding-top: 2.5rem;
+}
+@media (min-width: 768px) {
+  .r7s-header {
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1.25rem;
+    column-gap: 1.25rem;
+    row-gap: 1.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .r7s-header { padding-top: 4rem; }
+}
+
+/* Колонка заголовка: span-11, на md — span-9 */
+.r7s-heading-col {
+  grid-column: span 11;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden; /* клипирует анимацию слов */
+}
+@media (min-width: 768px) {
+  .r7s-heading-col { grid-column: span 9; }
+}
+
+/* h2 */
+.r7s-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: left;
+  color: #111827;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin: 0;
+}
+@media (min-width: 768px) { .r7s-heading { font-size: 3.75rem; } }
+@media (min-width: 1024px) { .r7s-heading { font-size: 4.5rem; } }
+@media (min-width: 1280px) { .r7s-heading { font-size: 6rem; } }
+
+/* Строка с флекс-переносом для слов + картинки */
+.r7s-heading-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+}
+@media (min-width: 640px) { .r7s-heading-row { gap: 0.5rem; } }
+@media (min-width: 768px) { .r7s-heading-row { gap: 0.75rem; } }
+@media (min-width: 1024px) { .r7s-heading-row { gap: 1rem; } }
+
+/* Анимируемое слово */
+.r7s-word {
+  display: inline-block;
+}
+
+/* Картинка-миниатюра внутри заголовка */
+.r7s-header-img {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border-radius: 15%;
+  width: 54px;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  transform: translateY(2px);
+}
+@media (min-width: 640px) {
+  .r7s-header-img { width: 60px; transform: translateY(3px); }
+}
+@media (min-width: 768px) {
+  .r7s-header-img { width: 72px; transform: translateY(4px); }
+}
+@media (min-width: 1024px) {
+  .r7s-header-img { width: 90px; transform: translateY(4px); }
+}
+.r7s-header-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Колонка с кнопкой на desktop: span-3, скрыта на mobile */
+.r7s-header-cta {
+  display: none;
+  grid-column: span 3;
+  align-items: center;
+  justify-content: flex-end;
+}
+@media (min-width: 768px) {
+  .r7s-header-cta { display: flex; }
+}
+
+/* ── CTA-кнопка ── */
+.r7s-btn {
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  position: relative;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  overflow: hidden;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  transition: border-radius 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: white;
+  color: #111827;
+  text-decoration: none;
+  flex-direction: row-reverse;
+  font-family: inherit;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+@media (pointer: fine) {
+  .r7s-btn:hover { border-radius: 0.75rem; }
+}
+
+/* Двойной текст-слой для hover-замены */
+.r7s-btn-inner {
+  position: relative;
+  overflow: hidden;
+  height: 1.5rem;
+}
+.r7s-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+.r7s-btn-row-1 {
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.r7s-btn-row-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(1.5rem);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (pointer: fine) {
+  .r7s-btn:hover .r7s-btn-row-1 { transform: translateY(-1.5rem); }
+  .r7s-btn:hover .r7s-btn-row-2 { transform: translateY(0); }
+}
+
+.r7s-btn-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+/* ── Сетка карточек услуг ── */
+.r7s-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 0.5rem;
+}
+
+/* ── Карточка услуги ── */
+.r7s-item {
+  grid-column: span 12;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .r7s-item { grid-column: span 6; }
+}
+
+/* Декоративный разделитель снизу (отступами сжимается на fine-pointer) */
+.r7s-item-border {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  box-sizing: border-box;
+}
+.r7s-item-border::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #e5e7eb;
+}
+@media (pointer: fine) {
+  .r7s-item-border { padding: 0 3rem; }
+}
+
+/* ══════════════════════════════════════════════
+   КЛЮЧЕВОЙ ПРИЁМ: fg и bg — в одной ячейке сетки.
+   grid-column: 1 / grid-row: 1 накладывают их друг
+   на друга; высота ряда = высота fg-слоя.
+   ══════════════════════════════════════════════ */
+
+/* Ссылка-контейнер с grid-оверлеем */
+.r7s-item-link {
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Передний слой (текст) */
+.r7s-item-fg {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  z-index: 20;
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #000;
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (min-width: 768px) { .r7s-item-fg { padding: 1rem 2.5rem; } }
+@media (min-width: 1024px) { .r7s-item-fg { padding: 1.5rem 2.5rem; } }
+@media (pointer: fine) {
+  .r7s-item:hover .r7s-item-fg { color: white; }
+}
+
+/* Мобильная миниатюра (на fine-pointer скрыта) */
+.r7s-item-thumb {
+  display: inline-flex;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .r7s-item-thumb { width: 4rem; height: 4rem; border-radius: 0.75rem; }
+}
+.r7s-item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (pointer: fine) {
+  .r7s-item-thumb { display: none; }
+}
+
+/* Контейнер текста: постоянный сдвиг вправо на fine-pointer
+   (освобождает место для стрелки слева)              */
+.r7s-item-text {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+@media (pointer: fine) {
+  .r7s-item-text { transform: translateX(2.5rem); }
+}
+
+/* Враппер стрелки: overflow:hidden клипирует начальную позицию */
+.r7s-item-arrow-wrap {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Стрелка: стартует снизу-слева под углом -45° */
+.r7s-item-arrow {
+  display: flex;
+  align-items: center;
+  transform: translateX(-100%) translateY(100%) rotate(-45deg);
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.r7s-item-arrow svg {
+  width: 1.875rem;
+  height: 1.875rem;
+  display: block;
+}
+@media (min-width: 1024px) {
+  .r7s-item-arrow svg { width: 2.25rem; height: 2.25rem; }
+}
+@media (pointer: fine) {
+  .r7s-item:hover .r7s-item-arrow {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+}
+
+/* Заголовок: сдвигается вправо при hover, давая место стрелке */
+.r7s-item-title-wrap {
+  transition: transform 500ms ease-out;
+}
+@media (pointer: fine) {
+  .r7s-item:hover .r7s-item-title-wrap {
+    transform: translateX(3.5rem);
+  }
+}
+
+.r7s-item-title {
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+@media (min-width: 640px) { .r7s-item-title { font-size: 1.5rem; } }
+@media (min-width: 768px) { .r7s-item-title { font-size: 1.875rem; } }
+@media (min-width: 1024px) { .r7s-item-title { font-size: 2.25rem; } }
+@media (min-width: 1280px) { .r7s-item-title { font-size: 3rem; } }
+
+/* Задний слой — капсула с фото (изначально прозрачна) */
+.r7s-item-bg {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  border-radius: 9999px;
+  overflow: hidden;
+  z-index: 10;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (pointer: fine) {
+  .r7s-item:hover .r7s-item-bg { opacity: 1; }
+}
+
+/* Картинка внутри капсулы (60% opacity для тёмного эффекта) */
+.r7s-item-bg-inner {
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+  transition: transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.r7s-item-bg-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (pointer: fine) {
+  .r7s-item:hover .r7s-item-bg-inner { transform: scale(1.05); }
+}
+
+/* ── Мобильная CTA-кнопка (скрыта на desktop) ── */
+.r7s-mobile-cta {
+  display: block;
+  margin-top: 2.5rem;
+}
+@media (min-width: 768px) {
+  .r7s-mobile-cta { display: none; }
+}
+.r7s-mobile-cta .r7s-btn {
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-direction: row;
+}

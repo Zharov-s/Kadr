@@ -614,8 +614,7 @@ form,
     border-color: var(--line);
 }
 
-#pricing,
-#contact {
+#pricing {
     background: var(--soft);
 }
 

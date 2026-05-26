@@ -1,0 +1,23 @@
+.navbar .menu li a {
+  font-size: 1.125rem;
+  font-weight: 350;
+  margin-right: 10rem;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+/* Ensure the modal overlay doesn't have the standard gray tint */
+.modal {
+  background-color: rgba(0, 0, 0, 0.95);
+}

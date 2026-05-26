@@ -1,8 +1,42 @@
+/* ════════════════════════════════════════════════════════
+   Contact — Поговорим о проекте
+   Сетка = hero/fw-sticky-wrap: padding 16px → 28px
+   ════════════════════════════════════════════════════════ */
+
+.cnt-section {
+  padding: 72px 16px;
+}
+@media (min-width: 768px)  { .cnt-section { padding: 88px 28px;  } }
+@media (min-width: 1024px) { .cnt-section { padding: 108px 28px; } }
+
+/* Шапка */
+.cnt-head {
+  margin-bottom: 48px;
+}
+@media (min-width: 768px) { .cnt-head { margin-bottom: 60px; } }
+
+.cnt-title {
+  font-size: clamp(2.8rem, 7vw, 5.4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+.cnt-title span { color: var(--muted-2); }
+
+.cnt-subtitle {
+  font-size: clamp(14px, 1.4vw, 16px);
+  color: var(--muted);
+  line-height: 1.68;
+  letter-spacing: -0.005em;
+  max-width: 44ch;
+}
+
 .contact {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    margin-top: 50px;
 }
 
 .contact > * {
