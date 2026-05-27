@@ -179,11 +179,19 @@ footer.site-footer {
 @media (max-width: 767px) { .footer-bottom { margin-top: 40px; } }
 
 .footer-brand {
-    color: #151515;
-    font-size: clamp(80px, 17vw, 280px);
-    font-weight: 800;
-    line-height: 0.74;
-    letter-spacing: 0;
+    display: block;
+    width: 100%;
+    line-height: 0;
+}
+
+.footer-brand-img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    filter: brightness(0);
+    transform: translateX(-0.25%);
+    transform-origin: left center;
 }
 
 .footer-meta {
@@ -279,8 +287,9 @@ footer.site-footer {
         font-size: 12.5px;
     }
 
-    .footer-brand {
-        font-size: clamp(60px, 22vw, 88px);
+    .footer-brand-img {
+        width: 112%;
+        max-width: none;
     }
 
     .footer-meta {
@@ -302,7 +311,7 @@ footer.site-footer {
         padding: 0 12px;
     }
 
-    .footer-brand { font-size: 60px; }
+    .footer-brand-img { width: 118%; }
 
     .footer-column:last-child {
         grid-template-columns: 1fr;
