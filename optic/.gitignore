@@ -1,7 +1,9 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # compiled output
-# dist is kept in repo for static hosting at freymi.ru/optic/dist/
+# Готовая сборка задеплоена в /works/optika/ (freymi.ru/works/optika/), а не здесь.
+# Локальный optic/dist/ от `npm run build` — игнорируем, чтобы не плодить дубль.
+dist
 tmp
 out-tsc
 *.tsbuildinfo
