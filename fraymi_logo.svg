@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="991" height="272" viewBox="0 0 991 272" role="img" aria-labelledby="title">
-  <title id="title">freymi</title>
-  <g fill="#ffffff">
-    <path d="M96 8H176C185.39 8 193 15.61 193 25V61C193 70.39 185.39 78 176 78H111C97.75 78 87 88.75 87 102V133C87 142.39 79.39 150 70 150H25C15.61 150 8 142.39 8 133V96C8 86.61 15.61 79 25 79H56C69.25 79 80 68.25 80 55V25C80 15.61 86.61 8 96 8Z"/>
-    <path d="M25 193H72C85.25 193 96 182.25 96 169V144C96 134.61 103.61 127 113 127H176C185.39 127 193 134.61 193 144V180C193 189.39 185.39 197 176 197H121C107.75 197 97 207.75 97 221V247C97 256.39 89.39 264 80 264H25C15.61 264 8 256.39 8 247V210C8 200.61 15.61 193 25 193Z"/>
-    <text x="282" y="218" font-family="Inter, Arial, Helvetica, sans-serif" font-size="224" font-weight="900" letter-spacing="-15">freymi</text>
-  </g>
-</svg>
