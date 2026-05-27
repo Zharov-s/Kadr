@@ -838,11 +838,11 @@
         <p class="cnt-subtitle">Расскажите о задаче — ответим и предложим, как можем помочь.</p>
       </div>
       <div class="contact" data-aos="fade-up" data-aos-delay="40">
-        <form>
+        <form data-freymi-form>
           <p class="contact-head">Расскажите о проекте</p>
-          <input type="text" placeholder="Имя" required>
-          <input type="email" placeholder="Email" style="margin-top: 12.5px;" required>
-          <textarea placeholder="Коротко о задаче" style="margin-top: 12.5px; height: 150px;" required></textarea>
+          <input type="text" name="from_name" placeholder="Имя" autocomplete="name" required>
+          <input type="email" name="from_email" placeholder="Email" autocomplete="email" style="margin-top: 12.5px;" required>
+          <textarea name="message" placeholder="Коротко о задаче" style="margin-top: 12.5px; height: 150px;" required></textarea>
           <div class="contact-direct">
             <a href="mailto:hello@freymi.ru">
               <span>Email</span>
@@ -937,5 +937,9 @@
 
     <script src="script.js"></script>
     <script src="./scripts/featured-works.js"></script>
+
+    <!-- Отправка заявок на hello@freymi.ru (EmailJS) -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script defer src="./shared/freymi-forms.js"></script>
 </body>
 </html>
