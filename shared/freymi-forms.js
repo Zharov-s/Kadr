@@ -20,7 +20,10 @@
 
   var EMAILJS = {
     publicKey:  "NgPj9I3nl_2BgDqcR",
-    serviceId:  "service_k2usozm",
+    // Маршрут заявок: from s.zharov@abcentrum.ru (Mail.ru) -> to hello@freymi.ru.
+    // Сервис freymi.ru-SMTP (service_k2usozm) даёт self-send на тот же ящик —
+    // VK WorkMail его тихо режет анти-спамом (status 200 OK, но письма нет).
+    serviceId:  "service_h8pzgv8",
     templateId: "template_uz7if1o"
   };
 
