@@ -20,10 +20,11 @@
 
   var EMAILJS = {
     publicKey:  "NgPj9I3nl_2BgDqcR",
-    // Маршрут заявок: from s.zharov@abcentrum.ru (Mail.ru) -> to hello@freymi.ru.
-    // Сервис freymi.ru-SMTP (service_k2usozm) даёт self-send на тот же ящик —
-    // VK WorkMail его тихо режет анти-спамом (status 200 OK, но письма нет).
-    serviceId:  "service_h8pzgv8",
+    // Маршрут заявок: from zharovpeak@gmail.com (Gmail OAuth) -> to hello@freymi.ru.
+    // Прежние Mail.ru-сервисы (k2usozm, h8pzgv8) возвращали status OK без реальной
+    // доставки в VK WorkMail (тихий drop). Gmail с валидным SPF/DKIM проходит
+    // через MX freymi.ru (mxfront.mail.ru) в инбокс как обычная внешняя почта.
+    serviceId:  "service_u3vbupn",
     templateId: "template_uz7if1o"
   };
 
