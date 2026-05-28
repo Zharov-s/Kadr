@@ -14,8 +14,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="./assets/index-bPjObC4K.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-9FIc04Zi.css">
+    <style>
+      .freymi-back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 99999;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 44px;
+        padding: 10px 18px 10px 10px;
+        border: 1px solid rgba(0, 0, 0, 0.10);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.82);
+        color: #1b1b1b;
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1;
+        text-decoration: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+      }
+      .freymi-back-btn:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
+      }
+      .freymi-back-btn__icon {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #1b1b1b;
+        color: #fff;
+        font-size: 16px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      @media (max-width: 480px) {
+        .freymi-back-btn { top: 14px; left: 14px; font-size: 13px; }
+      }
+    </style>
   </head>
   <body>
+    <a class="freymi-back-btn" href="../../index.html" aria-label="Вернуться на главную страницу freymi">
+      <span class="freymi-back-btn__icon" aria-hidden="true">←</span>
+      <span>На главную</span>
+    </a>
     <div id="root"></div>
     <!-- Скрываем собственный подвал демо, чтобы остался один — freymi -->
     <style>#root footer { display: none !important; }</style>
