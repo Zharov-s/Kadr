@@ -107,6 +107,18 @@
     object-fit: cover;
     object-position: center;
     display: block;
+    z-index: 1;
+}
+
+.cnt-shery-img > ._canvas_container,
+.cnt-shery-img > .cnt-shery-canvas {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    z-index: 2 !important;
 }
 
 /* Corner-mask overlay: visually rounds the WebGL canvas corners

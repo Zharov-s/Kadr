@@ -6,14 +6,13 @@
   var el = document.querySelector('.cnt-shery-img');
   if (!el) return;
 
-  // Применяем border-radius на canvas-контейнер после инициализации SheryJS
-  // (перебивает inline-стили, которые SheryJS может выставлять динамически)
+  // Держим WebGL-слой Shery строго внутри правого image-wrapper.
+  // Иначе библиотека может вынести canvas в общий layout и он накроет форму.
   function patchSheryCorners() {
     if (!document.querySelector('._canvas_container')) { requestAnimationFrame(patchSheryCorners); return; }
 
     function applyBR() {
       var BR = getComputedStyle(el).getPropertyValue('--contact-card-radius').trim() || '30px';
-      var rect = el.getBoundingClientRect();
       var containers = document.querySelectorAll('._canvas_container');
       var setImportant = function (node, prop, value) {
         if (node.style.getPropertyValue(prop) === value &&
@@ -21,15 +20,19 @@
         node.style.setProperty(prop, value, 'important');
       };
       Array.prototype.forEach.call(containers, function (container) {
-        if (container.parentElement === el.parentElement) {
-          container.classList.add('cnt-shery-canvas');
-        }
-        setImportant(container, 'width', rect.width + 'px');
-        setImportant(container, 'height', rect.height + 'px');
+        if (!el.contains(container)) el.appendChild(container);
+        container.classList.add('cnt-shery-canvas');
+        setImportant(container, 'position', 'absolute');
+        setImportant(container, 'inset', '0');
+        setImportant(container, 'width', '100%');
+        setImportant(container, 'height', '100%');
+        setImportant(container, 'max-width', 'none');
+        setImportant(container, 'min-height', '0');
         setImportant(container, 'border-radius', BR);
         setImportant(container, 'overflow', 'hidden');
         setImportant(container, 'clip-path', 'inset(0 round ' + BR + ')');
         setImportant(container, '-webkit-clip-path', 'inset(0 round ' + BR + ')');
+        setImportant(container, 'z-index', '2');
 
         var canvas = container.querySelector('canvas');
         if (!canvas) return;
