@@ -1,45 +1,87 @@
 
-// ── Contact image: stable two-layer animation ────────────────────────────────
+// ── SheryJS: gooey image effect (contact section) ────────────────────────────
+// Exact port of obys-agency imageEffect style 5 configuration
 (function () {
+  if (typeof Shery === 'undefined') return;
   var el = document.querySelector('.cnt-shery-img');
   if (!el) return;
 
-  el.classList.add('is-contact-animated');
+  // Применяем border-radius на canvas-контейнер после инициализации SheryJS
+  // (перебивает inline-стили, которые SheryJS может выставлять динамически)
+  function patchSheryCorners() {
+    var BR = getComputedStyle(el).borderTopLeftRadius || '30px';
+    var container = document.querySelector('._canvas_container');
+    if (!container) { requestAnimationFrame(patchSheryCorners); return; }
 
-  var hover = false;
-  var current = { x: 58, y: 52 };
-  var target = { x: 58, y: 52 };
-
-  el.addEventListener('pointermove', function (e) {
-    var rect = el.getBoundingClientRect();
-    hover = true;
-    target.x = Math.max(28, Math.min(74, (e.clientX - rect.left) / rect.width * 100));
-    target.y = Math.max(28, Math.min(74, (e.clientY - rect.top) / rect.height * 100));
-  });
-
-  el.addEventListener('pointerleave', function () {
-    hover = false;
-  });
-
-  function tick(time) {
-    var t = time / 1000;
-    if (!hover) {
-      target.x = 54 + Math.sin(t * 0.55) * 9 + Math.sin(t * 1.1) * 2.5;
-      target.y = 53 + Math.cos(t * 0.48) * 8 + Math.sin(t * 0.8) * 2;
+    function applyBR() {
+      container.style.setProperty('border-radius', BR, 'important');
+      container.style.setProperty('overflow', 'hidden', 'important');
+      container.style.setProperty('clip-path', 'inset(0 round ' + BR + ')', 'important');
+      container.style.setProperty('-webkit-clip-path', 'inset(0 round ' + BR + ')', 'important');
+      var canvas = container.querySelector('canvas');
+      if (canvas) canvas.style.setProperty('border-radius', BR, 'important');
     }
 
-    current.x += (target.x - current.x) * 0.055;
-    current.y += (target.y - current.y) * 0.055;
-
-    el.style.setProperty('--contact-img-x', current.x.toFixed(2) + '%');
-    el.style.setProperty('--contact-img-y', current.y.toFixed(2) + '%');
-    el.style.setProperty('--contact-img-scale', (1.035 + Math.sin(t * 0.6) * 0.012).toFixed(3));
-    el.style.setProperty('--contact-img-drift-x', (Math.sin(t * 0.74) * 1.2).toFixed(2) + '%');
-    el.style.setProperty('--contact-img-drift-y', (Math.cos(t * 0.68) * 1.0).toFixed(2) + '%');
-    requestAnimationFrame(tick);
+    applyBR();
+    // MutationObserver: восстанавливаем после любых изменений SheryJS
+    new MutationObserver(applyBR).observe(container, { attributes: true, subtree: true });
   }
 
-  requestAnimationFrame(tick);
+  requestAnimationFrame(patchSheryCorners);
+
+  Shery.imageEffect('.cnt-shery-img', {
+    style: 5,
+    gooey: true,
+    config: {
+      resolutionXY:        { value: 100 },
+      distortion:          { value: true },
+      mode:                { value: -10 },
+      mousemove:           { value: 3 },
+      modeA:               { value: 1 },
+      modeN:               { value: 3 },
+      speed:               { value: 1,    range: [-500, 500],               rangep: [-10, 10] },
+      frequency:           { value: 50,   range: [-800, 800],               rangep: [-50, 50] },
+      angle:               { value: 0.5,  range: [0, 3.141592653589793] },
+      waveFactor:          { value: 1.4,  range: [-3, 3] },
+      color:               { value: 10212607 },
+      pixelStrength:       { value: 3,    range: [-20, 100],                rangep: [-20, 20] },
+      quality:             { value: 5,    range: [0, 10] },
+      contrast:            { value: 1,    range: [-25, 25] },
+      brightness:          { value: 1,    range: [-1, 25] },
+      colorExposer:        { value: 0.18, range: [-5, 5] },
+      strength:            { value: 0.2,  range: [-40, 40],                 rangep: [-5, 5] },
+      exposer:             { value: 8,    range: [-100, 100] },
+      zindex:              { value: -9996999, range: [-9999999, 9999999] },
+      aspect:              { value: 0.7666557722625823 },
+      ignoreShapeAspect:   { value: true },
+      shapePosition:       { value: { x: 0, y: 0 } },
+      shapeScale:          { value: { x: 0.5, y: 0.5 } },
+      shapeEdgeSoftness:   { value: 0,    range: [0, 0.5] },
+      shapeRadius:         { value: 0,    range: [0, 2] },
+      currentScroll:       { value: 0 },
+      scrollLerp:          { value: 0.07 },
+      gooey:               { value: true },
+      infiniteGooey:       { value: false },
+      growSize:            { value: 4,    range: [1, 15] },
+      durationOut:         { value: 1,    range: [0.1, 5] },
+      durationIn:          { value: 1.5,  range: [0.1, 5] },
+      displaceAmount:      { value: 0.5 },
+      masker:              { value: false },
+      maskVal:             { value: 1,    range: [1, 5] },
+      scrollType:          { value: 0 },
+      geoVertex:           { range: [1, 64], value: 1 },
+      noEffectGooey:       { value: true },
+      onMouse:             { value: 0 },
+      noise_speed:         { value: 0.76, range: [0, 10] },
+      metaball:            { value: 0.6,  range: [0, 2] },
+      discard_threshold:   { value: 0.5,  range: [0, 1] },
+      antialias_threshold: { value: 0,    range: [0, 0.1] },
+      noise_height:        { value: 0.37, range: [0, 2] },
+      noise_scale:         { value: 7.63, range: [0, 100] },
+      a:                   { value: 1.37, range: [0, 30] },
+      b:                   { value: -0.91, range: [-1, 1] },
+    }
+  });
 })();
 
 // ── Benefits: floka-style blob hover + GSAP stagger entrance ─────────────────

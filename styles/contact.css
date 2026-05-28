@@ -72,74 +72,50 @@
     .contact > .cnt-shery-img { min-height: 360px; }
 }
 
-/* ── Animated contact image ── */
+/* ── SheryJS gooey image container ── */
 .cnt-shery-img {
-    --contact-img-x: 58%;
-    --contact-img-y: 52%;
-    --contact-img-scale: 1.035;
-    --contact-img-drift-x: 0%;
-    --contact-img-drift-y: 0%;
     position: relative;
     overflow: hidden;
     border-radius: var(--contact-card-radius, 30px);
     width: 100%;
-    min-height: 0;
-    cursor: default;
+    min-height: 460px;
+    cursor: none;
+    /* GPU-слой: только так overflow:hidden клипирует WebGL-canvas */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+    /* WebKit-фикс для overflow:hidden на GPU-контенте */
     -webkit-mask-image: -webkit-radial-gradient(white, black);
+    /* Принудительный clip-path: даёт корректное закругление WebGL-canvas */
+    clip-path: inset(0 round var(--contact-card-radius, 30px));
+    -webkit-clip-path: inset(0 round var(--contact-card-radius, 30px));
 }
 
-.cnt-shery-img > img,
-.contact-gooey-layer {
+.cnt-shery-img > img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    display: block;
-    border-radius: inherit;
-}
-
-.cnt-shery-img > img {
     object-fit: cover;
     object-position: center;
-    z-index: 1;
+    display: block;
 }
 
-.cnt-shery-img > img:first-child {
-    filter: grayscale(1);
-}
-
-.contact-gooey-layer {
-    z-index: 2;
-    overflow: hidden;
-    transform: translate3d(var(--contact-img-drift-x), var(--contact-img-drift-y), 0) scale(var(--contact-img-scale));
-    transform-origin: var(--contact-img-x) var(--contact-img-y);
-    will-change: transform;
-}
-
-.contact-gooey-layer image {
-    opacity: .98;
-}
-
-.contact-gooey-fallback {
-    display: none !important;
-}
-
-.cnt-shery-img::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06);
+/* SheryJS-контейнер canvas: clip-path + border-radius наследуется через JS-патч */
+._canvas_container {
+    z-index: 99999 !important;
     pointer-events: none;
-    z-index: 3;
+    border-radius: var(--contact-card-radius, 30px) !important;
+    overflow: hidden !important;
+    clip-path: inset(0 round var(--contact-card-radius, 30px)) !important;
+    -webkit-clip-path: inset(0 round var(--contact-card-radius, 30px)) !important;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .contact-gooey-layer {
-        transform: scale(1.03);
-    }
+._canvas_container canvas {
+    border-radius: var(--contact-card-radius, 30px) !important;
+}
+
+@media (max-width: 1000px) {
+    .cnt-shery-img { min-height: 360px; }
 }
 
 @media (max-width: 460px) {
