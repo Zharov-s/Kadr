@@ -1,112 +1,20 @@
 
-// ── SheryJS: gooey image effect (contact section) ────────────────────────────
-// Exact port of obys-agency imageEffect style 5 configuration
+// ── Contact image: stable two-layer animation ────────────────────────────────
 (function () {
-  if (typeof Shery === 'undefined') return;
   var el = document.querySelector('.cnt-shery-img');
   if (!el) return;
 
-  // Держим WebGL-слой Shery строго внутри правого image-wrapper.
-  // Иначе библиотека может вынести canvas в общий layout и он накроет форму.
-  function patchSheryCorners() {
-    if (!document.querySelector('._canvas_container')) { requestAnimationFrame(patchSheryCorners); return; }
+  el.classList.add('is-contact-animated');
 
-    function applyBR() {
-      var BR = getComputedStyle(el).getPropertyValue('--contact-card-radius').trim() || '30px';
-      var containers = document.querySelectorAll('._canvas_container');
-      var setImportant = function (node, prop, value) {
-        if (node.style.getPropertyValue(prop) === value &&
-            node.style.getPropertyPriority(prop) === 'important') return;
-        node.style.setProperty(prop, value, 'important');
-      };
-      Array.prototype.forEach.call(containers, function (container) {
-        if (!el.contains(container)) el.appendChild(container);
-        container.classList.add('cnt-shery-canvas');
-        setImportant(container, 'position', 'absolute');
-        setImportant(container, 'inset', '0');
-        setImportant(container, 'width', '100%');
-        setImportant(container, 'height', '100%');
-        setImportant(container, 'max-width', 'none');
-        setImportant(container, 'min-height', '0');
-        setImportant(container, 'border-radius', BR);
-        setImportant(container, 'overflow', 'hidden');
-        setImportant(container, 'clip-path', 'inset(0 round ' + BR + ')');
-        setImportant(container, '-webkit-clip-path', 'inset(0 round ' + BR + ')');
-        setImportant(container, 'z-index', '2');
+  el.addEventListener('pointermove', function (e) {
+    var rect = el.getBoundingClientRect();
+    el.style.setProperty('--contact-img-x', ((e.clientX - rect.left) / rect.width * 100).toFixed(2) + '%');
+    el.style.setProperty('--contact-img-y', ((e.clientY - rect.top) / rect.height * 100).toFixed(2) + '%');
+  });
 
-        var canvas = container.querySelector('canvas');
-        if (!canvas) return;
-        setImportant(canvas, 'display', 'block');
-        setImportant(canvas, 'width', '100%');
-        setImportant(canvas, 'height', '100%');
-        setImportant(canvas, 'border-radius', BR);
-        setImportant(canvas, 'clip-path', 'inset(0 round ' + BR + ')');
-        setImportant(canvas, '-webkit-clip-path', 'inset(0 round ' + BR + ')');
-      });
-    }
-
-    applyBR();
-    // SheryJS может пересоздавать canvas-контейнер или менять inline-стили.
-    new MutationObserver(applyBR).observe(document.body, { childList: true, subtree: true });
-    if ('ResizeObserver' in window) new ResizeObserver(applyBR).observe(el);
-    window.addEventListener('resize', applyBR, { passive: true });
-    [50, 250, 1000].forEach(function (delay) { setTimeout(applyBR, delay); });
-  }
-
-  requestAnimationFrame(patchSheryCorners);
-
-  Shery.imageEffect('.cnt-shery-img', {
-    style: 5,
-    gooey: true,
-    config: {
-      resolutionXY:        { value: 100 },
-      distortion:          { value: true },
-      mode:                { value: -10 },
-      mousemove:           { value: 3 },
-      modeA:               { value: 1 },
-      modeN:               { value: 3 },
-      speed:               { value: 1,    range: [-500, 500],               rangep: [-10, 10] },
-      frequency:           { value: 50,   range: [-800, 800],               rangep: [-50, 50] },
-      angle:               { value: 0.5,  range: [0, 3.141592653589793] },
-      waveFactor:          { value: 1.4,  range: [-3, 3] },
-      color:               { value: 10212607 },
-      pixelStrength:       { value: 3,    range: [-20, 100],                rangep: [-20, 20] },
-      quality:             { value: 5,    range: [0, 10] },
-      contrast:            { value: 1,    range: [-25, 25] },
-      brightness:          { value: 1,    range: [-1, 25] },
-      colorExposer:        { value: 0.18, range: [-5, 5] },
-      strength:            { value: 0.2,  range: [-40, 40],                 rangep: [-5, 5] },
-      exposer:             { value: 8,    range: [-100, 100] },
-      zindex:              { value: -9996999, range: [-9999999, 9999999] },
-      aspect:              { value: 0.7666557722625823 },
-      ignoreShapeAspect:   { value: true },
-      shapePosition:       { value: { x: 0, y: 0 } },
-      shapeScale:          { value: { x: 0.5, y: 0.5 } },
-      shapeEdgeSoftness:   { value: 0,    range: [0, 0.5] },
-      shapeRadius:         { value: 0,    range: [0, 2] },
-      currentScroll:       { value: 0 },
-      scrollLerp:          { value: 0.07 },
-      gooey:               { value: true },
-      infiniteGooey:       { value: false },
-      growSize:            { value: 4,    range: [1, 15] },
-      durationOut:         { value: 1,    range: [0.1, 5] },
-      durationIn:          { value: 1.5,  range: [0.1, 5] },
-      displaceAmount:      { value: 0.5 },
-      masker:              { value: false },
-      maskVal:             { value: 1,    range: [1, 5] },
-      scrollType:          { value: 0 },
-      geoVertex:           { range: [1, 64], value: 1 },
-      noEffectGooey:       { value: true },
-      onMouse:             { value: 0 },
-      noise_speed:         { value: 0.76, range: [0, 10] },
-      metaball:            { value: 0.6,  range: [0, 2] },
-      discard_threshold:   { value: 0.5,  range: [0, 1] },
-      antialias_threshold: { value: 0,    range: [0, 0.1] },
-      noise_height:        { value: 0.37, range: [0, 2] },
-      noise_scale:         { value: 7.63, range: [0, 100] },
-      a:                   { value: 1.37, range: [0, 30] },
-      b:                   { value: -0.91, range: [-1, 1] },
-    }
+  el.addEventListener('pointerleave', function () {
+    el.style.removeProperty('--contact-img-x');
+    el.style.removeProperty('--contact-img-y');
   });
 })();
 
