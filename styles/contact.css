@@ -146,38 +146,55 @@ form {
 
 .contact-direct {
     border-bottom: 1px solid #eee;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 16px;
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
 
 .contact-direct a {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 100px;
+    background: #f2f2ef;
+    border: 1px solid #e5e5e0;
+    color: #1b1b1b;
+    font-size: 14px;
+    font-weight: 600;
     min-width: 0;
     width: fit-content;
-    transition: 0.3s;
+    transition:
+        background 0.28s ease,
+        color 0.28s ease,
+        border-color 0.28s ease,
+        transform 0.22s ease,
+        box-shadow 0.28s ease;
 }
 
-.contact-direct span {
-    color: #8b8b8b;
-    font-size: 13px;
-    font-weight: 500;
+.contact-direct a i {
+    font-size: 16px;
+    color: inherit;
+    line-height: 1;
+    flex-shrink: 0;
 }
 
-.contact-direct strong {
-    color: #1b1b1b;
+.contact-direct a span {
+    color: inherit;
     font-size: 14px;
     font-weight: 600;
     overflow-wrap: anywhere;
 }
 
-.contact-direct a:hover strong {
-    color: #151515;
+.contact-direct a:hover {
+    background: #1b1b1b;
+    border-color: #1b1b1b;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27, 27, 27, 0.18);
 }
 
 form input, form textarea {
