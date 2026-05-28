@@ -12,6 +12,9 @@
     var BR = '30px';
     var container = document.querySelector('._canvas_container');
     if (!container) { requestAnimationFrame(patchSheryCorners); return; }
+    if (container.parentElement === el.parentElement) {
+      container.classList.add('cnt-shery-canvas');
+    }
 
     function applyBR() {
       container.style.setProperty('border-radius', BR, 'important');
@@ -291,4 +294,3 @@ AOS.init();
   // 5. Кнопки: stagger
   tl.from('.hero-btn', { y: 14, opacity: 0, duration: 0.55, stagger: 0.10 }, 0.84);
 })();
-

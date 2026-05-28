@@ -128,10 +128,6 @@ select {
         justify-content: left;
     }
 
-    .contact {
-        grid-template-columns: 1fr;
-    }
-
     .contact-img {
         height: 500px;
     }
@@ -702,5 +698,4 @@ form textarea::placeholder,
 .portfolio .circle:nth-child(3n) {
     background-color: var(--soft-2);
 }
-
 

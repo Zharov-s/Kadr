@@ -125,8 +125,12 @@
     s.className = "freymi-form-status";
     s.setAttribute("role", "status");
     s.setAttribute("aria-live", "polite");
-    // Вставляем ПОСЛЕ формы (footer-form — flex-пилюля, внутрь класть нельзя).
-    form.insertAdjacentElement("afterend", s);
+    if (form.classList.contains("footer-form")) {
+      // footer-form — flex-пилюля, внутрь класть нельзя.
+      form.insertAdjacentElement("afterend", s);
+    } else {
+      form.appendChild(s);
+    }
     return s;
   }
 
