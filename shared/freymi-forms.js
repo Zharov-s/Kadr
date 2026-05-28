@@ -19,9 +19,9 @@
   "use strict";
 
   var EMAILJS = {
-    publicKey:  "PUBLIC_KEY_PLACEHOLDER",
-    serviceId:  "SERVICE_ID_PLACEHOLDER",
-    templateId: "TEMPLATE_ID_PLACEHOLDER"
+    publicKey:  "NgPj9I3nI_2BgDqcR",
+    serviceId:  "service_k2usozm",
+    templateId: "template_fnxc2bz"
   };
 
   var CONTACT_EMAIL = "hello@freymi.ru";
