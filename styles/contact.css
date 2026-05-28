@@ -34,9 +34,11 @@
 }
 
 .contact {
+    --contact-card-radius: 30px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 15px;
+    align-items: stretch;
 }
 
 .contact > * {
@@ -57,14 +59,16 @@
 .contact > ._canvas_container,
 .contact > .cnt-shery-canvas {
     grid-column: 2 !important;
-    grid-row: 1 / span 2 !important;
+    grid-row: 1 !important;
+    align-self: stretch;
 }
 
 .contact > ._canvas_container,
 .contact > .cnt-shery-canvas {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     max-width: 100% !important;
+    min-height: 0 !important;
 }
 
 @media (max-width: 768px) {
@@ -77,15 +81,16 @@
         grid-column: 1 !important;
         grid-row: auto !important;
     }
+    .contact > .cnt-shery-img { min-height: 360px; }
 }
 
 /* ── SheryJS gooey image container ── */
 .cnt-shery-img {
     position: relative;
     overflow: hidden;
-    border-radius: 30px;
+    border-radius: var(--contact-card-radius, 30px);
     width: 100%;
-    min-height: 460px;
+    min-height: 0;
     cursor: none;
     /* Принудительный GPU-слой: только так overflow:hidden клипирует WebGL-canvas */
     transform: translateZ(0);
@@ -112,7 +117,7 @@
     content: '';
     position: absolute;
     inset: -3px;
-    border-radius: 33px;
+    border-radius: calc(var(--contact-card-radius, 30px) + 3px);
     box-shadow: 0 0 0 6px var(--paper, #ffffff);
     z-index: 9999999999;
     pointer-events: none;
@@ -122,37 +127,39 @@
 ._canvas_container {
     z-index: 99999 !important;
     pointer-events: none;
-    border-radius: 30px !important;
+    border-radius: var(--contact-card-radius, 30px) !important;
     overflow: hidden !important;
-    clip-path: inset(0 round 30px) !important;
-    -webkit-clip-path: inset(0 round 30px) !important;
+    clip-path: inset(0 round var(--contact-card-radius, 30px)) !important;
+    -webkit-clip-path: inset(0 round var(--contact-card-radius, 30px)) !important;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 /* Прямой border-radius на canvas-элементе */
 ._canvas_container canvas {
-    border-radius: 30px !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: var(--contact-card-radius, 30px) !important;
+    clip-path: inset(0 round var(--contact-card-radius, 30px)) !important;
+    -webkit-clip-path: inset(0 round var(--contact-card-radius, 30px)) !important;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
-@media (max-width: 1000px) {
-    .cnt-shery-img { min-height: 360px; }
-}
 @media (max-width: 460px) {
-    .cnt-shery-img {
+    .contact { --contact-card-radius: 24px; }
+    .contact > .cnt-shery-img {
         min-height: 260px;
-        border-radius: 24px;
-    }
-    .cnt-shery-img::after {
-        border-radius: 27px; /* 24px + 3px inset offset */
     }
 }
 
 form {
+    box-sizing: border-box;
     background-color: #fbfbfb;
     border: 1px solid #eee;
     display: flex;
     flex-direction: column;
     padding: 40px;
-    border-radius: 30px;
+    border-radius: var(--contact-card-radius, 30px);
     width: 100%;
 }
 

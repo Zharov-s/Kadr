@@ -9,24 +9,45 @@
   // Применяем border-radius на canvas-контейнер после инициализации SheryJS
   // (перебивает inline-стили, которые SheryJS может выставлять динамически)
   function patchSheryCorners() {
-    var BR = '30px';
-    var container = document.querySelector('._canvas_container');
-    if (!container) { requestAnimationFrame(patchSheryCorners); return; }
-    if (container.parentElement === el.parentElement) {
-      container.classList.add('cnt-shery-canvas');
-    }
+    if (!document.querySelector('._canvas_container')) { requestAnimationFrame(patchSheryCorners); return; }
 
     function applyBR() {
-      container.style.setProperty('border-radius', BR, 'important');
-      container.style.setProperty('overflow', 'hidden', 'important');
-      container.style.setProperty('clip-path', 'inset(0 round ' + BR + ')', 'important');
-      var canvas = container.querySelector('canvas');
-      if (canvas) canvas.style.setProperty('border-radius', BR, 'important');
+      var BR = getComputedStyle(el).getPropertyValue('--contact-card-radius').trim() || '30px';
+      var rect = el.getBoundingClientRect();
+      var containers = document.querySelectorAll('._canvas_container');
+      var setImportant = function (node, prop, value) {
+        if (node.style.getPropertyValue(prop) === value &&
+            node.style.getPropertyPriority(prop) === 'important') return;
+        node.style.setProperty(prop, value, 'important');
+      };
+      Array.prototype.forEach.call(containers, function (container) {
+        if (container.parentElement === el.parentElement) {
+          container.classList.add('cnt-shery-canvas');
+        }
+        setImportant(container, 'width', rect.width + 'px');
+        setImportant(container, 'height', rect.height + 'px');
+        setImportant(container, 'border-radius', BR);
+        setImportant(container, 'overflow', 'hidden');
+        setImportant(container, 'clip-path', 'inset(0 round ' + BR + ')');
+        setImportant(container, '-webkit-clip-path', 'inset(0 round ' + BR + ')');
+
+        var canvas = container.querySelector('canvas');
+        if (!canvas) return;
+        setImportant(canvas, 'display', 'block');
+        setImportant(canvas, 'width', '100%');
+        setImportant(canvas, 'height', '100%');
+        setImportant(canvas, 'border-radius', BR);
+        setImportant(canvas, 'clip-path', 'inset(0 round ' + BR + ')');
+        setImportant(canvas, '-webkit-clip-path', 'inset(0 round ' + BR + ')');
+      });
     }
 
     applyBR();
-    // MutationObserver: восстанавливаем после любых изменений SheryJS
-    new MutationObserver(applyBR).observe(container, { attributes: true, subtree: true });
+    // SheryJS может пересоздавать canvas-контейнер или менять inline-стили.
+    new MutationObserver(applyBR).observe(document.body, { childList: true, subtree: true });
+    if ('ResizeObserver' in window) new ResizeObserver(applyBR).observe(el);
+    window.addEventListener('resize', applyBR, { passive: true });
+    [50, 250, 1000].forEach(function (delay) { setTimeout(applyBR, delay); });
   }
 
   requestAnimationFrame(patchSheryCorners);
