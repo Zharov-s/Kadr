@@ -6,16 +6,40 @@
 
   el.classList.add('is-contact-animated');
 
+  var hover = false;
+  var current = { x: 58, y: 52 };
+  var target = { x: 58, y: 52 };
+
   el.addEventListener('pointermove', function (e) {
     var rect = el.getBoundingClientRect();
-    el.style.setProperty('--contact-img-x', ((e.clientX - rect.left) / rect.width * 100).toFixed(2) + '%');
-    el.style.setProperty('--contact-img-y', ((e.clientY - rect.top) / rect.height * 100).toFixed(2) + '%');
+    hover = true;
+    target.x = Math.max(28, Math.min(74, (e.clientX - rect.left) / rect.width * 100));
+    target.y = Math.max(28, Math.min(74, (e.clientY - rect.top) / rect.height * 100));
   });
 
   el.addEventListener('pointerleave', function () {
-    el.style.removeProperty('--contact-img-x');
-    el.style.removeProperty('--contact-img-y');
+    hover = false;
   });
+
+  function tick(time) {
+    var t = time / 1000;
+    if (!hover) {
+      target.x = 54 + Math.sin(t * 0.55) * 9 + Math.sin(t * 1.1) * 2.5;
+      target.y = 53 + Math.cos(t * 0.48) * 8 + Math.sin(t * 0.8) * 2;
+    }
+
+    current.x += (target.x - current.x) * 0.055;
+    current.y += (target.y - current.y) * 0.055;
+
+    el.style.setProperty('--contact-img-x', current.x.toFixed(2) + '%');
+    el.style.setProperty('--contact-img-y', current.y.toFixed(2) + '%');
+    el.style.setProperty('--contact-img-scale', (1.035 + Math.sin(t * 0.6) * 0.012).toFixed(3));
+    el.style.setProperty('--contact-img-drift-x', (Math.sin(t * 0.74) * 1.2).toFixed(2) + '%');
+    el.style.setProperty('--contact-img-drift-y', (Math.cos(t * 0.68) * 1.0).toFixed(2) + '%');
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
 })();
 
 // ── Benefits: floka-style blob hover + GSAP stagger entrance ─────────────────
